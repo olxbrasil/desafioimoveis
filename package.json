@@ -1,0 +1,30 @@
+{
+  "name": "desafioimoveis",
+  "version": "0.0.1",
+  "description": "Alugar ou Comprar?",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olxbrasil/desafioimoveis.git"
+  },
+  "keywords": [
+    "olx",
+    "imoveis",
+    "alugar",
+    "comprar",
+    "juros",
+    "aluguel"
+  ],
+  "author": "Demetrius Nunes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olxbrasil/desafioimoveis/issues"
+  },
+  "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
+  "dependencies": {
+    "interestjs": "^0.1.0"
+  }
+}
