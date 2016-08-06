@@ -18,18 +18,22 @@ class PriceConfigurator extends Component {
             min={rent.min}
             max={rent.max}
             step={rent.step}
-            value={rent.value || rent.min}
+            value={rent.value}
             label={"Valor do aluguel por mês:"}
             maskedValue={`R$ ${rent.value}`}
+            updatePrice={this.props.updatePrice}
+            type={"rent"}
           />
 
           <SlideSelector
             min={buy.min}
             max={buy.max}
             step={buy.step}
-            value={buy.value || buy.min}
+            value={buy.value}
             label={"Valor do imóvel para comprar:"}
             maskedValue={`R$ ${buy.value}`}
+            updatePrice={this.props.updatePrice}
+            type={"buy"}
           />
 
           <SlideSelector
@@ -39,6 +43,8 @@ class PriceConfigurator extends Component {
             value={livingTime.value}
             label={"Por quanto tempo pretende morar?"}
             maskedValue={`${livingTime.value} anos`}
+            updatePrice={this.props.updatePrice}
+            type={"livingTime"}
           />
 
           <SlideSelector
@@ -48,6 +54,8 @@ class PriceConfigurator extends Component {
             value={annualTax.value}
             label={"Taxa de juros anual:"}
             maskedValue={`${annualTax.value}%`}
+            updatePrice={this.props.updatePrice}
+            type={"annualTax"}
           />
         </div>
       </div>
@@ -57,20 +65,17 @@ class PriceConfigurator extends Component {
 
 const configShape = {
   min: PropTypes.number.isRequired,
-  max: PropTypes.oneOfType([
-    PropTypes.number, PropTypes.object
-  ]),
+  max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  value: PropTypes.oneOfType([
-    PropTypes.number, PropTypes.object
-  ])
+  value: PropTypes.number.isRequired
 }
 
 PriceConfigurator.propTypes = {
   rent: PropTypes.shape(configShape).isRequired,
   buy: PropTypes.shape(configShape).isRequired,
   livingTime: PropTypes.shape(configShape).isRequired,
-  annualTax: PropTypes.shape(configShape).isRequired
+  annualTax: PropTypes.shape(configShape).isRequired,
+  updatePrice: PropTypes.func.isRequired
 }
 
 export default PriceConfigurator;

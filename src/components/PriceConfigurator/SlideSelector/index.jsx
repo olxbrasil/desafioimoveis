@@ -2,17 +2,30 @@ import React, { Component, PropTypes } from 'react';
 import Slider from 'material-ui/Slider';
 
 class SlideSelector extends Component {
+  constructor (props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange = (event, value) => {
+    this.props.updatePrice(value, this.props.type);
+  }
+
   getTitle = () => (<p>{this.props.label} {this.props.maskedValue}</p>)
+
   render() {
+    const sliderStyle = { marginTop: 12, marginBottom: 24 };
+    const { min, max, step, value } = this.props;
     return (
       <div className="value-input-block">
         {this.getTitle()}
         <Slider
-          sliderStyle={{marginTop: 12, marginBottom: 24}}
-          min={this.props.min}
-          max={this.props.max}
-          step={this.props.step}
-          defaultValue={this.props.value}
+          sliderStyle={sliderStyle}
+          min={min}
+          max={max}
+          step={step}
+          defaultValue={value}
+          onChange={this.onChange}
         />
       </div>
     );
@@ -28,6 +41,7 @@ SlideSelector.propTypes = {
   ]),
   step: PropTypes.number.isRequired,
   value: PropTypes.number,
+  updatePrice: PropTypes.func.isRequired
 }
 
 export default SlideSelector;

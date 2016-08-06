@@ -4,21 +4,19 @@ const getDefaults = (min, step, max = null, value = null) => {
   return { min, max, step, value }
 };
 
-console.log(getDefaults(100, 100));
-
-function rent (state = getDefaults(100, 100), action) {
+function rent (state = getDefaults(100, 100, 10000, 3000), action) {
   switch (action.type) {
     case 'UPDATE_RENT':
-      return ({}, state, action.data);
+      return Object.assign({}, state, { value: action.value });
     default:
       return state;
   }
 }
 
-function buy (state = getDefaults(10000, 1000), action) {
+function buy (state = getDefaults(10000, 10000, 2000000, 100000), action) {
   switch (action.type) {
     case 'UPDATE_BUY':
-      return ({}, state, action.data);
+      return Object.assign({}, state, { value: action.value });
     default:
       return state;
   }
@@ -26,8 +24,8 @@ function buy (state = getDefaults(10000, 1000), action) {
 
 function livingTime (state = getDefaults(1, 1, 30, 10), action) {
   switch (action.type) {
-    case 'UPDATE_LIVING_TIME':
-      return ({}, state, action.data);
+    case 'UPDATE_LIVINGTIME':
+      return Object.assign({}, state, { value: action.value });
     default:
       return state;
   }
@@ -35,8 +33,8 @@ function livingTime (state = getDefaults(1, 1, 30, 10), action) {
 
 function annualTax (state = getDefaults(0.5, 0.1, 25, 11.5), action) {
   switch (action.type) {
-    case 'UPDATE_ANNUAL_TAX':
-      return ({}, state, action.data);
+    case 'UPDATE_ANNUALTAX':
+      return Object.assign({}, state, { value: action.value });
     default:
       return state;
   }

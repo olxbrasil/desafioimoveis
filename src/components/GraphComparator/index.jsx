@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 class GraphComparator extends Component {
   render() {
@@ -13,7 +13,7 @@ class GraphComparator extends Component {
               <div className="price-bar">
                 <h5>Alugar</h5>
                 <div className="price-block price-block__worst">
-                  R$ 1.500,00
+                  R$ {this.props.rent}
                 </div>
               </div>
             </div>
@@ -31,5 +31,9 @@ class GraphComparator extends Component {
     );
   }
 };
+
+GraphComparator.propTypes = {
+  rent: PropTypes.number.isRequired
+}
 
 export default GraphComparator;

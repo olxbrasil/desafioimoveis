@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import PriceConfigurator from 'components/PriceConfigurator';
 import GraphComparator from 'components/GraphComparator';
+import * as actions from 'actions';
 
 class App extends Component {
   render() {
-    console.log(this.props);
-    const { rent, buy, livingTime, annualTax } = this.props;
+    const { rent, buy, livingTime, annualTax, updatePrice } = this.props;
     return (
       <div className="mdl-layout">
         <header className="mdl-layout__header">
@@ -20,12 +21,13 @@ class App extends Component {
               buy={buy}
               livingTime={livingTime}
               annualTax={annualTax}
+              updatePrice={updatePrice}
             />
           </div>
 
           <div className="mdl-cell mdl-cell--6-col">
             <GraphComparator
-              rent={rent}
+              rent={rent.value}
             />
           </div>
         </div>
@@ -43,6 +45,13 @@ function mapStateToProps(state) {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    updatePrice: bindActionCreators(actions.updatePrice, dispatch)
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App)
