@@ -1,21 +1,25 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import AppState from './AppState';
-import App from './components/App';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import 'material-design-lite/material.min.js';
-import './style.scss';
+import { Provider } from 'react-redux'
+import store from './store/configureStore'
 
-const appState = new AppState();
+import App from 'components/App';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import 'styles/main.scss';
+
+const rootEl = document.getElementById('root')
 
 render(
   <AppContainer>
     <MuiThemeProvider>
-      <App appState={appState} />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </MuiThemeProvider>
   </AppContainer>,
-  document.getElementById('root')
+  rootEl
 );
 
 if (module.hot) {
@@ -25,10 +29,10 @@ if (module.hot) {
     render(
       <AppContainer>
         <MuiThemeProvider>
-          <NextApp appState={appState} />
+          <NextApp store={store} />
         </MuiThemeProvider>
       </AppContainer>,
-      document.getElementById('root')
+      rootEl
     );
   });
 }
