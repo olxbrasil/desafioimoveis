@@ -28,6 +28,9 @@ class App extends Component {
           <div className="mdl-cell mdl-cell--6-col">
             <GraphComparator
               rent={rent.value}
+              buy={buy.value}
+              livingTime={livingTime.value}
+              annualTax={annualTax.value}
             />
           </div>
         </div>
