@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 class StateSelector extends Component {
   constructor (props) {
@@ -13,11 +12,6 @@ class StateSelector extends Component {
   }
 
   handleChange = (event, index, value) => this.setState({value});
-
-  componentWillMount () {
-    console.info('The PropTypes validation erros on material-ui will be fine when this issue "https://github.com/callemall/material-ui/issues/4890" is closed.')
-    injectTapEventPlugin();
-  }
 
   render() {
     const items = []
