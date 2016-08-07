@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Slider from 'material-ui/Slider';
+import FormatNumber from 'components/FormatNumber';
 
 class SlideSelector extends Component {
   constructor (props) {
@@ -11,14 +12,14 @@ class SlideSelector extends Component {
     this.props.updatePrice(value, this.props.type);
   }
 
-  getTitle = () => (<p>{this.props.label} {this.props.maskedValue}</p>)
+  getTitle = (options) => (<p>{options.label} <FormatNumber prefix={options.prefix} sufix={options.sufix} number={options.value} /></p>)
 
   render() {
     const sliderStyle = { marginTop: 12, marginBottom: 24 };
-    const { min, max, step, value } = this.props;
+    const { min, max, step, value, label, prefix, sufix } = this.props;
     return (
       <div className="value-input-block">
-        {this.getTitle()}
+        {this.getTitle({label, value, prefix, sufix})}
         <Slider
           sliderStyle={sliderStyle}
           min={min}
@@ -34,7 +35,8 @@ class SlideSelector extends Component {
 
 SlideSelector.propTypes = {
   label: PropTypes.string.isRequired,
-  maskedValue: PropTypes.string.isRequired,
+  prefix: PropTypes.string,
+  sufix: PropTypes.string,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
