@@ -40,6 +40,19 @@ function annualTax (state = getDefaults(0.5, 0.1, 25, 11.5), action) {
   }
 }
 
-const rootReducer = combineReducers({ rent, buy, livingTime, annualTax })
+function states (state = { selected: '', list: {}, isFetching: false }, action) {
+  switch (action.type) {
+    case 'SELECT_STATE':
+      return Object.assign({}, state, { selected: action.state });
+    case 'REQUEST_STATES':
+      return Object.assign({}, state, { isFetching: true });
+    case 'RECEIVE_STATES':
+      return Object.assign({}, state, { list: action.list, isFetching: false });
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({ rent, buy, livingTime, annualTax, states })
 
 export default rootReducer;

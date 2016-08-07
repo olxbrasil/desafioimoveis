@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import PriceConfigurator from 'components/PriceConfigurator';
 import GraphComparator from 'components/GraphComparator';
-import * as actions from 'actions';
 
 class App extends Component {
   componentWillMount () {
@@ -12,7 +9,6 @@ class App extends Component {
   }
 
   render() {
-    const { rent, buy, livingTime, annualTax, updatePrice } = this.props;
     return (
       <div className="mdl-layout">
         <header className="mdl-layout__header mdl-layout--fixed-header">
@@ -22,22 +18,11 @@ class App extends Component {
         <main className="mdl-layout__content">
           <div className="mdl-grid">
             <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
-              <PriceConfigurator
-                rent={rent}
-                buy={buy}
-                livingTime={livingTime}
-                annualTax={annualTax}
-                updatePrice={updatePrice}
-                />
+              <PriceConfigurator />
             </div>
 
             <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet">
-              <GraphComparator
-                rent={rent.value}
-                buy={buy.value}
-                livingTime={livingTime.value}
-                annualTax={annualTax.value}
-                />
+              <GraphComparator />
             </div>
           </div>
         </main>
@@ -46,22 +31,4 @@ class App extends Component {
   }
 };
 
-function mapStateToProps(state) {
-  return {
-    rent: state.rent,
-    buy: state.buy,
-    livingTime: state.livingTime,
-    annualTax: state.annualTax
-  }
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    updatePrice: bindActionCreators(actions.updatePrice, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default App;

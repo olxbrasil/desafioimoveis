@@ -24,7 +24,7 @@ class SlideSelector extends Component {
           min={min}
           max={max}
           step={step}
-          defaultValue={value}
+          value={value}
           onChange={this.onChange}
         />
       </div>
