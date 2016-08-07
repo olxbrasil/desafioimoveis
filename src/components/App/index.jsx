@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PriceConfigurator from 'components/PriceConfigurator';
 import GraphComparator from 'components/GraphComparator';
 import Header from 'components/Header';
