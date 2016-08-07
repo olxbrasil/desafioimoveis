@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const getDefaults = (min, step, max = null, value = null) => {
+const getDefaults = (min, step, max, value) => {
   return { min, max, step, value }
 };
 
