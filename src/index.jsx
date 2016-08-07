@@ -32,7 +32,9 @@ if (module.hot) {
     render(
       <AppContainer>
         <MuiThemeProvider>
-          <NextApp store={store} />
+          <Provider store={store}>
+            <NextApp />
+          </Provider>
         </MuiThemeProvider>
       </AppContainer>,
       rootEl
