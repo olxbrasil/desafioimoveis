@@ -1,7 +1,7 @@
 @import "~material-design-lite/src/_color-definitions.scss";
 
 .price-bar {
-  height: 317px;
+  min-height: 317px;
   position: relative;
   h5 {
     margin-top: 0;
