@@ -36,11 +36,9 @@ SlideSelector.propTypes = {
   label: PropTypes.string.isRequired,
   maskedValue: PropTypes.string.isRequired,
   min: PropTypes.number.isRequired,
-  max: PropTypes.oneOfType([
-    PropTypes.number, PropTypes.object
-  ]),
+  max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  value: PropTypes.number,
+  value: PropTypes.number.isRequired,
   updatePrice: PropTypes.func.isRequired
 }
 

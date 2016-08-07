@@ -9,6 +9,9 @@ import { keys } from 'lodash';
 
 class PriceConfigurator extends Component {
   componentWillMount () {
+    console.warn('Hey OLX guys');
+    console.info('The PropTypes validation erros on material-ui above will be fine when this issue "https://github.com/callemall/material-ui/issues/4890" has been closed.');
+
     this.props.getStates();
   }
 
