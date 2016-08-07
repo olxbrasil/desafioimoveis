@@ -7,10 +7,7 @@ class PriceConfigurator extends Component {
   render() {
     const { rent, buy, livingTime, annualTax } = this.props;
     return (
-      <div className="mdl-card mdl-card-form mdl-shadow--2dp">
-        <div className="mdl-card__title">
-          <h2 className="mdl-card__title-text">Comprar ou alugar?</h2>
-        </div>
+      <section className="mdl-card mdl-card-form mdl-shadow--2dp">
         <div className="mdl-card__supporting-text mdl-card__customize_values">
           <StateSelector />
 
@@ -58,7 +55,7 @@ class PriceConfigurator extends Component {
             type={"annualTax"}
           />
         </div>
-      </div>
+      </section>
     );
   }
 };
