@@ -8,10 +8,11 @@ body {
 
 .mdl-grid {
   max-width: 800px;
+  box-sizing: border-box;
   width: 100%;
 }
 
-.mdl-layout-title-centered {
+.mdl-layout-title__centered {
   text-align: center;
 }
 
@@ -24,7 +25,7 @@ body {
 }
 
 .price-bar {
-  height: 375px;
+  height: 317px;
   position: relative;
   h5 {
     margin-top: 0;
@@ -34,6 +35,7 @@ body {
   position: absolute;
   bottom: 0;
   height: 100%;
+  min-height: 90px;
   width: 100%;
   border-radius: 4px;
   font-size: 18px;
