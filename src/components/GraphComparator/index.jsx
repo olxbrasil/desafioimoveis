@@ -3,59 +3,78 @@ import classNames from 'classnames';
 import Interest from 'interestjs';
 
 class GraphComparator extends Component {
-  render() {
-    const { rent, buy, livingTime, annualTax } = this.props;
-    const inst = 1500;
-
-    let rentHeight = 100;
-    let buyHeight = 100;
+  getHeight (rent, inst) {
+    let height = {};
 
     if (rent > inst) {
-      rentHeight = 100 * inst / rent;
+      height.rent = 100 * inst / rent;
     } else {
-      buyHeight = 100 * rent / inst;
+      height.buy = 100 * rent / inst;
     }
+
+    return height;
+  }
+
+  getMonthlyTaxByAnnualTax (annualTax) {
+    const a = Math.pow((1 + annualTax/100), 1/12);
+    const b = a - 1;
+    return b;
+  }
+
+  getInstallment (total, tax, months) {
+    const a = Math.pow(1 + tax, -months).toFixed(4);
+    const b = ((1 - a) / tax).toFixed(4);
+
+    const inst = total / b;
+    return Number(inst.toFixed());
+  }
+
+  render() {
+    const { rent, buy, livingTime, annualTax } = this.props;
+    const months = livingTime * 12;
+    const monthlyTax = this.getMonthlyTaxByAnnualTax(annualTax);
+    const installment = this.getInstallment(buy, monthlyTax, months);
+
+    const barHeights = this.getHeight(rent, installment);
 
     let rentClasses = classNames({
       'price-block': true,
-      'price-block__better': inst > rent,
-      'price-block__worst': rent > inst
+      'price-block__better': installment > rent,
+      'price-block__worst': rent > installment
     })
 
     let buyClasses = classNames({
       'price-block': true,
-      'price-block__better': rent > inst,
-      'price-block__worst': inst > rent
+      'price-block__better': rent > installment,
+      'price-block__worst': installment > rent
     })
 
-    console.log('PROPS', this.props);
-    console.log('heights', rentHeight, buyHeight);
     return (
-      <div className="mdl-card mdl-card-form mdl-shadow--2dp">
+      <section className="mdl-card mdl-card-form mdl-shadow--2dp">
         <div className="mdl-card__title">
           <h2 className="mdl-card__title-text">Custo total</h2>
         </div>
         <div className="mdl-card__supporting-text">
           <div className="mdl-grid">
-            <div className="mdl-cell mdl-cell--6-col">
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
               <div className="price-bar">
-                <div className={rentClasses} style={{ height: `${buyHeight}%` }}>
+                <div className={rentClasses} style={{ height: `${barHeights.buy}%` }}>
                   <p>Alugar</p>
                   R$ {rent}
                 </div>
               </div>
             </div>
-            <div className="mdl-cell mdl-cell--6-col">
+            <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
               <div className="price-bar">
-                <div className={buyClasses}  style={{ height: `${rentHeight}%` }}>
+                <div className={buyClasses} style={{ height: `${barHeights.rent}%` }}>
                   <p>Comprar</p>
-                  R$ {inst}
+                  R$ {installment}
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 };
