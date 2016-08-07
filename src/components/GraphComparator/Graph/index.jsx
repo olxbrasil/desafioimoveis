@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import FormatNumber from 'components/FormatNumber';
 import classNames from 'classnames';
 import './style.scss';
 
@@ -11,8 +12,8 @@ const Graph = ({value, height, title, best}) => {
   return (
     <div className="price-bar">
       <div className={classes} style={{ height: `${height}%` }}>
-        <p>{title}</p>
-        R$ {value}
+        <p className="price-bar-title">{title}</p>
+        <FormatNumber prefix={'R$'} number={value} />
       </div>
     </div>
   );

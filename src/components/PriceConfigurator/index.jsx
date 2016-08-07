@@ -46,7 +46,7 @@ class PriceConfigurator extends Component {
             step={rent.step}
             value={rent.value}
             label={"Valor do aluguel por mês:"}
-            maskedValue={`R$ ${rent.value}`}
+            prefix={"R$"}
             updatePrice={this.props.updatePrice}
             type={"rent"}
           />
@@ -57,7 +57,7 @@ class PriceConfigurator extends Component {
             step={buy.step}
             value={buy.value}
             label={"Valor do imóvel para comprar:"}
-            maskedValue={`R$ ${buy.value}`}
+            prefix={"R$"}
             updatePrice={this.props.updatePrice}
             type={"buy"}
           />
@@ -68,7 +68,7 @@ class PriceConfigurator extends Component {
             step={livingTime.step}
             value={livingTime.value}
             label={"Por quanto tempo pretende morar?"}
-            maskedValue={`${livingTime.value} anos`}
+            sufix={"anos"}
             updatePrice={this.props.updatePrice}
             type={"livingTime"}
           />
@@ -79,7 +79,7 @@ class PriceConfigurator extends Component {
             step={annualTax.step}
             value={annualTax.value}
             label={"Taxa de juros anual:"}
-            maskedValue={`${annualTax.value}%`}
+            sufix={"%"}
             updatePrice={this.props.updatePrice}
             type={"annualTax"}
           />
