@@ -1,15 +1,41 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Slider from 'material-ui/Slider';
 import StateSelector from './StateSelector';
 import SlideSelector from './SlideSelector';
+import * as actions from 'actions';
+import { keys } from 'lodash';
 
 class PriceConfigurator extends Component {
+  componentWillMount () {
+    this.props.getStates();
+  }
+
+  componentWillReceiveProps (nextProps) {
+    const { selected, list } = nextProps.states;
+    if (this.props.states.selected !== selected) {
+      this.props.updatePrice(list[selected]['aluguel'], 'rent');
+      this.props.updatePrice(list[selected]['compra'], 'buy');
+    }
+  }
+
   render() {
-    const { rent, buy, livingTime, annualTax } = this.props;
+    const {
+      rent,
+      buy,
+      livingTime,
+      annualTax,
+      states,
+      selectState
+    } = this.props;
+
+    const stateList = [' '].concat(keys(states.list));
+
     return (
       <section className="mdl-card mdl-card-form mdl-shadow--2dp">
         <div className="mdl-card__supporting-text mdl-card__customize_values">
-          <StateSelector />
+          <StateSelector list={stateList} isFetching={states.isFetching} selected={states.selected} selectState={selectState} />
 
           <SlideSelector
             min={rent.min}
@@ -72,7 +98,31 @@ PriceConfigurator.propTypes = {
   buy: PropTypes.shape(configShape).isRequired,
   livingTime: PropTypes.shape(configShape).isRequired,
   annualTax: PropTypes.shape(configShape).isRequired,
-  updatePrice: PropTypes.func.isRequired
+  states: PropTypes.object.isRequired,
+  updatePrice: PropTypes.func.isRequired,
+  getStates: PropTypes.func.isRequired,
+  selectState: PropTypes.func.isRequired
 }
 
-export default PriceConfigurator;
+function mapStateToProps(state) {
+  return {
+    rent: state.rent,
+    buy: state.buy,
+    livingTime: state.livingTime,
+    annualTax: state.annualTax,
+    states: state.states
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    updatePrice: bindActionCreators(actions.updatePrice, dispatch),
+    getStates: bindActionCreators(actions.getStates, dispatch),
+    selectState: bindActionCreators(actions.selectState, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PriceConfigurator)

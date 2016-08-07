@@ -1,15 +1,18 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
-import Interest from 'interestjs';
+import './style.scss';
 
 class GraphComparator extends Component {
   getHeight (rent, inst) {
     let height = {};
 
     if (rent > inst) {
-      height.rent = 100 * inst / rent;
+      height.rent = 100 * (inst / rent);
+      height.buy = 100;
     } else {
-      height.buy = 100 * rent / inst;
+      height.rent = 100;
+      height.buy = 100 * (rent / inst);
     }
 
     return height;
@@ -86,4 +89,13 @@ GraphComparator.propTypes = {
   annualTax: PropTypes.number.isRequired
 }
 
-export default GraphComparator;
+function mapStateToProps(state) {
+  return {
+    rent: state.rent.value,
+    buy: state.buy.value,
+    livingTime: state.livingTime.value,
+    annualTax: state.annualTax.value
+  }
+}
+
+export default connect(mapStateToProps)(GraphComparator);
