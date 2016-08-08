@@ -11,24 +11,11 @@ const propTypes = {
 };
 
 const GraphComparator = ({ rentValue, buyValue, months, annualTax }) => {
-  // TODO OPTMIZE
-  const getHeight = (rent, inst) => {
-    const height = {};
-
-    if (rent > inst) {
-      height.rent = 100;
-      height.buy = (100 * inst) / rent;
-    } else {
-      height.rent = (100 * rent) / inst;
-      height.buy = 100;
-    }
-
-    return height;
-  };
-
   const monthlyTax = getMonthlyTaxByAnnualTax(annualTax);
   const installment = getInstallment(buyValue, monthlyTax, months);
-  const barHeights = getHeight(rentValue, installment);
+
+  const rentHeight = rentValue > installment ? 100 : (100 * rentValue) / installment;
+  const buyHeight = rentValue < installment ? 100 : (100 * installment) / rentValue;
 
   return (
     <section className="mdl-card mdl-card-form mdl-shadow--2dp">
@@ -41,7 +28,7 @@ const GraphComparator = ({ rentValue, buyValue, months, annualTax }) => {
             <Graph
               title={"Alugar"}
               value={rentValue}
-              height={barHeights.rent}
+              height={rentHeight}
               best={rentValue < installment}
             />
           </div>
@@ -49,7 +36,7 @@ const GraphComparator = ({ rentValue, buyValue, months, annualTax }) => {
             <Graph
               title={"Comprar"}
               value={installment}
-              height={barHeights.buy}
+              height={buyHeight}
               best={installment < rentValue}
             />
           </div>
