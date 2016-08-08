@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 const getDefaults = (min, step, max, value) => {
-  return { min, max, step, value }
+  return { min, max, step, value };
 };
 
-function rent (state = getDefaults(100, 100, 10000, 3000), action) {
+function rent(state = getDefaults(100, 100, 10000, 3000), action) {
   switch (action.type) {
     case 'UPDATE_RENT':
       return Object.assign({}, state, { value: action.value });
@@ -13,7 +13,7 @@ function rent (state = getDefaults(100, 100, 10000, 3000), action) {
   }
 }
 
-function buy (state = getDefaults(10000, 10000, 2000000, 100000), action) {
+function buy(state = getDefaults(10000, 10000, 2000000, 100000), action) {
   switch (action.type) {
     case 'UPDATE_BUY':
       return Object.assign({}, state, { value: action.value });
@@ -22,7 +22,7 @@ function buy (state = getDefaults(10000, 10000, 2000000, 100000), action) {
   }
 }
 
-function livingTime (state = getDefaults(1, 1, 30, 10), action) {
+function livingTime(state = getDefaults(1, 1, 30, 10), action) {
   switch (action.type) {
     case 'UPDATE_LIVINGTIME':
       return Object.assign({}, state, { value: action.value });
@@ -31,7 +31,7 @@ function livingTime (state = getDefaults(1, 1, 30, 10), action) {
   }
 }
 
-function annualTax (state = getDefaults(0.5, 0.1, 25, 11.5), action) {
+function annualTax(state = getDefaults(0.5, 0.1, 25, 11.5), action) {
   switch (action.type) {
     case 'UPDATE_ANNUALTAX':
       return Object.assign({}, state, { value: action.value });
@@ -40,7 +40,7 @@ function annualTax (state = getDefaults(0.5, 0.1, 25, 11.5), action) {
   }
 }
 
-function states (state = { selected: '', list: {}, isFetching: false }, action) {
+function states(state = { selected: '', list: {}, isFetching: false }, action) {
   switch (action.type) {
     case 'SELECT_STATE':
       return Object.assign({}, state, { selected: action.state });
@@ -53,6 +53,6 @@ function states (state = { selected: '', list: {}, isFetching: false }, action) 
   }
 }
 
-const rootReducer = combineReducers({ rent, buy, livingTime, annualTax, states })
+const rootReducer = combineReducers({ rent, buy, livingTime, annualTax, states });
 
 export default rootReducer;

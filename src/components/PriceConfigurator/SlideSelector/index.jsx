@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Slider from 'material-ui/Slider';
 import SlideTitle from './SlideTitle';
 
-const SlideSelector = ({range, label, updatePrice, type}) => {
+const SlideSelector = ({ range, label, updatePrice, type }) => {
   const onChange = (event, value) => updatePrice(value, type);
 
   const { description, prefix, sufix } = label;
@@ -27,19 +27,20 @@ const configRangeShape = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired
-}
+  value: PropTypes.number.isRequired,
+};
 
 const configLabelShape = {
   description: PropTypes.string.isRequired,
   prefix: PropTypes.string,
-  sufix: PropTypes.string
-}
+  sufix: PropTypes.string,
+};
 
 SlideSelector.propTypes = {
   label: PropTypes.shape(configLabelShape).isRequired,
   range: PropTypes.shape(configRangeShape).isRequired,
-  updatePrice: PropTypes.func.isRequired
-}
+  type: PropTypes.string.isRequired,
+  updatePrice: PropTypes.func.isRequired,
+};
 
 export default SlideSelector;

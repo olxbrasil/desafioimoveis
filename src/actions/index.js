@@ -1,33 +1,33 @@
 import 'whatwg-fetch';
 
-function checkStatus (response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   }
 
   return response.json().then(err => {
-    throw err
-  })
+    throw err;
+  });
 }
 
-function parseJSON (response) {
-  return response.json()
+function parseJSON(response) {
+  return response.json();
 }
 
-function requestStates () {
+function requestStates() {
   return {
-    type: 'REQUEST_STATES'
-  }
+    type: 'REQUEST_STATES',
+  };
 }
 
-function receiveStates (list) {
+function receiveStates(list) {
   return {
     type: 'RECEIVE_STATES',
-    list
-  }
+    list,
+  };
 }
 
-export function getStates () {
+export function getStates() {
   return dispatch => {
     dispatch(requestStates());
 
@@ -36,20 +36,20 @@ export function getStates () {
       .then(parseJSON)
       .then(data => dispatch(receiveStates(data)))
       .catch(err => console.log(err));
-  }
+  };
 }
 
-export function selectState (state) {
+export function selectState(state) {
   return {
     type: 'SELECT_STATE',
-    state
-  }
+    state,
+  };
 }
 
-export function updatePrice (value, type) {
+export function updatePrice(value, type) {
   const formattedType = `UPDATE_${type.toUpperCase()}`;
   return {
     value,
-    type: formattedType
-  }
+    type: formattedType,
+  };
 }

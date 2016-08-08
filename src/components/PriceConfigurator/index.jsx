@@ -1,35 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Slider from 'material-ui/Slider';
+import { keys } from 'lodash';
 import StateSelector from './StateSelector';
 import SlideSelector from './SlideSelector';
 import * as actions from 'actions';
-import { keys } from 'lodash';
 
 class PriceConfigurator extends Component {
-  componentWillMount () {
+  componentWillMount() {
     console.warn('Hey OLX guys');
     console.info('The PropTypes validation erros on material-ui above will be fine when this issue "https://github.com/callemall/material-ui/issues/4890" has been closed.');
     this.props.getStates();
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { selected, list } = nextProps.states;
     if (this.props.states.selected !== selected) {
-      this.props.updatePrice(list[selected]['aluguel'], 'rent');
-      this.props.updatePrice(list[selected]['compra'], 'buy');
+      this.props.updatePrice(list[selected].aluguel, 'rent');
+      this.props.updatePrice(list[selected].compra, 'buy');
     }
   }
 
-  render () {
+  render() {
     const {
       rent,
       buy,
       livingTime,
       annualTax,
       states,
-      selectState
+      selectState,
     } = this.props;
 
     const stateList = [' '].concat(keys(states.list));
@@ -37,13 +36,18 @@ class PriceConfigurator extends Component {
     return (
       <section className="mdl-card mdl-card-form mdl-shadow--2dp">
         <div className="mdl-card__supporting-text mdl-card__customize_values">
-          <StateSelector list={stateList} isFetching={states.isFetching} selected={states.selected} selectState={selectState} />
+          <StateSelector
+            list={stateList}
+            isFetching={states.isFetching}
+            selected={states.selected}
+            selectState={selectState}
+          />
 
           <SlideSelector
             range={rent}
             label={{
               description: 'Valor do aluguel por mês: ',
-              prefix: 'R$'
+              prefix: 'R$',
             }}
             updatePrice={this.props.updatePrice}
             type={"rent"}
@@ -53,7 +57,7 @@ class PriceConfigurator extends Component {
             range={buy}
             label={{
               description: 'Valor do imóvel para comprar: ',
-              prefix: 'R$'
+              prefix: 'R$',
             }}
             updatePrice={this.props.updatePrice}
             type={"buy"}
@@ -63,7 +67,7 @@ class PriceConfigurator extends Component {
             range={livingTime}
             label={{
               description: 'Por quanto tempo pretende morar? ',
-              sufix: 'anos'
+              sufix: 'anos',
             }}
             updatePrice={this.props.updatePrice}
             type={"livingTime"}
@@ -73,7 +77,7 @@ class PriceConfigurator extends Component {
             range={annualTax}
             label={{
               description: 'Taxa de juros anual: ',
-              sufix: '%'
+              sufix: '%',
             }}
             updatePrice={this.props.updatePrice}
             type={"annualTax"}
@@ -82,14 +86,14 @@ class PriceConfigurator extends Component {
       </section>
     );
   }
-};
+}
 
 const configShape = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired
-}
+  value: PropTypes.number.isRequired,
+};
 
 PriceConfigurator.propTypes = {
   rent: PropTypes.shape(configShape).isRequired,
@@ -99,8 +103,8 @@ PriceConfigurator.propTypes = {
   states: PropTypes.object.isRequired,
   updatePrice: PropTypes.func.isRequired,
   getStates: PropTypes.func.isRequired,
-  selectState: PropTypes.func.isRequired
-}
+  selectState: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
@@ -108,19 +112,19 @@ function mapStateToProps(state) {
     buy: state.buy,
     livingTime: state.livingTime,
     annualTax: state.annualTax,
-    states: state.states
-  }
+    states: state.states,
+  };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     updatePrice: bindActionCreators(actions.updatePrice, dispatch),
     getStates: bindActionCreators(actions.getStates, dispatch),
-    selectState: bindActionCreators(actions.selectState, dispatch)
-  }
+    selectState: bindActionCreators(actions.selectState, dispatch),
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PriceConfigurator)
+)(PriceConfigurator);
