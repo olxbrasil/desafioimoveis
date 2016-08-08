@@ -2,6 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Graph from './Graph';
 
+const propTypes = {
+  rentValue: PropTypes.number.isRequired,
+  buyValue: PropTypes.number.isRequired,
+  months: PropTypes.number.isRequired,
+  annualTax: PropTypes.number.isRequired,
+};
+
 class GraphComparator extends Component {
   getHeight(rent, inst) {
     const height = {};
@@ -67,12 +74,7 @@ class GraphComparator extends Component {
   }
 }
 
-GraphComparator.propTypes = {
-  rentValue: PropTypes.number.isRequired,
-  buyValue: PropTypes.number.isRequired,
-  months: PropTypes.number.isRequired,
-  annualTax: PropTypes.number.isRequired,
-};
+GraphComparator.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {

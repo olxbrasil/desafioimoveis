@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 
-const getDefaults = (min, step, max, value) => {
-  return { min, max, step, value };
-};
+const getDefaults = (min, step, max, value) => ({ min, max, step, value });
 
 function rent(state = getDefaults(100, 100, 10000, 3000), action) {
   switch (action.type) {

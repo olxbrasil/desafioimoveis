@@ -2,9 +2,27 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { keys } from 'lodash';
+import * as actions from 'actions';
 import StateSelector from './StateSelector';
 import SlideSelector from './SlideSelector';
-import * as actions from 'actions';
+
+const configShape = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  step: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+const propTypes = {
+  rent: PropTypes.shape(configShape).isRequired,
+  buy: PropTypes.shape(configShape).isRequired,
+  livingTime: PropTypes.shape(configShape).isRequired,
+  annualTax: PropTypes.shape(configShape).isRequired,
+  states: PropTypes.object.isRequired,
+  updatePrice: PropTypes.func.isRequired,
+  getStates: PropTypes.func.isRequired,
+  selectState: PropTypes.func.isRequired,
+};
 
 class PriceConfigurator extends Component {
   componentWillMount() {
@@ -88,23 +106,7 @@ class PriceConfigurator extends Component {
   }
 }
 
-const configShape = {
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  step: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-PriceConfigurator.propTypes = {
-  rent: PropTypes.shape(configShape).isRequired,
-  buy: PropTypes.shape(configShape).isRequired,
-  livingTime: PropTypes.shape(configShape).isRequired,
-  annualTax: PropTypes.shape(configShape).isRequired,
-  states: PropTypes.object.isRequired,
-  updatePrice: PropTypes.func.isRequired,
-  getStates: PropTypes.func.isRequired,
-  selectState: PropTypes.func.isRequired,
-};
+PriceConfigurator.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {

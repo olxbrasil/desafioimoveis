@@ -2,6 +2,13 @@ import React, { PropTypes } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+const propTypes = {
+  selectState: PropTypes.func.isRequired,
+  list: PropTypes.array.isRequired,
+  selected: PropTypes.string,
+  isFetching: PropTypes.bool.isRequired,
+};
+
 const StateSelector = ({ list, selected, isFetching, selectState }) => {
   const handleChange = (event, index, value) => {
     selectState(value);
@@ -33,12 +40,6 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
   );
 };
 
-
-StateSelector.propTypes = {
-  selectState: PropTypes.func.isRequired,
-  list: PropTypes.array.isRequired,
-  selected: PropTypes.string,
-  isFetching: PropTypes.bool.isRequired,
-};
+StateSelector.propTypes = propTypes;
 
 export default StateSelector;
