@@ -12,12 +12,24 @@ const configShape = {
   value: PropTypes.number.isRequired,
 };
 
+const stateShape = {
+  state: PropTypes.string.isRequired,
+  rent: PropTypes.number.isRequired,
+  buy: PropTypes.number.isRequired,
+};
+
+const statesShape = {
+  isFetching: PropTypes.bool.isRequired,
+  list: PropTypes.arrayOf(PropTypes.shape(stateShape)).isRequired,
+  selected: PropTypes.number.isRequired,
+};
+
 const propTypes = {
   rent: PropTypes.shape(configShape).isRequired,
   buy: PropTypes.shape(configShape).isRequired,
   livingTime: PropTypes.shape(configShape).isRequired,
   annualTax: PropTypes.shape(configShape).isRequired,
-  states: PropTypes.object.isRequired,
+  states: PropTypes.shape(statesShape).isRequired,
   updatePrice: PropTypes.func.isRequired,
   getStates: PropTypes.func.isRequired,
   selectState: PropTypes.func.isRequired,

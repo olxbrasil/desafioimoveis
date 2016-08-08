@@ -2,9 +2,15 @@ import React, { PropTypes } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+const stateShape = {
+  state: PropTypes.string.isRequired,
+  rent: PropTypes.number.isRequired,
+  buy: PropTypes.number.isRequired,
+};
+
 const propTypes = {
   selectState: PropTypes.func.isRequired,
-  list: PropTypes.array.isRequired,
+  list: PropTypes.arrayOf(PropTypes.shape(stateShape)).isRequired,
   selected: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
