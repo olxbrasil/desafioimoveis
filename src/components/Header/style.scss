@@ -1,3 +1,9 @@
+@import "~material-design-lite/src/_color-definitions.scss";
+
+.mdl-layout__header {
+  background-color: unquote("rgb(#{$palette-grey-700})") !important;
+}
+
 @media screen and (max-width: 1024px) {
   .mdl-layout__header {
     display: block !important;
