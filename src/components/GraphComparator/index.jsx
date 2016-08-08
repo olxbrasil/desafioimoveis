@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { getMonthlyTaxByAnnualTax, getInstallment } from 'actions/math';
 import Graph from './Graph';
 
 const propTypes = {
@@ -24,24 +25,10 @@ class GraphComparator extends Component {
     return height;
   }
 
-  getMonthlyTaxByAnnualTax(annualTax) {
-    const a = Math.pow((1 + (annualTax / 100)), 1 / 12);
-    const monthlyTax = a - 1;
-    return monthlyTax;
-  }
-
-  getInstallment(total, tax, months) {
-    const a = Math.pow(1 + tax, -months).toFixed(4);
-    const b = ((1 - a) / tax).toFixed(4);
-
-    const inst = total / b;
-    return Number(inst.toFixed());
-  }
-
   render() {
     const { rentValue, buyValue, months, annualTax } = this.props;
-    const monthlyTax = this.getMonthlyTaxByAnnualTax(annualTax);
-    const installment = this.getInstallment(buyValue, monthlyTax, months);
+    const monthlyTax = getMonthlyTaxByAnnualTax(annualTax);
+    const installment = getInstallment(buyValue, monthlyTax, months);
     const barHeights = this.getHeight(rentValue, installment);
 
     return (
