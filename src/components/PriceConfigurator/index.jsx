@@ -63,40 +63,28 @@ class PriceConfigurator extends Component {
 
           <SlideSelector
             range={rent}
-            label={{
-              description: 'Valor do aluguel por mês: ',
-              prefix: 'R$',
-            }}
+            label={{ description: 'Valor do aluguel por mês: ', prefix: 'R$' }}
             updatePrice={this.props.updatePrice}
             type={"rent"}
           />
 
           <SlideSelector
             range={buy}
-            label={{
-              description: 'Valor do imóvel para comprar: ',
-              prefix: 'R$',
-            }}
+            label={{ description: 'Valor do imóvel para comprar: ', prefix: 'R$' }}
             updatePrice={this.props.updatePrice}
             type={"buy"}
           />
 
           <SlideSelector
             range={livingTime}
-            label={{
-              description: 'Por quanto tempo pretende morar? ',
-              sufix: 'anos',
-            }}
+            label={{ description: 'Por quanto tempo pretende morar? ', sufix: 'anos' }}
             updatePrice={this.props.updatePrice}
             type={"livingTime"}
           />
 
           <SlideSelector
             range={annualTax}
-            label={{
-              description: 'Taxa de juros anual: ',
-              sufix: '%',
-            }}
+            label={{ description: 'Taxa de juros anual: ', sufix: '%' }}
             updatePrice={this.props.updatePrice}
             type={"annualTax"}
           />

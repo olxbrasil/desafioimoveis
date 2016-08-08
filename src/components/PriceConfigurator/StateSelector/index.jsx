@@ -14,17 +14,6 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
     selectState(value);
   };
 
-  const getItems = (_list) => {
-    const items = [];
-
-    for (let i = 0; i < _list.length; i++) {
-      const value = _list[i];
-      items.push(<MenuItem key={i} value={value} primaryText={value} />);
-    }
-
-    return items;
-  };
-
   return (
     <SelectField
       id="state-select"
@@ -35,7 +24,7 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
       onChange={handleChange}
       floatingLabelText="Selecione o seu estado"
     >
-      {getItems(list)}
+      {list.map(i => <MenuItem key={i} value={i} primaryText={i} />)}
     </SelectField>
   );
 };
