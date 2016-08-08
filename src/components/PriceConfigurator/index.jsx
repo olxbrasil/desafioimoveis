@@ -40,45 +40,41 @@ class PriceConfigurator extends Component {
           <StateSelector list={stateList} isFetching={states.isFetching} selected={states.selected} selectState={selectState} />
 
           <SlideSelector
-            min={rent.min}
-            max={rent.max}
-            step={rent.step}
-            value={rent.value}
-            label={"Valor do aluguel por mês:"}
-            prefix={"R$"}
+            range={rent}
+            label={{
+              description: 'Valor do aluguel por mês: ',
+              prefix: 'R$'
+            }}
             updatePrice={this.props.updatePrice}
             type={"rent"}
           />
 
           <SlideSelector
-            min={buy.min}
-            max={buy.max}
-            step={buy.step}
-            value={buy.value}
-            label={"Valor do imóvel para comprar:"}
-            prefix={"R$"}
+            range={buy}
+            label={{
+              description: 'Valor do imóvel para comprar: ',
+              prefix: 'R$'
+            }}
             updatePrice={this.props.updatePrice}
             type={"buy"}
           />
 
           <SlideSelector
-            min={livingTime.min}
-            max={livingTime.max}
-            step={livingTime.step}
-            value={livingTime.value}
-            label={"Por quanto tempo pretende morar?"}
-            sufix={"anos"}
+            range={livingTime}
+            label={{
+              description: 'Por quanto tempo pretende morar? ',
+              sufix: 'anos'
+            }}
             updatePrice={this.props.updatePrice}
             type={"livingTime"}
           />
 
           <SlideSelector
-            min={annualTax.min}
-            max={annualTax.max}
-            step={annualTax.step}
-            value={annualTax.value}
-            label={"Taxa de juros anual:"}
-            sufix={"%"}
+            range={annualTax}
+            label={{
+              description: 'Taxa de juros anual: ',
+              sufix: '%'
+            }}
             updatePrice={this.props.updatePrice}
             type={"annualTax"}
           />
