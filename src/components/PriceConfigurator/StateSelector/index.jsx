@@ -5,13 +5,13 @@ import MenuItem from 'material-ui/MenuItem';
 const propTypes = {
   selectState: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
-  selected: PropTypes.string,
+  selected: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
 
 const StateSelector = ({ list, selected, isFetching, selectState }) => {
-  const handleChange = (event, index, value) => {
-    selectState(value);
+  const handleChange = (event, index) => {
+    selectState(index, list[index]);
   };
 
   return (
@@ -24,7 +24,7 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
       onChange={handleChange}
       floatingLabelText="Selecione o seu estado"
     >
-      {list.map(i => <MenuItem key={i} value={i} primaryText={i} />)}
+      {list.map((s, i) => <MenuItem key={i} value={i} primaryText={s.state} />)}
     </SelectField>
   );
 };

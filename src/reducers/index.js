@@ -38,10 +38,17 @@ function annualTax(state = getDefaults(0.5, 0.1, 25, 11.5), action) {
   }
 }
 
-function states(state = { selected: '', list: {}, isFetching: false }, action) {
+const statesDefault = {
+  selected: 0,
+  // Empty default value because https://github.com/callemall/material-ui/issues/4275
+  list: [{ state: ' ', rent: 0, buy: 0 }],
+  isFetching: false,
+};
+
+function states(state = statesDefault, action) {
   switch (action.type) {
     case 'SELECT_STATE':
-      return Object.assign({}, state, { selected: action.state });
+      return Object.assign({}, state, { selected: action.index });
     case 'REQUEST_STATES':
       return Object.assign({}, state, { isFetching: true });
     case 'RECEIVE_STATES':

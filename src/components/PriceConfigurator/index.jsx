@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { keys } from 'lodash';
 import * as actions from 'actions';
 import StateSelector from './StateSelector';
 import SlideSelector from './SlideSelector';
@@ -31,14 +30,6 @@ class PriceConfigurator extends Component {
     this.props.getStates();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { selected, list } = nextProps.states;
-    if (this.props.states.selected !== selected) {
-      this.props.updatePrice(list[selected].aluguel, 'rent');
-      this.props.updatePrice(list[selected].compra, 'buy');
-    }
-  }
-
   render() {
     const {
       rent,
@@ -49,13 +40,11 @@ class PriceConfigurator extends Component {
       selectState,
     } = this.props;
 
-    const stateList = [' '].concat(keys(states.list));
-
     return (
       <section className="mdl-card mdl-card-form mdl-shadow--2dp">
         <div className="mdl-card__supporting-text mdl-card__customize_values">
           <StateSelector
-            list={stateList}
+            list={states.list}
             isFetching={states.isFetching}
             selected={states.selected}
             selectState={selectState}
