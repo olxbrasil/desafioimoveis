@@ -1,41 +1,34 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-class StateSelector extends Component {
-  handleChange = (event, index, value) => {
-    this.props.selectState(value);
-  }
-
-  render() {
-    const { list, selected, isFetching } = this.props;
-
-    const items = []
-    for (let i = 0; i < list.length; i++) {
-      const value = list[i];
-      items.push(<MenuItem key={i} value={value} primaryText={value} />)
-    }
-
-    return (
-      <SelectField
-        id="state-select"
-        disabled={isFetching}
-        maxHeight={200}
-        style={{width: '100%', marginBottom: 24}}
-        value={selected}
-        onChange={this.handleChange}
-        floatingLabelText="Selecione o seu estado">
-      {items}
-      </SelectField>
-    )
-  }
-}
-
-StateSelector.propTypes = {
+const propTypes = {
   selectState: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
-  selected: PropTypes.string,
-  isFetching: PropTypes.bool.isRequired
-}
+  selected: PropTypes.number.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+};
+
+const StateSelector = ({ list, selected, isFetching, selectState }) => {
+  const handleChange = (event, index) => {
+    selectState(index, list[index]);
+  };
+
+  return (
+    <SelectField
+      id="state-select"
+      disabled={isFetching}
+      maxHeight={200}
+      style={{ width: '100%', marginBottom: 24 }}
+      value={selected}
+      onChange={handleChange}
+      floatingLabelText="Selecione o seu estado"
+    >
+      {list.map((s, i) => <MenuItem key={i} value={i} primaryText={s.state} />)}
+    </SelectField>
+  );
+};
+
+StateSelector.propTypes = propTypes;
 
 export default StateSelector;

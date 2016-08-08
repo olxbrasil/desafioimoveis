@@ -1,55 +1,78 @@
 import 'whatwg-fetch';
+import { forIn } from 'lodash';
 
-function checkStatus (response) {
+function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response
+    return response;
   }
 
   return response.json().then(err => {
-    throw err
-  })
+    throw err;
+  });
 }
 
-function parseJSON (response) {
-  return response.json()
+function parseJSON(response) {
+  return response.json();
 }
 
-function requestStates () {
+function requestStates() {
   return {
-    type: 'REQUEST_STATES'
-  }
+    type: 'REQUEST_STATES',
+  };
 }
 
-function receiveStates (list) {
+function receiveStates(list) {
   return {
     type: 'RECEIVE_STATES',
-    list
-  }
+    list,
+  };
 }
 
-export function getStates () {
+const formatStates = states => {
+  // Empty default value because value because https://github.com/callemall/material-ui/issues/4275
+  const list = [{ state: ' ', rent: 0, buy: 0 }];
+  forIn(states, (v, k) => {
+    list.push({
+      state: k,
+      rent: v.aluguel,
+      buy: v.compra,
+    });
+  });
+  return list;
+};
+
+export function getStates() {
   return dispatch => {
     dispatch(requestStates());
 
     return fetch('api/valores.json', { method: 'get' })
       .then(checkStatus)
       .then(parseJSON)
-      .then(data => dispatch(receiveStates(data)))
+      .then(formatStates)
+      .then(states => dispatch(receiveStates(states)))
       .catch(err => console.log(err));
-  }
+  };
 }
 
-export function selectState (state) {
+function updateState(index) {
   return {
     type: 'SELECT_STATE',
-    state
-  }
+    index,
+  };
 }
 
-export function updatePrice (value, type) {
+export function updatePrice(value, type) {
   const formattedType = `UPDATE_${type.toUpperCase()}`;
   return {
     value,
-    type: formattedType
-  }
+    type: formattedType,
+  };
+}
+
+export function selectState(index, state) {
+  return dispatch => {
+    dispatch(updateState(index));
+    dispatch(updatePrice(state.rent, 'rent'));
+    dispatch(updatePrice(state.buy, 'buy'));
+  };
 }
