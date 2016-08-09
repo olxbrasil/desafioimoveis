@@ -24,11 +24,13 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
     <SelectField
       id="state-select"
       disabled={isFetching}
+      autoWidth
       maxHeight={200}
-      style={{ width: '100%', marginBottom: 24 }}
       value={selected}
       onChange={handleChange}
       floatingLabelText="Selecione o seu estado"
+      floatingLabelStyle={{ fontSize: '20px' }}
+      style={{ width: '100%', marginBottom: 24 }}
     >
       {list.map((s, i) => <MenuItem key={i} value={i} primaryText={s.state} />)}
     </SelectField>

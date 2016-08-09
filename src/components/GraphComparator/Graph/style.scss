@@ -1,7 +1,7 @@
 @import "~material-design-lite/src/_color-definitions.scss";
 
 .price-bar {
-  min-height: 317px;
+  min-height: 400px;
   position: relative;
   h5 {
     margin-top: 0;
@@ -30,4 +30,8 @@
 }
 .price-block__worst {
   background-color: unquote("rgb(#{$palette-indigo-900})");
+}
+
+@media (max-width: 479px) {
+  .price-bar { min-height: 200px; }
 }
