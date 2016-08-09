@@ -6,9 +6,11 @@ import flow from 'lodash/fp/flow';
 
 const appPublicKey = 'jcEq1JegpdswAniAlL4EHePRy3bfgorCbQrcPWFU';
 const endpoint = 'https://api.500px.com/v1';
+const randomInt = (max, min) => (Math.floor(Math.random() * ((max - min) + 1)) + min);
 const params = {
-  feature: 'fresh_week',
-  rpp: 20,
+  feature: 'editors',
+  rpp: 6,
+  page: randomInt(50, 1),
   image_size: '1080,20',
   only: 'City%20and%20Architecture',
   consumer_key: appPublicKey,
@@ -25,7 +27,7 @@ export default function getImages() {
       const images = flow(
         filter(p => (
           p.nsfw === false &&
-          p.width / p.height > 1.5
+          p.width / p.height > 1.4
         )),
         map(p => ({ small: p.images[0].url, large: p.images[1].url }))
       )(data.photos);

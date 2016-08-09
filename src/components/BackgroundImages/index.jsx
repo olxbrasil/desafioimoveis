@@ -43,7 +43,7 @@ class BackgroundImages extends Component {
       const { selected, images } = nextState;
       this.timer = setInterval(() => {
         this.setState({ selected: this.getSampleImage(selected, images) });
-      }, 25 * 1000);
+      }, 30 * 1000);
     }
   }
 
@@ -52,6 +52,8 @@ class BackgroundImages extends Component {
   }
 
   getSampleImage(selected, images) {
+    if (images.length < 2) return selected;
+
     const sortedImage = sample(images);
     if (sortedImage !== selected) return sortedImage;
 
