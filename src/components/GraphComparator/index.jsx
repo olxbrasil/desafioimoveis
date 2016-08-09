@@ -18,11 +18,13 @@ const GraphComparator = ({ rentValue, buyValue, months, annualTax }) => {
   const buyHeight = rentValue < installment ? 100 : (100 * installment) / rentValue;
 
   return (
-    <section className="mdl-card mdl-card-form mdl-shadow--2dp">
-      <div className="mdl-card__title">
-        <h2 className="mdl-card__title-text">Custo total</h2>
-      </div>
+    <section className="mdl-card mdl-card-form mdl-card-comparator">
       <div className="mdl-card__supporting-text">
+        <div className="mdl-grid">
+          <div className="mdl-cell">
+            <p>Custo mensal</p>
+          </div>
+        </div>
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             <Graph

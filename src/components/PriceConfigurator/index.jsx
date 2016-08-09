@@ -53,42 +53,50 @@ class PriceConfigurator extends Component {
     } = this.props;
 
     return (
-      <section className="mdl-card mdl-card-form mdl-shadow--2dp">
+      <section className="mdl-card mdl-card-form mdl-card-configurator">
         <div className="mdl-card__supporting-text mdl-card__customize_values">
-          <StateSelector
-            list={states.list}
-            isFetching={states.isFetching}
-            selected={states.selected}
-            selectState={selectState}
-          />
-
-          <SlideSelector
-            range={rent}
-            label={{ description: 'Valor do aluguel por mês: ', prefix: 'R$' }}
-            updatePrice={this.props.updatePrice}
-            type={"rent"}
-          />
-
-          <SlideSelector
-            range={buy}
-            label={{ description: 'Valor do imóvel para comprar: ', prefix: 'R$' }}
-            updatePrice={this.props.updatePrice}
-            type={"buy"}
-          />
-
-          <SlideSelector
-            range={livingTime}
-            label={{ description: 'Por quanto tempo pretende morar? ', sufix: 'anos' }}
-            updatePrice={this.props.updatePrice}
-            type={"livingTime"}
-          />
-
-          <SlideSelector
-            range={annualTax}
-            label={{ description: 'Taxa de juros anual: ', sufix: '%' }}
-            updatePrice={this.props.updatePrice}
-            type={"annualTax"}
-          />
+          <div className="mdl-grid">
+            <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <StateSelector
+                list={states.list}
+                isFetching={states.isFetching}
+                selected={states.selected}
+                selectState={selectState}
+              />
+            </div>
+            <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <SlideSelector
+                range={rent}
+                label={{ description: 'Valor do aluguel por mês: ', prefix: 'R$' }}
+                updatePrice={this.props.updatePrice}
+                type={"rent"}
+              />
+            </div>
+            <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <SlideSelector
+                range={buy}
+                label={{ description: 'Valor do imóvel para comprar: ', prefix: 'R$' }}
+                updatePrice={this.props.updatePrice}
+                type={"buy"}
+              />
+            </div>
+            <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <SlideSelector
+                range={livingTime}
+                label={{ description: 'Por quanto tempo pretende morar? ', sufix: 'anos' }}
+                updatePrice={this.props.updatePrice}
+                type={"livingTime"}
+              />
+            </div>
+            <div className="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+              <SlideSelector
+                range={annualTax}
+                label={{ description: 'Taxa de juros anual: ', sufix: '%' }}
+                updatePrice={this.props.updatePrice}
+                type={"annualTax"}
+              />
+            </div>
+          </div>
         </div>
       </section>
     );
