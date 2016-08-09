@@ -25,12 +25,15 @@ const StateSelector = ({ list, selected, isFetching, selectState }) => {
       id="state-select"
       disabled={isFetching}
       autoWidth
+      fullWidth
       maxHeight={200}
       value={selected}
       onChange={handleChange}
       floatingLabelText="Selecione o seu estado"
       floatingLabelStyle={{ fontSize: '20px' }}
-      style={{ width: '100%', marginBottom: 24 }}
+      underlineStyle={{ borderColor: 'rgba(0, 0, 0, .2)' }}
+      iconStyle={{ fill: 'rgba(0, 0, 0, .2)' }}
+      style={{ marginBottom: 24 }}
     >
       {list.map((s, i) => <MenuItem key={i} value={i} primaryText={s.state} />)}
     </SelectField>
