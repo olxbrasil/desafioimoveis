@@ -1,0 +1,19 @@
+{
+  "ecmaFeatures": {
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0
+  },
+  "parser": "babel-eslint",
+  "extends": "eslint-config-airbnb",
+  "plugins": [
+    "react"
+  ]
+}

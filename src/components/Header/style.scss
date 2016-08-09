@@ -1,0 +1,15 @@
+@import "~material-design-lite/src/_color-definitions.scss";
+
+.mdl-layout__header {
+  background-color: unquote("rgba(#{$palette-grey-700}, .5)") !important;
+}
+
+.mdl-layout-title {
+  margin-left: 16px;
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout__header {
+    display: block !important;
+  }
+}

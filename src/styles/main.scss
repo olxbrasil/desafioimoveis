@@ -1,0 +1,49 @@
+@import "~material-design-lite/material.min.css";
+@import "~material-design-lite/src/_color-definitions.scss";
+@import "~material-design-lite/src/_variables.scss";
+
+body {
+  background: #f5f5f5;
+  font-family: $preferred_font;
+}
+
+.mdl-layout__content > .mdl-grid {
+  margin: 0;
+}
+
+.mdl-grid {
+  max-width: 800px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.mdl-card-form {
+  width: 100%;
+  margin-bottom: 50px;
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.mdl-card__customize_values {
+  padding-top: 0;
+}
+
+@media (max-width: 479px) {
+  .mdl-card-configurator {
+    margin-bottom: -8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    .mdl-card__supporting-text {
+      padding-bottom: 0;
+    }
+  }
+  .mdl-card-comparator {
+    margin-top: -8px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .mdl-card__supporting-text {
+      padding-top: 0;
+    }
+  }
+}
