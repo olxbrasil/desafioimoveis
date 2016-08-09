@@ -1,19 +1,6 @@
 import 'whatwg-fetch';
 import { forIn } from 'lodash';
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  return response.json().then(err => {
-    throw err;
-  });
-}
-
-function parseJSON(response) {
-  return response.json();
-}
+import { checkStatus, parseJSON } from 'actions/utils';
 
 function requestStates() {
   return {
