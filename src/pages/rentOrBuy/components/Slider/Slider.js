@@ -22,8 +22,6 @@ class Slider extends React.Component {
       onChange,
     } = this.props
 
-    console.log(value)
-
     return (
       <div>
         <div>
