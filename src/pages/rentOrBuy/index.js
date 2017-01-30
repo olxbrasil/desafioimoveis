@@ -12,6 +12,8 @@ import fetch from '../../core/fetch';
 import Layout from '../../components/Layout';
 import RentOrBuy from './RentOrBuy';
 
+import data from '../../mock/data.json'
+
 export default {
 
   path: '/',
@@ -20,7 +22,7 @@ export default {
 
     return {
       title: 'desai',
-      component: <Layout><RentOrBuy/></Layout>,
+      component: <Layout><RentOrBuy data={data} /></Layout>,
     }
   },
 
