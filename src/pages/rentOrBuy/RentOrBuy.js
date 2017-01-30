@@ -12,7 +12,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import fetch from '../../core/fetch';
 import history from '../../core/history';
-import Interest from './utils/interest.js'
+import Interest from './utils/interest'
+import Slider from './components/Slider'
 
 class RentOrBuy extends React.Component {
 
@@ -22,6 +23,13 @@ class RentOrBuy extends React.Component {
 
     return(
       <div>
+        <h1>Comprar ou alugar?</h1>
+        <Slider 
+          label="Valor do aluguel por mês:"
+          min={100}
+          max={10000}
+          step={500}
+        />
         <p>Rent: {rent}</p>
         <p>Buy: {buy}</p>
       </div>

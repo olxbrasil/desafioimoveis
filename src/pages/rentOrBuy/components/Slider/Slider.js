@@ -4,13 +4,27 @@ import s from './Slider.css';
 
 class Slider extends React.Component {
   static propTypes = {
-    children: PropTypes.node.isRequired,
+    label: PropTypes.string.isRequired,
+    max: PropTypes.number.isRequired,
+    min: PropTypes.number.isRequired,
+    step: PropTypes.number.isRequired,
   };
 
   render() {
+    const {
+      label,
+      value,
+      max,
+      min,
+      step
+    } = this.props
+
     return (
       <div>
-        SLIDER
+        <div>
+          <p>{label} 30000</p>
+          <input type="range" max={max} min={min} step={step}/>
+        </div>
       </div>
     );
   }
