@@ -2,6 +2,8 @@ import interest from 'interestjs'
 
 class Interest {
   static calcEquivMonthlyInterest(annualInterest) {
+    if(!!annualInterest === false) throw new Error('annualInterest should be passed as an argument')
+
     // Math.pow hack to get Nth root :P
     const annualPercentage = 1 + (annualInterest / 100)
     const monthly = Math.pow(annualPercentage, 1 / 12) - 1

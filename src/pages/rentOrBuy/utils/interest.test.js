@@ -19,4 +19,17 @@ describe('RentOrBuy page', () => {
       expect(Interest.calcRentTotal(monthly, years)).to.eq(total)
     })
   })
+
+  describe('#calcEquivMonthlyInterest', () => {
+    it('should throw an error if annualInterest is not passed as parameter', () => {
+      expect(Interest.calcEquivMonthlyInterest).to.throw('annualInterest')
+    })
+
+    it('should equivalent monthly interest based on annual interest', () => {
+      const annual = 11.5
+      const monthly = Interest.calcEquivMonthlyInterest(annual)
+      const round = parseFloat(monthly.toFixed(1))
+      expect(round).to.eq(0.9)
+    })
+  })
 })
