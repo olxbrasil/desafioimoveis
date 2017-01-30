@@ -15,7 +15,10 @@ import history from '../../core/history';
 import Interest from './utils/interest'
 import Slider from './components/Slider'
 
-import { updateRentValue } from './actions'
+import {
+  updateRentValue,
+  updatePriceValue,
+} from './actions'
 
 class RentOrBuy extends React.Component {
   constructor(props) {
@@ -24,9 +27,11 @@ class RentOrBuy extends React.Component {
     this.handleSliderChange = this.handleSliderChange.bind(this)
   }
 
-  handleSliderChange(event) {
-    const value = event.target.value
-    this.context.store.dispatch(updateRentValue(value))
+  handleSliderChange(action) {
+    return function(event) {
+      const value = event.target.value
+      this.context.store.dispatch(action(value))
+    }.bind(this)
   }
 
   render() {
@@ -35,6 +40,7 @@ class RentOrBuy extends React.Component {
 
     const {
       rentValue,
+      priceValue,
     } = this.props
 
     return(
@@ -45,14 +51,16 @@ class RentOrBuy extends React.Component {
           min={100}
           max={10000}
           step={100}
-          value={this.props.rentValue}
-          onChange={this.handleSliderChange}
+          value={rentValue}
+          onChange={this.handleSliderChange(updateRentValue)}
         />
         <Slider
           label="Valor do imóvel para comprar:"
           min={1000}
           max={2000000}
           step={500}
+          value={priceValue}
+          onChange={this.handleSliderChange(updatePriceValue)}
         />
         <Slider
           label="Quanto tempo você irá morar?"
@@ -75,6 +83,7 @@ class RentOrBuy extends React.Component {
 
 const mapStateToProps = (state) => ({
   rentValue: state.rentOrBuy.rentValue,
+  priceValue: state.rentOrBuy.priceValue,
 });
 
 RentOrBuy.propTypes = {
