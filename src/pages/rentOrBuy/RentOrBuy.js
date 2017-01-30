@@ -26,6 +26,7 @@ const mapStateToProps = (state) => ({
 });
 
 RentOrBuy.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 RentOrBuy.contextTypes = {
