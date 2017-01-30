@@ -3,6 +3,7 @@ import {
   UPDATE_RENT_VALUE,
   UPDATE_PRICE_VALUE,
   UPDATE_LIVING_TIME,
+  UPDATE_INTEREST_RATE,
 } from './actions'
 
 const initialState = {}
@@ -25,6 +26,12 @@ const RentOrBuyReducer = (state = initialState, action) => {
       return {
         ...state,
         livingTime: action.value,
+      }
+
+    case UPDATE_INTEREST_RATE:
+      return {
+        ...state,
+        interestRate: action.value,
       }
 
     default:

@@ -19,6 +19,7 @@ import {
   updateRentValue,
   updatePriceValue,
   updateLivingTime,
+  updateInterestRate,
 } from './actions'
 
 class RentOrBuy extends React.Component {
@@ -43,6 +44,7 @@ class RentOrBuy extends React.Component {
       rentValue,
       priceValue,
       livingTime,
+      interestRate
     } = this.props
 
     return(
@@ -77,6 +79,8 @@ class RentOrBuy extends React.Component {
           min={0.5}
           max={25.00}
           step={0.5}
+          value={interestRate}
+          onChange={this.handleSliderChange(updateInterestRate)}
         />
         <p>Rent: {rent}</p>
         <p>Buy: {buy}</p>
@@ -89,6 +93,7 @@ const mapStateToProps = (state) => ({
   rentValue: state.rentOrBuy.rentValue,
   priceValue: state.rentOrBuy.priceValue,
   livingTime: state.rentOrBuy.livingTime,
+  interestRate: state.rentOrBuy.interestRate,
 });
 
 RentOrBuy.propTypes = {

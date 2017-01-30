@@ -2,6 +2,7 @@
 export const UPDATE_RENT_VALUE = "UPDATE_RENT_VALUE"
 export const UPDATE_PRICE_VALUE = "UPDATE_PRICE_VALUE"
 export const UPDATE_LIVING_TIME = "UPDATE_LIVING_TIME"
+export const UPDATE_INTEREST_RATE = "UPDATE_INTEREST_RATE"
 
 export function updateRentValue(value) {
   return {
@@ -20,6 +21,13 @@ export function updatePriceValue(value) {
 export function updateLivingTime(value) {
   return {
     type: UPDATE_LIVING_TIME,
+    value: value,
+  }
+}
+
+export function updateInterestRate(value) {
+  return {
+    type: UPDATE_INTEREST_RATE,
     value: value,
   }
 }
