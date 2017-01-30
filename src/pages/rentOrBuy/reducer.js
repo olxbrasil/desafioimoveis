@@ -6,7 +6,12 @@ import {
   UPDATE_INTEREST_RATE,
 } from './actions'
 
-const initialState = {}
+const initialState = {
+  rentValue: 3000,
+  priceValue: 100000,
+  livingTime: 10,
+  interestRate: 11.5,
+}
 
 const RentOrBuyReducer = (state = initialState, action) => {
   switch(action.type) {

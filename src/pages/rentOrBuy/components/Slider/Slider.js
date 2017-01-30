@@ -26,7 +26,7 @@ class Slider extends React.Component {
       <div>
         <div>
           <p>{label} {value} </p>
-          <input type="range" max={max} min={min} step={step} onInput={onChange}/>
+          <input type="range" value={value} max={max} min={min} step={step} onInput={onChange}/>
         </div>
       </div>
     );
