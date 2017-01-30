@@ -8,6 +8,8 @@ class Slider extends React.Component {
     max: PropTypes.number.isRequired,
     min: PropTypes.number.isRequired,
     step: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+    onChange: PropTypes.fn,
   };
 
   render() {
@@ -16,14 +18,15 @@ class Slider extends React.Component {
       value,
       max,
       min,
-      step
+      step,
+      onChange,
     } = this.props
 
     return (
       <div>
         <div>
-          <p>{label} 30000</p>
-          <input type="range" max={max} min={min} step={step}/>
+          <p>{label} {value} </p>
+          <input type="range" max={max} min={min} step={step} onInput={onChange}/>
         </div>
       </div>
     );
