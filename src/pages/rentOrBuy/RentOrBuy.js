@@ -12,19 +12,39 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import fetch from '../../core/fetch';
 import history from '../../core/history';
+import interest from 'interestjs'
 
 class RentOrBuy extends React.Component {
 
-  calcRentTotal(monthlyPay, years, annualInterest) {
-    const months = years * 12;
-    return monthlyPay * months;
+  calcEquivMonthlyInterest(annualInterest) {
+    // Math.pow hack to get Nth root :P
+    const annualPercentage = 1 + (annualInterest / 100)
+    const monthly = Math.pow(annualPercentage, 1 / 12) - 1
+    return monthly * 100
+  }
+
+  calcBuyTotal(totalPrice, years, annualInterest) {
+    const months = years * 12
+    const monthlyInterest = this.calcEquivMonthlyInterest(annualInterest)
+    const installmentBase = totalPrice / months
+    const int = interest(installmentBase, months, monthlyInterest)
+    return int.sum;
+  }
+
+  calcRentTotal(monthlyPay, years) {
+    const months = years * 12
+    return monthlyPay * months
   }
 
   render() {
-    const int = this.calcRentTotal(3000, 10);
-    console.log(int)
+    const rent = this.calcRentTotal(3000, 10)
+    const buy = this.calcBuyTotal(100000, 10, 11.5)
+
     return(
-      <h1>teste</h1>
+      <div>
+        <p>Rent: {rent}</p>
+        <p>Buy: {buy}</p>
+      </div>
     );
   }
 }
