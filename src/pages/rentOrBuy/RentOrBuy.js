@@ -37,15 +37,15 @@ class RentOrBuy extends React.Component {
   }
 
   render() {
-    const rent = Interest.calcRentTotal(3000, 10)
-    const buy = Interest.calcBuyTotal(100000, 10, 11.5)
-
     const {
       rentValue,
       priceValue,
       livingTime,
       interestRate
     } = this.props
+
+    const rent = Interest.calcRentTotal(rentValue, livingTime)
+    const buy = Interest.calcBuyTotal(priceValue, livingTime, interestRate)
 
     return(
       <div>
