@@ -18,6 +18,7 @@ import Slider from './components/Slider'
 import {
   updateRentValue,
   updatePriceValue,
+  updateLivingTime,
 } from './actions'
 
 class RentOrBuy extends React.Component {
@@ -41,6 +42,7 @@ class RentOrBuy extends React.Component {
     const {
       rentValue,
       priceValue,
+      livingTime,
     } = this.props
 
     return(
@@ -67,6 +69,8 @@ class RentOrBuy extends React.Component {
           min={1}
           max={30}
           step={1}
+          value={livingTime}
+          onChange={this.handleSliderChange(updateLivingTime)}
         />
         <Slider
           label="Taxa de juros anual:"
@@ -84,6 +88,7 @@ class RentOrBuy extends React.Component {
 const mapStateToProps = (state) => ({
   rentValue: state.rentOrBuy.rentValue,
   priceValue: state.rentOrBuy.priceValue,
+  livingTime: state.rentOrBuy.livingTime,
 });
 
 RentOrBuy.propTypes = {

@@ -8,7 +8,7 @@ class Slider extends React.Component {
     max: PropTypes.number.isRequired,
     min: PropTypes.number.isRequired,
     step: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.fn,
   };
 
@@ -21,6 +21,8 @@ class Slider extends React.Component {
       step,
       onChange,
     } = this.props
+
+    console.log(value)
 
     return (
       <div>
