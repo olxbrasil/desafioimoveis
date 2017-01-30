@@ -15,9 +15,16 @@ import history from '../../core/history';
 
 class RentOrBuy extends React.Component {
 
+  calcRentTotal(monthlyPay, years, annualInterest) {
+    const months = years * 12;
+    return monthlyPay * months;
+  }
+
   render() {
+    const int = this.calcRentTotal(3000, 10);
+    console.log(int)
     return(
-      <h1>Teste</h1>
+      <h1>teste</h1>
     );
   }
 }
