@@ -7,10 +7,14 @@ class Interest {
     // Math.pow hack to get Nth root :P
     const annualPercentage = 1 + (annualInterest / 100)
     const monthly = Math.pow(annualPercentage, 1 / 12) - 1
-    return monthly * 100
+    return parseFloat(monthly.toFixed(6)) * 100
   }
 
   static calcBuyTotal(totalPrice, years, annualInterest) {
+    if(!!totalPrice === false) throw new Error('totalPrice should be passed as an argument')
+    if(!!years === false) throw new Error('years should be passed as an argument')
+    if(!!annualInterest === false) throw new Error('annualInterest should be passed as parameter')
+
     const months = years * 12
     const monthlyInterest = Interest.calcEquivMonthlyInterest(annualInterest)
     const installmentBase = totalPrice / months
