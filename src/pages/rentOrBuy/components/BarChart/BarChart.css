@@ -1,2 +1,36 @@
 
 @import '../../../node_modules/normalize.css/normalize.css';
+
+.root {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.root div {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 150px;
+  background: #3c3f55;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: 0.1s;
+  border-radius: 5px;
+}
+
+.root div span {
+  display: block;
+}
+
+.rent {}
+
+.root .buy {
+  left: 50%;
+  background: #20c063;
+}
