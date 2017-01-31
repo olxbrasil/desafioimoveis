@@ -38,6 +38,19 @@ class RentOrBuy extends React.Component {
     }.bind(this);
   }
 
+  formatPrice(value) {
+    return `R$ ${parseFloat(value).toFixed(2)}`.replace('.',',')
+  }
+
+  formatYears(value) {
+    const fmt = `${value} ano`
+    return parseInt(value) === 1 ? fmt : fmt + 's'
+  }
+
+  formatPercentage(value) {
+    return `${value}%`
+  }
+
   render() {
     const {
       rentValue,
@@ -59,6 +72,7 @@ class RentOrBuy extends React.Component {
           step={100}
           value={rentValue}
           onChange={this.handleSliderChange(updateRentValue)}
+          format={this.formatPrice}
         />
         <Slider
           label="Valor do imóvel para comprar:"
@@ -67,6 +81,7 @@ class RentOrBuy extends React.Component {
           step={500}
           value={priceValue}
           onChange={this.handleSliderChange(updatePriceValue)}
+          format={this.formatPrice}
         />
         <Slider
           label="Quanto tempo você irá morar?"
@@ -75,6 +90,7 @@ class RentOrBuy extends React.Component {
           step={1}
           value={livingTime}
           onChange={this.handleSliderChange(updateLivingTime)}
+          format={this.formatYears}
         />
         <Slider
           label="Taxa de juros anual:"
@@ -83,6 +99,7 @@ class RentOrBuy extends React.Component {
           step={0.5}
           value={interestRate}
           onChange={this.handleSliderChange(updateInterestRate)}
+          format={this.formatPercentage}
         />
         <p>Rent: {rent}</p>
         <p>Buy: {buy}</p>
