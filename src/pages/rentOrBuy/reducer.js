@@ -8,10 +8,10 @@ import {
 } from './actions'
 
 const initialState = {
-  rentValue: 3000,
-  priceValue: 100000,
-  livingTime: 10,
-  interestRate: 11.5,
+  rentValue: "1390",
+  priceValue: "111200",
+  livingTime: "10",
+  interestRate: "11.5",
   region: 'RJ',
 }
 

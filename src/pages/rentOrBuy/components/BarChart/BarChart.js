@@ -5,8 +5,8 @@ import Bar from './components/Bar'
 
 class BarChart extends React.Component {
   static propTypes = {
-    rent: PropTypes.string.isRequired,
-    buy: PropTypes.string.isRequired,
+    rent: PropTypes.number.isRequired,
+    buy: PropTypes.number.isRequired,
   };
 
   render() {

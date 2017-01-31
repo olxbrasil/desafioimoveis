@@ -4,9 +4,9 @@ import s from './Bar.css';
 
 class Bar extends React.Component {
   static propTypes = {
-    height: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
   };
 
   render() {

@@ -9,8 +9,8 @@ class Slider extends React.Component {
     min: PropTypes.number.isRequired,
     step: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,
-    onChange: PropTypes.fn,
-    format: PropTypes.fn,
+    onChange: PropTypes.func.isRequired,
+    format: PropTypes.func.isRequired,
   };
 
   render() {
@@ -28,7 +28,7 @@ class Slider extends React.Component {
       <div>
         <div>
           <p className={s.label}>{label} <span>{format(value)}</span> </p>
-          <input type="range" value={value} max={max} min={min} step={step} onInput={onChange}/>
+          <input type="range" value={value} max={max} min={min} step={step} onChange={onChange}/>
         </div>
       </div>
     );

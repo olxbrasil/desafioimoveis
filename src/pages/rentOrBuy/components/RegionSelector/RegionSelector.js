@@ -6,7 +6,7 @@ import _ from 'underscore'
 class RegionSelector extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
-    onChange: PropTypes.fn,
+    onChange: PropTypes.func.isRequired,
     region: PropTypes.string.isRequired,
   };
 
@@ -17,12 +17,7 @@ class RegionSelector extends React.Component {
       region,
     } = this.props
 
-    const list = _.map(data, (value, key) => {
-      return {
-        state: key,
-        ...value,
-      }
-    })
+    const list = _.map(data, (value, key) => ({ state: key, ...value }));
 
     return (
       <div>
