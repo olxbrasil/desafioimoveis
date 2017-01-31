@@ -4,6 +4,7 @@ import {
   UPDATE_PRICE_VALUE,
   UPDATE_LIVING_TIME,
   UPDATE_INTEREST_RATE,
+  SELECT_REGION,
 } from './actions'
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   priceValue: 100000,
   livingTime: 10,
   interestRate: 11.5,
+  region: 'RJ',
 }
 
 const RentOrBuyReducer = (state = initialState, action) => {
@@ -37,6 +39,12 @@ const RentOrBuyReducer = (state = initialState, action) => {
       return {
         ...state,
         interestRate: action.value,
+      }
+
+    case SELECT_REGION:
+      return {
+        ...state,
+        region: action.value,
       }
 
     default:

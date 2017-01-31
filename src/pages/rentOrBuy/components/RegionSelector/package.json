@@ -1,0 +1,6 @@
+{
+  "name": "RegionSelector",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./RegionSelector.js"
+}
