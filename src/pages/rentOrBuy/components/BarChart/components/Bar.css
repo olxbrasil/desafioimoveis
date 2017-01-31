@@ -1,16 +1,8 @@
 
 @import '../../../node_modules/normalize.css/normalize.css';
 
-.root {
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-.root div {
+.bar {
   display: block;
   position: absolute;
   bottom: 0;
@@ -22,13 +14,4 @@
   font-size: 1.5em;
   transition: 0.1s;
   border-radius: 5px;
-}
-
-.root div span {
-  display: block;
-}
-
-.root .buy {
-  left: 50%;
-  background: #20c063;
 }

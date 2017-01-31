@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './BarChart.css';
+import Bar from './components/Bar'
 
 class BarChart extends React.Component {
   static propTypes = {
@@ -21,12 +22,8 @@ class BarChart extends React.Component {
 
     return (
       <div className={s.root}>
-        <div className={s.rent} style={{ height: rentPercentage + '%'}}>
-          <span>Alugar</span>R${rent}
-        </div>
-        <div className={s.buy} style={{ height: buyPecentage + '%' }}>
-          <span>Comprar</span>R${buy}
-        </div>
+        <Bar barClass={s.rent} height={rentPercentage} label="Aluguel" value={rent} />
+        <Bar barClass={s.buy} height={buyPecentage} label="Comprar" value={buy} />
       </div>
     );
   }
