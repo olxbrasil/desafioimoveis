@@ -12,13 +12,14 @@ import fetch from '../../core/fetch';
 import Layout from '../../components/Layout';
 import RentOrBuy from './RentOrBuy';
 
-import data from '../../mock/data.json'
-
 export default {
 
   path: '/',
 
   async action() {
+
+    const resp = await fetch('/api/v1/regions');
+    const data = await resp.json();
 
     return {
       title: 'desai',
