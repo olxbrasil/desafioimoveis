@@ -16,6 +16,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './RentOrBuy.css';
 import Interest from './utils/interest';
 import Slider from './components/Slider';
+import BarChart from './components/BarChart'
 
 import {
   updateRentValue,
@@ -103,6 +104,7 @@ class RentOrBuy extends React.Component {
         />
         <p>Rent: {rent}</p>
         <p>Buy: {buy}</p>
+        <BarChart />
       </div>
     );
   }
