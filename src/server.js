@@ -23,6 +23,7 @@ import errorPageStyle from './pages/error/ErrorPage.css';
 import pages from './pages';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
+import RegionsController from './controllers/RegionsController'
 import { port } from './config';
 
 const app = express();
@@ -41,6 +42,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
+//
+// API
+// -----------------------------------------------------------------------------
+const router = express.Router();
+
+router.route('/regions')
+  .get(RegionsController.getRegions)
+
+app.use('/api/v1', router);
 
 
 //
