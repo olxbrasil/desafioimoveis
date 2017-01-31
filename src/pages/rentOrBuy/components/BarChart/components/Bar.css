@@ -1,0 +1,17 @@
+
+@import '../../../node_modules/normalize.css/normalize.css';
+
+
+.bar {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 150px;
+  background: #3c3f55;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: 0.1s;
+  border-radius: 5px;
+}

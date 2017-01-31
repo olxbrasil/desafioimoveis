@@ -16,6 +16,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './RentOrBuy.css';
 import Interest from './utils/interest';
 import Slider from './components/Slider';
+import BarChart from './components/BarChart'
 
 import {
   updateRentValue,
@@ -62,6 +63,7 @@ class RentOrBuy extends React.Component {
     const rent = Interest.calcRentTotal(rentValue, livingTime);
     const buy = Interest.calcBuyTotal(priceValue, livingTime, interestRate);
 
+
     return (
       <div className={s.root}>
         <h1 className={s.header}>Comprar ou Alugar?</h1>
@@ -101,8 +103,7 @@ class RentOrBuy extends React.Component {
           onChange={this.handleSliderChange(updateInterestRate)}
           format={this.formatPercentage}
         />
-        <p>Rent: {rent}</p>
-        <p>Buy: {buy}</p>
+        <BarChart rent={rent} buy={buy}/>
       </div>
     );
   }
