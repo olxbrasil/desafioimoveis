@@ -1,0 +1,12 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
+.root {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.header {
+  text-decoration: underline;
+  text-align: center;
+}

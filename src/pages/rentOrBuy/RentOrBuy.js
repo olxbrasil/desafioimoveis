@@ -12,28 +12,43 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import fetch from '../../core/fetch';
 import history from '../../core/history';
-import Interest from './utils/interest'
-import Slider from './components/Slider'
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import s from './RentOrBuy.css';
+import Interest from './utils/interest';
+import Slider from './components/Slider';
 
 import {
   updateRentValue,
   updatePriceValue,
   updateLivingTime,
   updateInterestRate,
-} from './actions'
+} from './actions';
 
 class RentOrBuy extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.handleSliderChange = this.handleSliderChange.bind(this)
+    this.handleSliderChange = this.handleSliderChange.bind(this);
   }
 
   handleSliderChange(action) {
-    return function(event) {
-      const value = event.target.value
-      this.context.store.dispatch(action(value))
-    }.bind(this)
+    return function (event) {
+      const value = event.target.value;
+      this.context.store.dispatch(action(value));
+    }.bind(this);
+  }
+
+  formatPrice(value) {
+    return `R$ ${parseFloat(value).toFixed(2)}`.replace('.',',')
+  }
+
+  formatYears(value) {
+    const fmt = `${value} ano`
+    return parseInt(value) === 1 ? fmt : fmt + 's'
+  }
+
+  formatPercentage(value) {
+    return `${value}%`
   }
 
   render() {
@@ -41,15 +56,15 @@ class RentOrBuy extends React.Component {
       rentValue,
       priceValue,
       livingTime,
-      interestRate
-    } = this.props
+      interestRate,
+    } = this.props;
 
-    const rent = Interest.calcRentTotal(rentValue, livingTime)
-    const buy = Interest.calcBuyTotal(priceValue, livingTime, interestRate)
+    const rent = Interest.calcRentTotal(rentValue, livingTime);
+    const buy = Interest.calcBuyTotal(priceValue, livingTime, interestRate);
 
-    return(
-      <div>
-        <h1>Comprar ou alugar?</h1>
+    return (
+      <div className={s.root}>
+        <h1 className={s.header}>Comprar ou Alugar?</h1>
         <Slider
           label="Valor do aluguel por mês:"
           min={100}
@@ -57,6 +72,7 @@ class RentOrBuy extends React.Component {
           step={100}
           value={rentValue}
           onChange={this.handleSliderChange(updateRentValue)}
+          format={this.formatPrice}
         />
         <Slider
           label="Valor do imóvel para comprar:"
@@ -65,6 +81,7 @@ class RentOrBuy extends React.Component {
           step={500}
           value={priceValue}
           onChange={this.handleSliderChange(updatePriceValue)}
+          format={this.formatPrice}
         />
         <Slider
           label="Quanto tempo você irá morar?"
@@ -73,6 +90,7 @@ class RentOrBuy extends React.Component {
           step={1}
           value={livingTime}
           onChange={this.handleSliderChange(updateLivingTime)}
+          format={this.formatYears}
         />
         <Slider
           label="Taxa de juros anual:"
@@ -81,6 +99,7 @@ class RentOrBuy extends React.Component {
           step={0.5}
           value={interestRate}
           onChange={this.handleSliderChange(updateInterestRate)}
+          format={this.formatPercentage}
         />
         <p>Rent: {rent}</p>
         <p>Buy: {buy}</p>
@@ -98,10 +117,10 @@ const mapStateToProps = (state) => ({
 
 RentOrBuy.propTypes = {
   data: PropTypes.object.isRequired,
-}
+};
 
 RentOrBuy.contextTypes = {
   store: PropTypes.object,
-}
+};
 
-export default connect(mapStateToProps)(RentOrBuy);
+export default withStyles(s)(connect(mapStateToProps)(RentOrBuy));
