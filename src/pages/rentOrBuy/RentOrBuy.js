@@ -24,6 +24,7 @@ import {
   updatePriceValue,
   updateLivingTime,
   updateInterestRate,
+  selectRegion,
 } from './actions';
 
 class RentOrBuy extends React.Component {
@@ -31,6 +32,15 @@ class RentOrBuy extends React.Component {
     super(props);
 
     this.handleSliderChange = this.handleSliderChange.bind(this);
+    this.handleRegionSelector = this.handleRegionSelector.bind(this)
+  }
+
+  handleRegionSelector(event) {
+    const region = event.target.value;
+    const regionValues = this.props.data[region]
+    this.context.store.dispatch(selectRegion(region))
+    this.context.store.dispatch(updateRentValue(regionValues.aluguel))
+    this.context.store.dispatch(updatePriceValue(regionValues.compra))
   }
 
   handleSliderChange(action) {
@@ -59,6 +69,8 @@ class RentOrBuy extends React.Component {
       priceValue,
       livingTime,
       interestRate,
+      region,
+      data,
     } = this.props;
 
     const rent = Interest.calcRentTotal(rentValue, livingTime);
@@ -68,7 +80,7 @@ class RentOrBuy extends React.Component {
     return (
       <div className={s.root}>
         <h1 className={s.header}>Comprar ou Alugar?</h1>
-        <RegionSelector />
+        <RegionSelector data={data} region={region} onChange={this.handleRegionSelector}/>
         <Slider
           label="Valor do aluguel por mês:"
           min={100}
@@ -116,6 +128,7 @@ const mapStateToProps = (state) => ({
   priceValue: state.rentOrBuy.priceValue,
   livingTime: state.rentOrBuy.livingTime,
   interestRate: state.rentOrBuy.interestRate,
+  region: state.rentOrBuy.region,
 });
 
 RentOrBuy.propTypes = {
