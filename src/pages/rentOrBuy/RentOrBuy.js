@@ -17,6 +17,7 @@ import s from './RentOrBuy.css';
 import Interest from './utils/interest';
 import Slider from './components/Slider';
 import BarChart from './components/BarChart'
+import RegionSelector from './components/RegionSelector'
 
 import {
   updateRentValue,
@@ -67,6 +68,7 @@ class RentOrBuy extends React.Component {
     return (
       <div className={s.root}>
         <h1 className={s.header}>Comprar ou Alugar?</h1>
+        <RegionSelector />
         <Slider
           label="Valor do aluguel por mês:"
           min={100}

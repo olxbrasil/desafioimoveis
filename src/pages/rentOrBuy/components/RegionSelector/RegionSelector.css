@@ -1,0 +1,6 @@
+
+@import '../../../node_modules/normalize.css/normalize.css';
+
+.label {
+  display: inline-block;
+}
