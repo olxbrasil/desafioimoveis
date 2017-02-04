@@ -19,7 +19,7 @@ const initialState = {
 	taxForYear: 0,
 };
 
-const reducer = handleAction(actionTypes.CHANGE_VALUE, (state:State = initialState, action) => ({
+const reducer = handleAction(actionTypes.CHANGE_VALUE, (state: State = initialState, action) => ({
 	...state,
 	[action.payload.key]: action.payload.value,
 }), initialState);
