@@ -8,11 +8,10 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import routes from './routes';
 import configureStore from './container/store';
-import './assets/stylus/main.styl';
 
 
 const appDOM = document.getElementById('app'),
-	Store = configureStore(),
+	Store = configureStore(window.INITIAL_STATE),
 	history = syncHistoryWithStore(browserHistory, Store);
 
 const loadRender = () => {

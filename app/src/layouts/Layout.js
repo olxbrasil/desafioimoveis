@@ -1,15 +1,14 @@
-import React, { PropTypes } from 'react';
+// @flow
+import React from 'react';
 
+type Props = {
+	children:any,
+}
 
-const Layout = props => (
+const Layout = (props:Props) => (
 	<div>
 		{props.children}
 	</div>
 );
-
-Layout.propTypes = {
-	children: PropTypes.node,
-};
-
 
 export default Layout;

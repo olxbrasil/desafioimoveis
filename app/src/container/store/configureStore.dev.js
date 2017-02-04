@@ -15,7 +15,8 @@ const devTools = (typeof window !== 'undefined') ? window.__REDUX_DEVTOOLS_EXTEN
 export default function configureStore(initialState) {
 
 	const store = createStore(allReducers, initialState, compose(
-		middleware
+		middleware,
+		devTools
 	));
 
 	if (module.hot) {
