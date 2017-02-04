@@ -6,6 +6,7 @@ import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import opener from 'opener';
 import path from 'path';
+import fs from 'fs';
 
 import config from '../webpack/webpack.config.dev';
 import renderRouter from './renderRouter';
@@ -53,6 +54,12 @@ if (isProduction) {
 
 app.get('/favicon.ico', function (req, res) {
 	res.sendStatus(200);
+});
+
+app.get('/api/states', function (req, res) {
+	const obj = JSON.parse(fs.readFileSync(path.join(__dirname, '../api/valores.json'), 'utf8'));
+	res.setHeader('Content-Type', 'application/json');
+	res.send(obj);
 });
 
 renderRouter(app);
