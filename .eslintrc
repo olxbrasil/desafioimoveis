@@ -30,7 +30,8 @@
 				"SwitchCase": 1
 			}
 		],
-		"no-tabs": 0
+		"no-tabs": 0,
+		"react/no-unused-prop-types":0
 	},
 	"settings": {
 		"import/resolver": {

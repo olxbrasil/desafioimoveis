@@ -5,6 +5,7 @@ const webpack = require('webpack'),
 	FlowStatusWebpackPlugin = require('flow-status-webpack-plugin'),
 	autoprefixer = require('autoprefixer'),
 	mqpacker = require("css-mqpacker"),
+	jeet = require('jeet'),
 	project_path = path.join(__dirname, '../app'),
 	dist_path = path.join(__dirname, '../public');
 
@@ -24,7 +25,10 @@ const config = {
 		}
 	},
 	plugins: [
-		new CleanWebpackPlugin(['public'], { root: path.resolve(__dirname, '..'), verbose: true }),
+		new CleanWebpackPlugin(['public'], {
+			root: path.resolve(__dirname, '..'),
+			verbose: true
+		}),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, '../views/index.ejs'),
@@ -38,16 +42,13 @@ const config = {
 		})
 	],
 	module: {
-		preLoaders: [
-			{
-				test: /\.js$/,
-				loaders: ['eslint'],
-				// define an exclude so we check just the files we need
-				exclude: [/(node_modules)/, /\*spec.js/]
-			}
-		],
-		loaders: [
-			{
+		preLoaders: [{
+			test: /\.js$/,
+			loaders: ['eslint'],
+			// define an exclude so we check just the files we need
+			exclude: [/(node_modules)/, /\*spec.js/]
+		}],
+		loaders: [{
 				test: /\.js$/,
 				exclude: [
 					/(node_modules)/, /\*spec.js/
@@ -78,7 +79,12 @@ const config = {
 			}
 		]
 	},
-	postcss: [autoprefixer({ browsers: ['last 2 versions'] }), mqpacker()],
+	postcss: [autoprefixer({
+		browsers: ['last 2 versions']
+	}), mqpacker()],
+	stylus: {
+		use: [jeet()]
+	},
 };
 
 module.exports = config;
