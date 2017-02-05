@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import fsaThunkMiddleware from 'redux-fsa-thunk';
 
 import allReducers from '../reducers';
 
 export default function configureStore(initialState) {
 
-	const middleware = applyMiddleware(thunk);
+	const middleware = applyMiddleware(fsaThunkMiddleware);
 	return createStore(allReducers, initialState, middleware);
 }

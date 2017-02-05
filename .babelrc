@@ -10,7 +10,8 @@
 		"react-html-attrs",
 		"transform-class-properties",
 		"react-hot-loader/babel",
-		"transform-flow-strip-types"
+		"transform-flow-strip-types",
+		"transform-runtime"
 	],
 	"env": {
 		"test": {

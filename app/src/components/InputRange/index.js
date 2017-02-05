@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import numeral from '../../helper/numeral';
+import numeral from '../../helpers/numeral';
 
 type Props = {
 	label: { before: string, after: string } | string,
@@ -40,6 +40,8 @@ class InputRange extends Component {
 		this.setState({ value });
 		this.props.onChange(value, name);
 	};
+
+	formateValueToShow: () => string;
 
 	formateValueToShow = () => {
 		const { props, state } = this;
