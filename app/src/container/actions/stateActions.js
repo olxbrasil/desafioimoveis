@@ -13,6 +13,7 @@ const actions = createActions({
 		const data = await StateController.getStates();
 		dispatch(fetchStateSuccess(data));
 	}),
+	[actionTypes.CHANGE_STATE]: name => name,
 });
 
 export default {
