@@ -26,13 +26,22 @@ describe('<InputRange />', () => {
 	it('Should have teste inside of Label', () => {
 		const wrapper = shallow(<InputRange {...props} />);
 		const label = wrapper.find('label');
-		expect(label).to.have.text('Teste');
+		expect(label).to.have.text('Teste 0');
 	});
 
 	it('Should have teste inside of complex Label', () => {
 		props.label = { before: 'Teste', after: 'GG' };
 		const wrapper = shallow(<InputRange {...props} />);
 		const label = wrapper.find('label');
-		expect(label).to.have.text('Teste GG');
+		expect(label).to.have.text('Teste 0 GG');
+	});
+
+	it('Should have teste inside of complex Label with number format', () => {
+		props.label = { before: 'Teste', after: 'GG' };
+		props.defaultValue = '300';
+		props.formatNumber = '0,0[.]00';
+		const wrapper = shallow(<InputRange {...props} />);
+		const label = wrapper.find('label');
+		expect(label).to.have.text('Teste 300 GG');
 	});
 });
