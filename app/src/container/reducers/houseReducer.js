@@ -15,8 +15,8 @@ type State = {
 const initialState = {
 	buy: 0,
 	rent: 0,
-	livePerYear: 0,
-	taxForYear: 0,
+	livePerYear: 10,
+	taxForYear: 115,
 };
 
 const reducer = handleAction(actionTypes.CHANGE_VALUE, (state: State = initialState, action) => ({

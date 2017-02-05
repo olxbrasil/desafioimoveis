@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import numeral from '../../helper/numeral';
+import numeral from '../../helpers/numeral';
+
+import './InputRange.styl';
 
 type Props = {
 	label: { before: string, after: string } | string,
@@ -26,14 +28,21 @@ class InputRange extends Component {
 	constructor(props: Props) {
 		super(props);
 		this.state = {
-			value: typeof props.defaultValue === 'undefined' ? '' : props.defaultValue.toString(),
+			value: this.getDefaultvalue(props),
 		};
 	}
 
 	state: State;
-	props: Props;
 
-	handleChange: (event: Object) => void;
+	componentWillReceiveProps(nextProps: Props) {
+		if (this.props.defaultValue !== nextProps.defaultValue) {
+			this.setState({ value: this.getDefaultvalue(nextProps) });
+		}
+	}
+
+	getDefaultvalue = (props: Props): string => (typeof props.defaultValue === 'undefined' ? '' : props.defaultValue.toString());
+
+	props: Props;
 
 	handleChange = (event: Object) => {
 		const { name, value } = event.target;
@@ -41,32 +50,31 @@ class InputRange extends Component {
 		this.props.onChange(value, name);
 	};
 
-	formateValueToShow = () => {
+	formateValueToShow = (): string => {
 		const { props, state } = this;
 		if (props.formatNumber !== 'undefined') return numeral(state.value).format(props.formatNumber);
 		return state.value;
 	}
-
-	renderLabel: () => any;
 
 	renderLabel = () => {
 		const { props } = this;
 		const value = this.formateValueToShow();
 		if (typeof props.label === 'object') {
 			return (
-				<label htmlFor={props.name}>
+				<label htmlFor={props.name} className="form-grour__label">
 					{props.label.before} {value} {props.label.after}
 				</label>
 			);
 		}
-		return <label htmlFor={props.name}>{props.label} {value}</label>;
+		return <label className="form-grour__label" htmlFor={props.name}>{props.label} {value}</label>;
 	}
 
 	render() {
 		return (
-			<div>
+			<div className="form-group">
 				{this.renderLabel()}
 				<input
+					className="form-grour__input input-range"
 					type="range"
 					max={this.props.max}
 					min={this.props.min}

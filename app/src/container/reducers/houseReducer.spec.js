@@ -13,8 +13,8 @@ describe('houseReducer', () => {
 		).to.eql({
 			buy: 0,
 			rent: 0,
-			livePerYear: 0,
-			taxForYear: 0,
+			livePerYear: 10,
+			taxForYear: 115,
 		});
 	});
 
@@ -30,9 +30,8 @@ describe('houseReducer', () => {
 		).to.eql({
 			buy: 100,
 			rent: 0,
-			livePerYear: 0,
-			taxForYear: 0,
+			livePerYear: 10,
+			taxForYear: 115,
 		});
 	});
-
 });
