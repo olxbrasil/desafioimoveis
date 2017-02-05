@@ -29,14 +29,15 @@ class InputRange extends Component {
 	renderLabel: () => Object;
 
 	renderLabel = () => {
-		if (typeof this.props.label === 'object') {
+		const { props } = this;
+		if (typeof props.label === 'object') {
 			return (
-				<label htmlFor={this.props.name}>{
-					this.props.label.before} {this.props.label.after}
+				<label htmlFor={props.name}>
+					{props.label.before} {props.label.after}
 				</label>
 			);
 		}
-		return <label htmlFor={this.props.name}>{this.props.label}</label>;
+		return <label htmlFor={props.name}>{props.label}</label>;
 	}
 
 	render() {
