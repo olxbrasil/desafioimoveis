@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import numeral from '../../helpers/numeral';
 
+import './InputRange.styl';
+
 type Props = {
 	label: { before: string, after: string } | string,
 	max: string,
@@ -59,19 +61,20 @@ class InputRange extends Component {
 		const value = this.formateValueToShow();
 		if (typeof props.label === 'object') {
 			return (
-				<label htmlFor={props.name}>
+				<label htmlFor={props.name} className="form-grour__label">
 					{props.label.before} {value} {props.label.after}
 				</label>
 			);
 		}
-		return <label htmlFor={props.name}>{props.label} {value}</label>;
+		return <label className="form-grour__label" htmlFor={props.name}>{props.label} {value}</label>;
 	}
 
 	render() {
 		return (
-			<div>
+			<div className="form-group">
 				{this.renderLabel()}
 				<input
+					className="form-grour__input input-range"
 					type="range"
 					max={this.props.max}
 					min={this.props.min}

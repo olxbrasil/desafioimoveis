@@ -22,6 +22,7 @@ type Props = {
 	states: [],
 	selectedBuy: number,
 	selectedRent: number,
+	selectedState: string,
 };
 
 class Home extends Component {
@@ -31,13 +32,21 @@ class Home extends Component {
 	componentWillMount() {
 		this.props.stateActions.fetchStates();
 	}
+
+	componentWillReceiveProps(nextProps: Props) {
+		if (this.props.selectedState !== nextProps.selectedState) {
+			this.props.houseActions.changeValue('buy', parseFloat(nextProps.selectedBuy));
+			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
+		}
+	}
+
 	props: Props;
 
 	handleOnChange = (value: string | number, name: string) => {
 		this.props.houseActions.changeValue(name, parseFloat(value));
 	}
 
-	handleOnChangeSelect = (event:Object) => {
+	handleOnChangeSelect = (event: Object) => {
 		this.props.stateActions.changeState(event.target.value);
 	}
 
@@ -45,8 +54,8 @@ class Home extends Component {
 		const { states } = this.props;
 		if (states.length) {
 			return (
-				<div>
-					<label htmlFor="state">Selecione seu Estado</label>
+				<div className="form-group">
+					<label className="form-grour__label" htmlFor="state">Selecione seu Estado</label>
 					<select onChange={this.handleOnChangeSelect}>
 						<option key="" value="">Selecione..</option>
 						{states.map(state => <option key={state.name} value={state.name}>{state.name}</option>)}
@@ -60,14 +69,16 @@ class Home extends Component {
 	render() {
 		const { props } = this;
 		return (
-			<fieldset>
-				{this.renderSelect()}
-				<legend>Comprar ou Alugar ?</legend>
-				<InputRange name="rent" min="100" max="100000" formatNumber="0,0[.]00" defaultValue={props.selectedRent} label="Valor Alugado Por Mês: R$ " onChange={this.handleOnChange} />
-				<InputRange name="buy" min="100000" max="2000000" formatNumber="0,0[.]00" defaultValue={props.selectedBuy} label="Valor do para Compra: R$ " onChange={this.handleOnChange} />
-				<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label={{ before: 'Quanto tempo você irar morar', after: 'ano(s)' }} onChange={this.handleOnChange} />
-				<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="taxa de Juros Anual" onChange={this.handleOnChange} />
-			</fieldset>
+			<section className="wrapper">
+				<fieldset>
+					<legend>Comprar ou Alugar ?</legend>
+					{this.renderSelect()}
+					<InputRange name="rent" min="100" max="100000" formatNumber="0,0[.]00" defaultValue={props.selectedRent} label="Valor Alugado Por Mês: R$ " onChange={this.handleOnChange} />
+					<InputRange name="buy" min="100000" max="2000000" formatNumber="0,0[.]00" defaultValue={props.selectedBuy} label="Valor do para Compra: R$ " onChange={this.handleOnChange} />
+					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label={{ before: 'Quanto tempo você irar morar', after: 'ano(s)' }} onChange={this.handleOnChange} />
+					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="taxa de Juros Anual" onChange={this.handleOnChange} />
+				</fieldset>
+			</section>
 		);
 	}
 }
