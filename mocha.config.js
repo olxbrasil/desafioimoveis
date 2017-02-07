@@ -2,24 +2,28 @@ let chai = require('chai'),
 	chaiEnzyme = require('chai-enzyme'),
 	hook = require('css-modules-require-hook'),
 	path = require('path'),
-	stylus = require('stylus'),
+	sass = require('node-sass'),
 	jsdom = require('jsdom').jsdom;
 
-chai.use(chaiEnzyme());
-
 hook({
-	extensions: ['.styl'],
+	extensions: ['.scss'],
 	generateScopedName: '[local]',
-	preprocessCss: function (css, filename) {
-		return stylus(css)
-			.set('filename', filename)
-			.render();
+	preprocessCss: function (css, filepath) {
+		var result = sass.renderSync({
+			data: css,
+			includePaths: [path.resolve(filepath, '..')]
+		});
+
+		return result.css;
 	},
 });
 
 global.should = chai.should();
 global.assert = chai.assert;
 global.expect = chai.expect;
+
+
+chai.use(chaiEnzyme());
 
 global.document = jsdom('');
 global.window = document.defaultView;

@@ -1,13 +1,23 @@
+// @flow
 import {
-	createAction,
+	createActions,
 } from 'redux-actions';
 
+import {
+	getMonthlyTaxByAnnualTax,
+	getInstallment,
+} from '../../helpers/Math';
 import actionTypes from '../actionTypes';
 
-const changeValue = createAction(actionTypes.CHANGE_VALUE, (key, value) => ({
-	key,
-	value,
-}));
+const changeValue = createActions({
+	[actionTypes.CHANGE_VALUE]: (key: string, value: number) => ({
+		key,
+		value,
+	}),
+	[actionTypes.CALCULATE]: () => {
+
+	},
+});
 
 export default {
 	changeValue,

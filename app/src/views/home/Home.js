@@ -7,6 +7,8 @@ import houseActions from '../../container/actions/houseActions';
 import stateActions from '../../container/actions/stateActions';
 import InputRange from '../../components/InputRange';
 
+import './Home.scss';
+
 type Props = {
 	buy: number,
 	rent: number,
@@ -70,13 +72,13 @@ class Home extends Component {
 		const { props } = this;
 		return (
 			<section className="wrapper">
-				<fieldset>
+				<fieldset >
 					<legend>Comprar ou Alugar ?</legend>
 					{this.renderSelect()}
 					<InputRange name="rent" min="100" max="100000" formatNumber="0,0[.]00" defaultValue={props.selectedRent} label="Valor Alugado Por Mês: R$ " onChange={this.handleOnChange} />
 					<InputRange name="buy" min="100000" max="2000000" formatNumber="0,0[.]00" defaultValue={props.selectedBuy} label="Valor do para Compra: R$ " onChange={this.handleOnChange} />
 					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label={{ before: 'Quanto tempo você irar morar', after: 'ano(s)' }} onChange={this.handleOnChange} />
-					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="taxa de Juros Anual" onChange={this.handleOnChange} />
+					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="Taxa de Juros Anual" onChange={this.handleOnChange} />
 				</fieldset>
 			</section>
 		);

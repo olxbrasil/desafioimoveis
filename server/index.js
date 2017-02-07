@@ -18,7 +18,6 @@ const host = config.devServer.host,
 	isDevelopment = process.env.NODE_ENV !== 'production',
 	isProduction = process.env.NODE_ENV === 'production';
 
-
 app.engine('ejs', require('ejs').__express);
 app.set('view engine', 'ejs');
 app.use(express.static(config.output.path));

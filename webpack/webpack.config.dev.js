@@ -22,12 +22,12 @@ config.plugins = config.plugins.concat([
 ]);
 
 config.module.loaders.unshift({
-	test: /\.styl/,
+	test: /\.scss/,
 	loaders: ['style',
 		'css?sourceMap&modules&importLoaders=1&localIdentName=[local]',
 		'postcss',
 		'resolve-url',
-		'stylus?sourceMap']
+		'sass?sourceMap']
 }, {
 	test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
 	loader: 'url',

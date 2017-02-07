@@ -82,9 +82,6 @@ const config = {
 	postcss: [autoprefixer({
 		browsers: ['last 2 versions']
 	}), mqpacker()],
-	stylus: {
-		use: [jeet()]
-	},
 };
 
 module.exports = config;

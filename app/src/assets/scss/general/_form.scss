@@ -1,0 +1,12 @@
+.form-group {
+	@include column(1, $cycle:1);
+	padding-bottom: 10px;
+	&__label,
+	&__input {
+		@include span(1);
+	}
+	&__label{
+		padding-bottom: 10px;
+	}
+
+}

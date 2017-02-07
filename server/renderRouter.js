@@ -3,6 +3,7 @@ import { match } from 'react-router';
 import { renderToString } from 'react-dom/server';
 import { RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
+import 'css-modules-require-hook/preset';
 
 import routes from '../app/src/routes';
 import configureStore from '../app/src/container/store';
