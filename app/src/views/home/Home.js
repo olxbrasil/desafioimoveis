@@ -7,7 +7,7 @@ import houseActions from '../../container/actions/houseActions';
 import stateActions from '../../container/actions/stateActions';
 import InputRange from '../../components/InputRange';
 
-import './Home.scss';
+// import './Home.scss';
 
 type Props = {
 	buy: number,
@@ -15,7 +15,8 @@ type Props = {
 	livePerYear: number,
 	taxForYear: number,
 	houseActions: {
-		changeValue: () => void,
+		changeValue: (key: string, value: number) => void,
+		calculate: (buy: number, year: number, tax: number) => void,
 	},
 	stateActions: {
 		fetchStates: () => void,
@@ -39,6 +40,13 @@ class Home extends Component {
 		if (this.props.selectedState !== nextProps.selectedState) {
 			this.props.houseActions.changeValue('buy', parseFloat(nextProps.selectedBuy));
 			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
+			this.props.houseActions.calculate(
+				nextProps.selectedBuy,
+				nextProps.livePerYear,
+				nextProps.taxForYear
+			);
+		} else {
+			this.props.houseActions.calculate(nextProps.buy, nextProps.livePerYear, nextProps.taxForYear);
 		}
 	}
 
