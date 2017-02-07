@@ -8,6 +8,7 @@ coverage
 /npm-debug.log
 .idea
 .vscode
+.nyc_output
 # Logs
 logs
 *.log

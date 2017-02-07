@@ -18,7 +18,7 @@ describe('<InputRange />', () => {
 		const input = wrapper.find('input');
 		expect(input).to.have.prop('max', '40');
 		expect(input).to.have.prop('min', '20');
-		expect(input).to.have.prop('defaultValue', '0');
+		expect(input).to.have.prop('value', '0');
 		expect(input).to.have.prop('step', '0');
 		expect(input).to.have.prop('name', 'teste');
 	});
