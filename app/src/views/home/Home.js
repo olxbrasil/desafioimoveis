@@ -40,11 +40,6 @@ class Home extends Component {
 		if (this.props.selectedState !== nextProps.selectedState) {
 			this.props.houseActions.changeValue('buy', parseFloat(nextProps.selectedBuy));
 			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
-			this.props.houseActions.calculate(
-				nextProps.selectedBuy,
-				nextProps.livePerYear,
-				nextProps.taxForYear
-			);
 		} else {
 			this.props.houseActions.calculate(nextProps.buy, nextProps.livePerYear, nextProps.taxForYear);
 		}

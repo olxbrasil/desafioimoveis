@@ -20,4 +20,15 @@ describe('houseActions', () => {
 		store.dispatch(houseActions.changeValue('livePerYear', 10));
 		store.getActions().should.have.to.eql(expectedActions);
 	});
+	it('Should have return CALCULATE', () => {
+		const expectedActions = [{
+			type: actionTypes.CALCULATE,
+			payload: 5033,
+		}];
+		const store = mockStore({
+			payload: 0,
+		});
+		store.dispatch(houseActions.calculate(1028184, 19, 11.8));
+		store.getActions().should.have.to.eql(expectedActions);
+	});
 });
