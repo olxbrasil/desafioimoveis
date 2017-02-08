@@ -44,4 +44,33 @@ describe('<InputRange />', () => {
 		const label = wrapper.find('label');
 		expect(label).to.have.text('Teste 300 GG');
 	});
+
+	it('Should have teste inside of complex Label with number format Custom Percente', () => {
+		props.label = { before: 'Teste', after: 'GG' };
+		props.defaultValue = '25';
+		props.formatNumber = '0cp';
+		const wrapper = shallow(<InputRange {...props} />);
+		const label = wrapper.find('label');
+		expect(label).to.have.text('Teste 2.5% GG');
+	});
+
+	it('Should have teste inside of defaultValue and formatNumber is undefined', () => {
+		props.label = { before: 'Teste', after: 'GG' };
+		props.defaultValue = undefined;
+		props.formatNumber = undefined;
+		const wrapper = shallow(<InputRange {...props} />);
+		const label = wrapper.find('label');
+		expect(label).to.have.text('Teste GG');
+	});
+
+	it('Should have teste inside of defaultValue and formatNumber is undefined', () => {
+		props.label = { before: 'Teste', after: 'GG' };
+		props.defaultValue = undefined;
+		props.formatNumber = undefined;
+		const wrapper = shallow(<InputRange {...props} />);
+		wrapper.setProps({defaultValue:10});
+		const input = wrapper.find('input');
+		expect(input).to.have.prop('value', '10');
+
+	});
 });

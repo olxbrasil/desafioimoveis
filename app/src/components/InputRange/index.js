@@ -19,12 +19,11 @@ type State = {
 	value: string,
 }
 
-class InputRange extends Component {
+const defaultProps = {
+	step: '1',
+};
 
-	static defaultProps = {
-		step: '1',
-	};
-
+class InputRange extends Component<defaultProps, Props, State> {
 	constructor(props: Props) {
 		super(props);
 		this.state = {
@@ -52,7 +51,7 @@ class InputRange extends Component {
 
 	formateValueToShow = (): string => {
 		const { props, state } = this;
-		if (props.formatNumber !== 'undefined') return numeral(state.value).format(props.formatNumber);
+		if (typeof props.formatNumber !== 'undefined') return numeral(state.value).format(props.formatNumber);
 		return state.value;
 	}
 
