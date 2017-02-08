@@ -15,7 +15,7 @@ describe('stateActions', () => {
 	afterEach(() => {
 		moxios.uninstall();
 	});
-	it('Should have return CHANGE_VALUE', (done) => {
+	it('Should have return FETCH_STATES_SUCCESS', (done) => {
 		moxios.wait(() => {
 			let request = moxios.requests.mostRecent();
 			request.respondWith({
@@ -138,10 +138,22 @@ describe('stateActions', () => {
 		store.dispatch(stateActions.fetchStates())
 			.then(() => {
 				const resp = store.getActions();
+				resp[0].should.have.property('type', actionTypes.FETCH_STATES);
 				resp[1].should.have.property('type', actionTypes.FETCH_STATES_SUCCESS);
 				resp[1].should.have.property('payload').not.length(0);
 				done();
 			})
 			.catch(error => done(error));
+	});
+	it('Should have payload equal Rj', () => {
+		const store = mockStore({
+			payload: '',
+		});
+		const expectedActions = [{
+			type: 'CHANGE_STATE',
+			payload: 'Rj',
+		}];
+		store.dispatch(stateActions.changeState('Rj'));
+		store.getActions().should.have.to.eql(expectedActions);
 	});
 });

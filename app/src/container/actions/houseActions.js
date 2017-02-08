@@ -6,19 +6,21 @@ import {
 import {
 	getMonthlyTaxByAnnualTax,
 	getInstallment,
-} from '../../helpers/Math';
+} from '../../../core/helpers/Math';
 import actionTypes from '../actionTypes';
 
-const changeValue = createActions({
+const actions = createActions({
 	[actionTypes.CHANGE_VALUE]: (key: string, value: number) => ({
 		key,
 		value,
 	}),
-	[actionTypes.CALCULATE]: () => {
-
+	[actionTypes.CALCULATE]: (buy: number, year: number, tax: number) => {
+		const newTax = getMonthlyTaxByAnnualTax(tax / 10);
+		const totalBuy = getInstallment(buy, newTax, year * 12);
+		return totalBuy;
 	},
 });
 
 export default {
-	changeValue,
+	...actions,
 };

@@ -5,7 +5,9 @@ import numeral from '../../helpers/numeral';
 import './InputRange.scss';
 
 type Props = {
-	label: { before: string, after: string } | string,
+	label: string,
+	prefix?: string,
+	sufix?: string,
 	max: string,
 	min: string,
 	defaultValue?: number,
@@ -19,9 +21,12 @@ type State = {
 	value: string,
 }
 
-class InputRange extends Component {
+type DefaultProps = {
+	step: string,
+}
 
-	static defaultProps = {
+class InputRange extends Component<DefaultProps, Props, State> {
+	static defaultProps: DefaultProps = {
 		step: '1',
 	};
 
@@ -52,37 +57,33 @@ class InputRange extends Component {
 
 	formateValueToShow = (): string => {
 		const { props, state } = this;
-		if (props.formatNumber !== 'undefined') return numeral(state.value).format(props.formatNumber);
+		if (typeof props.formatNumber !== 'undefined') return numeral(state.value).format(props.formatNumber);
 		return state.value;
 	}
 
 	renderLabel = () => {
 		const { props } = this;
-		const value = this.formateValueToShow();
-		if (typeof props.label === 'object') {
-			return (
-				<label htmlFor={props.name} className="form-group__label input-range__label">
-					{props.label.before} {value} {props.label.after}
-				</label>
-			);
-		}
-		return <label className="form-group__label input-range__label" htmlFor={props.name}>{props.label} {value}</label>;
+		return <label className="form-group__label input-range__label" htmlFor={props.name}>{props.label}</label>;
 	}
 
 	render() {
+		const { props } = this;
 		return (
 			<div className="form-group">
 				{this.renderLabel()}
 				<input
 					className="form-group__input input-range"
 					type="range"
-					max={this.props.max}
-					min={this.props.min}
+					max={props.max}
+					min={props.min}
 					value={this.state.value}
-					step={this.props.step}
-					name={this.props.name}
+					step={props.step}
+					name={props.name}
 					onChange={this.handleChange}
 				/>
+				<div className="input-range__display">
+					{props.prefix} {this.formateValueToShow()} {props.sufix}
+				</div>
 			</div>
 		);
 	}

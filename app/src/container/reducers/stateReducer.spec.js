@@ -36,4 +36,80 @@ describe('stateReducer', () => {
 			}],
 		});
 	});
+	it('Should return selected Buy and Rent with value', () => {
+		expect(
+			stateReducer({
+				states: [{
+						name: 'AL',
+						buy: 53600,
+						rent: 670
+					},
+					{
+						name: 'AP',
+						buy: 48000,
+						rent: 600
+					}
+				],
+				selectedState: '',
+				selectedBuy: 0,
+				selectedRent: 0,
+			}, {
+				type: actionTypes.CHANGE_STATE,
+				payload: 'AL',
+			})
+		).to.deep.eql({
+			selectedState: 'AL',
+			selectedBuy: 53600,
+			selectedRent: 670,
+			states: [{
+					name: 'AL',
+					buy: 53600,
+					rent: 670
+				},
+				{
+					name: 'AP',
+					buy: 48000,
+					rent: 600
+				}
+			],
+		});
+	});
+	it('Should return selected Buy and Rent without value', () => {
+		expect(
+			stateReducer({
+				states: [{
+						name: 'AL',
+						buy: 53600,
+						rent: 670
+					},
+					{
+						name: 'AP',
+						buy: 48000,
+						rent: 600
+					}
+				],
+				selectedState: '',
+				selectedBuy: 0,
+				selectedRent: 0,
+			}, {
+				type: actionTypes.CHANGE_STATE,
+				payload: '',
+			})
+		).to.deep.eql({
+			selectedState: '',
+			selectedBuy: 0,
+			selectedRent: 0,
+			states: [{
+					name: 'AL',
+					buy: 53600,
+					rent: 670
+				},
+				{
+					name: 'AP',
+					buy: 48000,
+					rent: 600
+				}
+			],
+		});
+	});
 });
