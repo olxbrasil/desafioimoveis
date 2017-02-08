@@ -1,4 +1,14 @@
+*{
+	box-sizing: border-box;
+}
+
+html,body,#app{
+	width: 100%;
+	overflow-x: hidden;
+}
+
 .wrapper{
 	@include center(600px);
 	margin-top: 50px;
+	padding: 10px 20px;
 }
