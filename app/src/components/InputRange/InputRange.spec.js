@@ -36,13 +36,13 @@ describe('<InputRange />', () => {
 		props.formatNumber = '0,0[.]00';
 		const wrapper = shallow(<InputRange {...props} />);
 		const div = wrapper.find('.input-range__display');
-		expect(div).to.have.text(' 300 ');
+		expect(div).to.have.text('300');
 	});
 
 	it('Should have teste mask with number format using prefix and sufix', () => {
 		props.defaultValue = '300';
 		props.formatNumber = '0,0[.]00';
-		const wrapper = shallow(<InputRange {...props} prefix="R$" sufix="anos" />);
+		const wrapper = shallow(<InputRange {...props} prefix="R$ " sufix=" anos" />);
 		const div = wrapper.find('.input-range__display');
 		expect(div).to.have.text('R$ 300 anos');
 	});
@@ -52,7 +52,7 @@ describe('<InputRange />', () => {
 		props.formatNumber = '0cp';
 		const wrapper = shallow(<InputRange {...props} />);
 		const div = wrapper.find('.input-range__display');
-		expect(div).to.have.text(' 2.5% ');
+		expect(div).to.have.text('2.5%');
 	});
 
 	it('Should have teste inside of defaultValue and formatNumber is undefined', () => {
@@ -60,7 +60,7 @@ describe('<InputRange />', () => {
 		props.formatNumber = undefined;
 		const wrapper = shallow(<InputRange {...props} />);
 		const div = wrapper.find('.input-range__display');
-		expect(div).to.have.text(' ');
+		expect(div).to.have.text('');
 	});
 
 	it('Should have teste inside of defaultValue and formatNumber is undefined', () => {

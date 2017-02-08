@@ -1,4 +1,5 @@
 import numeral from 'numeral';
+import 'numeral/locales';
 
 numeral.register('format', 'percentageCustom', {
 	regexps: {
@@ -7,5 +8,7 @@ numeral.register('format', 'percentageCustom', {
 	},
 	format: value => `${(value / 10).toString()}%`,
 });
+
+numeral.locale('pt-br');
 
 export default numeral;

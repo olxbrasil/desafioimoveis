@@ -82,7 +82,7 @@ class InputRange extends Component<DefaultProps, Props, State> {
 					onChange={this.handleChange}
 				/>
 				<div className="input-range__display">
-					{props.prefix} {this.formateValueToShow()} {props.sufix}
+					{props.prefix}{this.formateValueToShow()}{props.sufix}
 				</div>
 			</div>
 		);

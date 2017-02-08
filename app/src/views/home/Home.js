@@ -76,9 +76,9 @@ class Home extends Component {
 				<h1 className="home__titel">Comprar ou Alugar ?</h1>
 				{this.renderSelect()}
 				<fieldset className="home__wrapper-ranger" >
-					<InputRange name="rent" min="100" max="100000" formatNumber="0,0[.]00" defaultValue={props.selectedRent} label="Valor Alugado Por Mês." prefix="R$" onChange={this.handleOnChangeRange} />
-					<InputRange name="buy" min="100000" max="2000000" formatNumber="0,0[.]00" defaultValue={props.selectedBuy} label="Valor do para Compra." prefix="R$" onChange={this.handleOnChangeRange} />
-					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label="Quanto tempo você irar morar?" sufix="ano(s)" onChange={this.handleOnChangeRange} />
+					<InputRange name="rent" min="100" max="100000" formatNumber="0,0[.]00" defaultValue={props.selectedRent} label="Valor Alugado Por Mês." prefix="R$ " onChange={this.handleOnChangeRange} />
+					<InputRange name="buy" min="100000" max="2000000" formatNumber="0,0[.]00" defaultValue={props.selectedBuy} label="Valor do para Compra." prefix="R$ " onChange={this.handleOnChangeRange} />
+					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label="Quanto tempo você irar morar?" sufix=" ano(s)" onChange={this.handleOnChangeRange} />
 					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="Taxa de Juros Anual." onChange={this.handleOnChangeRange} />
 				</fieldset>
 			</section>
