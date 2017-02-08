@@ -1,0 +1,9 @@
+@import 'node_modules/react-select/scss/default';
+@import 'node_modules/jeet/scss/index';
+.form-grour__input.Select {
+	@include span(1/2);
+}
+.form-grour__label{
+	@include span(1);
+	padding-bottom: 10px;
+}
