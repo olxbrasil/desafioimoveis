@@ -36,7 +36,7 @@ class Home extends Component {
 	static fetchData = ({ store }) => store.dispatch(stateActions.fetchStates());
 
 	componentWillMount() {
-		if (this.props.states.length) this.props.stateActions.fetchStates();
+		this.props.stateActions.fetchStates();
 	}
 
 	componentWillReceiveProps(nextProps: Props) {

@@ -2,6 +2,7 @@
 import React from 'react';
 
 import './Chart.scss';
+import number from '../../helpers/numeral';
 
 type Props = {
 	rent: number,
@@ -17,10 +18,10 @@ const Chart = (props: Props) => {
 	return (
 		<div className="chart__wrapper">
 			<div className={`chart__column ${rentCss}`} style={{ height: `${rentHeight}%` }}>
-				{rent}
+				{number(rent).format('$0,0[.]00')}
 			</div>
 			<div className={`chart__column ${installmentCss}`} style={{ height: `${installmentHeight}%` }}>
-				{installment}
+				{number(installment).format('$0,0[.]00')}
 			</div>
 		</div>
 	);

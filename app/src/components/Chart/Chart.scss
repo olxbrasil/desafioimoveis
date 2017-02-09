@@ -12,14 +12,19 @@
 .chart__column {
 	flex-direction: column;
 	height: 0;
+	min-height: 8%;
 	@include column(1/2);
 	transition: height 2s,background 3s;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 	&-expensive {
-		background: $greeyColor;
+		background: $grayColor;
 	}
 	&-cheap {
 		background: $blueColor;
 	}
+	color: white;
+	padding-top: 10px;
+	font-weight: 400;
+	text-align: center;
 }
