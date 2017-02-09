@@ -88,9 +88,17 @@
 }
 
 .form-group__input.input-range{
-	@include column(2/3);
+	@include column(1);
+	@media (min-width:450px){
+		@include column(2/3);
+	}
+
 }
 .input-range__display{
-	@include column(1/3);
-	font-size: 20px
+	@include column(1);
+	font-weight: 300;
+	font-size: 32px;
+	@media (min-width:450px){
+		@include column(1/3);
+	}
 }
