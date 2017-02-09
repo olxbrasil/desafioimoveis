@@ -7,6 +7,7 @@ import WebpackHotMiddleware from 'webpack-hot-middleware';
 import opener from 'opener';
 import path from 'path';
 import fs from 'fs';
+import cors from 'cors';
 
 import config from '../webpack/webpack.config.dev';
 import renderRouter from './renderRouter';
@@ -21,6 +22,8 @@ const host = config.devServer.host,
 app.engine('ejs', require('ejs').__express);
 app.set('view engine', 'ejs');
 app.use(express.static(config.output.path));
+
+app.use(cors());
 
 
 if (isDevelopment) {

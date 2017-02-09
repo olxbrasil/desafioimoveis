@@ -1,4 +1,5 @@
 @import 'node_modules/jeet/scss/index';
+@import '../../assets/scss/general/_variable';
 .chart__wrapper {
 	@include span(1);
 	position: relative;
@@ -10,6 +11,15 @@
 
 .chart__column {
 	flex-direction: column;
-	max-height: 100vh;
+	height: 0;
 	@include column(1/2);
+	transition: height 2s,background 3s;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	&-expensive {
+		background: $greeyColor;
+	}
+	&-cheap {
+		background: $blueColor;
+	}
 }

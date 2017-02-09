@@ -36,16 +36,24 @@ class Home extends Component {
 	static fetchData = ({ store }) => store.dispatch(stateActions.fetchStates());
 
 	componentWillMount() {
-		this.props.stateActions.fetchStates();
+		if (this.props.states.length) this.props.stateActions.fetchStates();
 	}
 
 	componentWillReceiveProps(nextProps: Props) {
 		if (this.props.selectedState !== nextProps.selectedState) {
 			this.props.houseActions.changeValue('buy', parseFloat(nextProps.selectedBuy));
 			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
-		} else {
-			this.props.houseActions.calculate(nextProps.buy, nextProps.livePerYear, nextProps.taxForYear);
 		}
+
+		if (nextProps.rent === 0) {
+			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
+		}
+
+		this.props.houseActions.calculate(
+			nextProps.buy === 0 ? nextProps.selectedBuy : nextProps.buy,
+			nextProps.livePerYear,
+			nextProps.taxForYear
+		);
 	}
 
 	props: Props;
@@ -59,7 +67,7 @@ class Home extends Component {
 	}
 
 	renderSelect = () => {
-		const { states } = this.props;
+		const { states, selectedState } = this.props;
 		const options = states.map(state => ({ label: state.name, value: state.name }));
 
 		return (
@@ -67,6 +75,7 @@ class Home extends Component {
 				options={options}
 				onChange={this.handleOnChangeSelect}
 				clearable={false}
+				value={selectedState}
 			/>
 		);
 	};
