@@ -9,7 +9,7 @@ html,body,#app{
 }
 
 .wrapper{
-	@include center(600px);
-	margin-top: 50px;
+	@include center(800px);
+	margin-top: 10px;
 	padding: 10px 20px;
 }

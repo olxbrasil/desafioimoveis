@@ -1,6 +1,6 @@
 // @flow
 import {
-	handleAction,
+	handleActions,
 } from 'redux-actions';
 
 import actionTypes from '../actionTypes';
@@ -17,11 +17,18 @@ const initialState = {
 	rent: 0,
 	livePerYear: 10,
 	taxForYear: 115,
+	installment: 0,
 };
 
-const reducer = handleAction(actionTypes.CHANGE_VALUE, (state: State = initialState, action) => ({
-	...state,
-	[action.payload.key]: action.payload.value,
-}), initialState);
+const reducer = handleActions({
+	[actionTypes.CHANGE_VALUE]: (state: State = initialState, action) => ({
+		...state,
+		[action.payload.key]: action.payload.value,
+	}),
+	[actionTypes.CALCULATE]: (state: State = initialState, action) => ({
+		...state,
+		installment: action.payload,
+	}),
+}, initialState);
 
 export default reducer;

@@ -7,6 +7,7 @@ import houseActions from '../../container/actions/houseActions';
 import stateActions from '../../container/actions/stateActions';
 import InputRange from '../../components/InputRange';
 import SelectCustom from '../../components/SelectCustom';
+import Chart from '../../components/Chart';
 
 import './Home.scss';
 
@@ -15,6 +16,7 @@ type Props = {
 	rent: number,
 	livePerYear: number,
 	taxForYear: number,
+	installment: number,
 	houseActions: {
 		changeValue: (key: string, value: number) => void,
 		calculate: (buy: number, year: number, tax: number) => void,
@@ -81,6 +83,9 @@ class Home extends Component {
 					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label="Quanto tempo você irar morar?" sufix=" ano(s)" onChange={this.handleOnChangeRange} />
 					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="Taxa de Juros Anual." onChange={this.handleOnChangeRange} />
 				</fieldset>
+				<div className="home__wrapper-chart">
+					<Chart rent={props.rent} installment={props.installment} />
+				</div>
 			</section>
 		);
 	}

@@ -1,21 +1,31 @@
 @import 'node_modules/jeet/scss/index';
-.home__titel{
+.home__titel {
 	width: 100%;
 	font-size: 45px;
 	font-weight: 700;
 	margin-bottom: 20px;
 }
 
-.home__wrapper-ranger{
+.home__wrapper-ranger {
 	border: 1px solid black;
 	padding: 40px 20px;
-	margin-top: 30px;
+	margin-top: 20px;
 	border-radius: 2px;
-	@include span(1);
-	.form-group{
-		padding-bottom: 45px;
-		&:last-child{
+	@include column(1);
+	@media (min-width: 450px) {
+		@include column(2/3);
+	}
+	.form-group {
+		padding-bottom: 20px;
+		&:last-child {
 			padding-bottom: 0;
 		}
+	}
+}
+
+.home__wrapper-chart {
+	@include column(1);
+	@media (min-width: 450px) {
+		@include column(1/3);
 	}
 }
