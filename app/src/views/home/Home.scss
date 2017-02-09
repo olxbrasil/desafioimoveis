@@ -25,6 +25,9 @@
 
 .home__wrapper-chart {
 	@include column(1);
+	margin-top: 20px;
+	max-height: 450px;
+	height: 100vh;
 	@media (min-width: 450px) {
 		@include column(1/3);
 	}

@@ -1,0 +1,15 @@
+@import 'node_modules/jeet/scss/index';
+.chart__wrapper {
+	@include span(1);
+	position: relative;
+	bottom: 0;
+	display: flex;
+	align-items: flex-end;
+	height: 100%;
+}
+
+.chart__column {
+	flex-direction: column;
+	max-height: 100vh;
+	@include column(1/2);
+}
