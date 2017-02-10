@@ -9,7 +9,10 @@ import {
 } from '../../../core/helpers/Math';
 import actionTypes from '../actionTypes';
 
-const actions = createActions({
+export const {
+	changeValue,
+	calculate,
+} = createActions({
 	[actionTypes.CHANGE_VALUE]: (key: string, value: number) => ({
 		key,
 		value,
@@ -20,7 +23,3 @@ const actions = createActions({
 		return installment;
 	},
 });
-
-export default {
-	...actions,
-};

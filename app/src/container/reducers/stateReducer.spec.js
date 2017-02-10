@@ -26,9 +26,9 @@ describe('stateReducer', () => {
 				}],
 			})
 		).to.deep.eql({
-			selectedState: '',
-			selectedBuy: 0,
-			selectedRent: 0,
+			selectedState: 'RJ',
+			selectedBuy: 100,
+			selectedRent: 100,
 			states: [{
 				buy: 100,
 				name: 'RJ',

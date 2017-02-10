@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import houseActions from '../../container/actions/houseActions';
-import stateActions from '../../container/actions/stateActions';
+import * as houseActions from '../../container/actions/houseActions';
+import * as stateActions from '../../container/actions/stateActions';
 import InputRange from '../../components/InputRange';
 import SelectCustom from '../../components/SelectCustom';
 import Chart from '../../components/Chart';
@@ -31,7 +31,7 @@ type Props = {
 	selectedState: string,
 };
 
-class Home extends Component {
+export class Home extends Component {
 
 	static fetchData = ({ store }) => store.dispatch(stateActions.fetchStates());
 

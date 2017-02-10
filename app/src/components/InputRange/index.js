@@ -25,7 +25,7 @@ type DefaultProps = {
 	step: string,
 }
 
-class InputRange extends Component<DefaultProps, Props, State> {
+class InputRange extends Component {
 	static defaultProps: DefaultProps = {
 		step: '1',
 	};

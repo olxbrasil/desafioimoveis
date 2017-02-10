@@ -13,15 +13,17 @@ const Chart = (props: Props) => {
 	const { rent, installment } = props;
 	const rentHeight = rent > installment ? 100 : (100 * rent) / installment;
 	const installmentHeight = rent < installment ? 100 : (100 * installment) / rent;
-	const rentCss = rent > installment ? 'chart__column-expensive': 'chart__column-cheap';
-	const installmentCss = rent < installment ? 'chart__column-expensive': 'chart__column-cheap';
+	const rentCss = rent > installment ? 'chart__column-expensive' : 'chart__column-cheap';
+	const installmentCss = rent < installment ? 'chart__column-expensive' : 'chart__column-cheap';
 	return (
 		<div className="chart__wrapper">
 			<div className={`chart__column ${rentCss}`} style={{ height: `${rentHeight}%` }}>
-				{number(rent).format('$0,0[.]00')}
+				<p>Alugar</p>
+				<p>{number(rent).format('$0,0[.]00')}</p>
 			</div>
 			<div className={`chart__column ${installmentCss}`} style={{ height: `${installmentHeight}%` }}>
-				{number(installment).format('$0,0[.]00')}
+				<p>Comprar</p>
+				<p>{number(installment).format('$0,0[.]00')}</p>
 			</div>
 		</div>
 	);

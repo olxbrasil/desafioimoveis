@@ -1,6 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 
-import houseActions from './houseActions';
+import * as houseActions from './houseActions';
 import actionTypes from '../actionTypes';
 
 const mockStore = configureMockStore();
