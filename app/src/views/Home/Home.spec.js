@@ -4,7 +4,7 @@ import {
 } from 'enzyme';
 import sinon from 'sinon';
 
-import { Home } from './index';
+import { HomeDefault } from './index';
 import InputRange from '../../components/InputRange';
 import SelectCustom from '../../components/SelectCustom';
 import Chart from '../../components/Chart';
@@ -32,7 +32,7 @@ const props = {
 describe('<Home />', () => {
 	let wrapper;
 	beforeEach(() => {
-		wrapper = mount(<Home {...props} />);
+		wrapper = mount(<HomeDefault {...props} />);
 	});
 	it('Should have component <InputRange/>', () => {
 		expect(wrapper.find(InputRange)).to.have.length(4);
@@ -41,13 +41,13 @@ describe('<Home />', () => {
 		expect(wrapper.find(SelectCustom)).to.have.length(1);
 	});
 	it('Should have componentWillMount call', () => {
-		const spy = sinon.spy(Home.prototype, 'componentWillMount');
-		wrapper = mount(<Home {...props} />);
+		const spy = sinon.spy(HomeDefault.prototype, 'componentWillMount');
+		wrapper = mount(<HomeDefault {...props} />);
 		expect(spy.calledOnce).to.equal(true);
 	});
 	it('Should have componentWillReceiveProps call', () => {
-		const spy = sinon.spy(Home.prototype, 'componentWillReceiveProps');
-		wrapper = mount(<Home {...props} />);
+		const spy = sinon.spy(HomeDefault.prototype, 'componentWillReceiveProps');
+		wrapper = mount(<HomeDefault {...props} />);
 		expect(spy.calledOnce).to.equal(false);
 		wrapper.setProps({ buy: 10 });
 		expect(spy.calledOnce).to.equal(true);

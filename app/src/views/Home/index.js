@@ -31,7 +31,7 @@ type Props = {
 	selectedState: string,
 };
 
-export class Home extends Component {
+class Home extends Component {
 
 	static fetchData = ({ store }) => store.dispatch(stateActions.fetchStates());
 
@@ -62,7 +62,7 @@ export class Home extends Component {
 		this.props.houseActions.changeValue(name, parseFloat(value));
 	}
 
-	handleOnChangeSelect = ({ value }) => {
+	handleOnChangeSelect = ({ value }:Object) => {
 		this.props.stateActions.changeState(value);
 	}
 
@@ -110,5 +110,7 @@ function mapDispatchToProps(dispatch) {
 		stateActions: bindActionCreators(stateActions, dispatch),
 	};
 }
+
+export { Home as HomeDefault };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
