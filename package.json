@@ -30,6 +30,7 @@
     "server": "nodemon --exec babel-node server/index.js",
     "build": "webpack --config ./webpack/webpack.config.prod.js",
     "test": "mocha --opts mocha.opts \"./app/**/*.spec.js\"",
+	"prestart":"npm run build",
     "cover": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --opts mocha.opts \"./app/**/*.spec.js\"",
     "test:watch": "npm run test -- --watch"
   },

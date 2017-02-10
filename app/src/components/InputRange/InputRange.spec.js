@@ -70,6 +70,5 @@ describe('<InputRange />', () => {
 		wrapper.setProps({ defaultValue: 10 });
 		const input = wrapper.find('input');
 		expect(input).to.have.prop('value', '10');
-
 	});
 });
