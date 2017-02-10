@@ -1,0 +1,28 @@
+@import 'node_modules/jeet/scss/index';
+@import '../../assets/scss/general/_variable';
+.chart__wrapper {
+	@include span(1);
+	bottom: 0;
+	display: flex;
+	align-items:flex-end;
+	height: 100%;
+}
+
+.chart__column {
+	height: 0;
+	min-height: 12%;
+	@include column(1/2);
+	transition: height 2s,background 3s;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	&-expensive {
+		background: $grayColor;
+	}
+	&-cheap {
+		background: $blueColor;
+	}
+	color: $blackColor;
+	padding-top: 10px;
+	text-align: center;
+	font-size: 18px;
+}

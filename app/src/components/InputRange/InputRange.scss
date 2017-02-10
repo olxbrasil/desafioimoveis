@@ -1,0 +1,104 @@
+@import 'node_modules/jeet/scss/index';
+.input-range {
+	-webkit-appearance: none;
+	width: 100%;
+	margin: 3.8px 0;
+	&:focus {
+		outline: none;
+	}
+	&::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 12.4px;
+		cursor: pointer;
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+		background: rgba(54, 180, 226, 0.78);
+		border-radius: 6.4px;
+		border: 0px solid rgba(0, 0, 0, 0);
+	}
+	&::-webkit-slider-thumb {
+		box-shadow: 0px 0px 1px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+		border: 0px solid rgba(0, 0, 0, 0);
+		height: 20px;
+		width: 21px;
+		border-radius: 28px;
+		background: #36b4e2;
+		cursor: pointer;
+		-webkit-appearance: none;
+		margin-top: -3.8px;
+	}
+	&:focus::-webkit-slider-runnable-track {
+		background: rgba(116, 203, 235, 0.78);
+	}
+	&::-moz-range-track {
+		width: 100%;
+		height: 12.4px;
+		cursor: pointer;
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+		background: rgba(54, 180, 226, 0.78);
+		border-radius: 6.4px;
+		border: 0px solid rgba(0, 0, 0, 0);
+	}
+	&::-moz-range-thumb {
+		box-shadow: 0px 0px 1px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+		border: 0px solid rgba(0, 0, 0, 0);
+		height: 20px;
+		width: 21px;
+		border-radius: 28px;
+		background: #36b4e2;
+		cursor: pointer;
+	}
+	&::-ms-track {
+		width: 100%;
+		height: 12.4px;
+		cursor: pointer;
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+	}
+	&::-ms-fill-lower {
+		background: rgba(26, 141, 182, 0.78);
+		border: 0px solid rgba(0, 0, 0, 0);
+		border-radius: 12.8px;
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+	}
+	&::-ms-fill-upper {
+		background: rgba(54, 180, 226, 0.78);
+		border: 0px solid rgba(0, 0, 0, 0);
+		border-radius: 12.8px;
+		box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+	}
+	&::-ms-thumb {
+		box-shadow: 0px 0px 1px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+		border: 0px solid rgba(0, 0, 0, 0);
+		height: 20px;
+		width: 21px;
+		border-radius: 28px;
+		background: #36b4e2;
+		cursor: pointer;
+		height: 12.4px;
+	}
+	&:focus {
+		&::-ms-fill-lower {
+			background: rgba(54, 180, 226, 0.78);
+		}
+		&::-ms-fill-upper {
+			background: rgba(116, 203, 235, 0.78);
+		}
+	}
+}
+
+.form-group__input.input-range{
+	@include column(1);
+	@media (min-width:450px){
+		@include column(1/2);
+	}
+
+}
+.input-range__display{
+	@include column(1);
+	font-weight: 300;
+	font-size: 32px;
+	@media (min-width:450px){
+		@include column(1/2);
+	}
+}
