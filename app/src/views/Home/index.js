@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import houseActions from '../../container/actions/houseActions';
-import stateActions from '../../container/actions/stateActions';
+import * as houseActions from '../../container/actions/houseActions';
+import * as stateActions from '../../container/actions/stateActions';
 import InputRange from '../../components/InputRange';
 import SelectCustom from '../../components/SelectCustom';
+import Chart from '../../components/Chart';
 
 import './Home.scss';
 
@@ -15,6 +16,7 @@ type Props = {
 	rent: number,
 	livePerYear: number,
 	taxForYear: number,
+	installment: number,
 	houseActions: {
 		changeValue: (key: string, value: number) => void,
 		calculate: (buy: number, year: number, tax: number) => void,
@@ -29,7 +31,7 @@ type Props = {
 	selectedState: string,
 };
 
-class Home extends Component {
+export class Home extends Component {
 
 	static fetchData = ({ store }) => store.dispatch(stateActions.fetchStates());
 
@@ -41,9 +43,17 @@ class Home extends Component {
 		if (this.props.selectedState !== nextProps.selectedState) {
 			this.props.houseActions.changeValue('buy', parseFloat(nextProps.selectedBuy));
 			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
-		} else {
-			this.props.houseActions.calculate(nextProps.buy, nextProps.livePerYear, nextProps.taxForYear);
 		}
+
+		if (nextProps.rent === 0) {
+			this.props.houseActions.changeValue('rent', parseFloat(nextProps.selectedRent));
+		}
+
+		this.props.houseActions.calculate(
+			nextProps.buy === 0 ? nextProps.selectedBuy : nextProps.buy,
+			nextProps.livePerYear,
+			nextProps.taxForYear
+		);
 	}
 
 	props: Props;
@@ -57,7 +67,7 @@ class Home extends Component {
 	}
 
 	renderSelect = () => {
-		const { states } = this.props;
+		const { states, selectedState } = this.props;
 		const options = states.map(state => ({ label: state.name, value: state.name }));
 
 		return (
@@ -65,6 +75,7 @@ class Home extends Component {
 				options={options}
 				onChange={this.handleOnChangeSelect}
 				clearable={false}
+				value={selectedState}
 			/>
 		);
 	};
@@ -81,6 +92,9 @@ class Home extends Component {
 					<InputRange name="livePerYear" min="1" max="30" defaultValue={props.livePerYear} label="Quanto tempo você irar morar?" sufix=" ano(s)" onChange={this.handleOnChangeRange} />
 					<InputRange name="taxForYear" min="5" max="250" formatNumber="0cp" defaultValue={props.taxForYear} label="Taxa de Juros Anual." onChange={this.handleOnChangeRange} />
 				</fieldset>
+				<div className="home__wrapper-chart">
+					<Chart rent={props.rent} installment={props.installment} />
+				</div>
 			</section>
 		);
 	}

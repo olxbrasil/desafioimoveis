@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import fsaThunkMiddleware from 'redux-fsa-thunk';
 
-import stateActions from './stateActions';
+import * as stateActions from './stateActions';
 import actionTypes from '../actionTypes';
 
 const mockStore = configureMockStore([fsaThunkMiddleware]);

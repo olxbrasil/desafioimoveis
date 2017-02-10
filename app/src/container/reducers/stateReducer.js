@@ -15,15 +15,25 @@ type State = {
 
 const initialState = {
 	states: [],
-	selectedState: '',
+	selectedState: 'RJ',
 	selectedBuy: 0,
 	selectedRent: 0,
 };
 
 const reducer = handleActions({
-	[actionTypes.FETCH_STATES_SUCCESS]: (state: State = initialState, action) => ({ ...state,
-		states: action.payload,
-	}),
+	[actionTypes.FETCH_STATES_SUCCESS]: (state: State = initialState, action) => {
+		const newState = { ...state,
+			states: action.payload,
+		};
+
+		const stateFilter = newState.states.filter(st => st.name === newState.selectedState);
+		if (stateFilter.length) {
+			newState.selectedBuy = stateFilter[0].buy;
+			newState.selectedRent = stateFilter[0].rent;
+		}
+
+		return newState;
+	},
 	[actionTypes.CHANGE_STATE]: (state: State = initialState, action) => {
 		const stateFilter = state.states.filter(st => st.name === action.payload);
 		if (stateFilter.length) {
