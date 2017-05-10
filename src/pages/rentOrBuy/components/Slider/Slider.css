@@ -1,0 +1,11 @@
+
+@import '../../../node_modules/normalize.css/normalize.css';
+
+.label {
+  color: black;
+  text-size: 1.1em;
+}
+
+.label span {
+  font-weight: bold;
+}
