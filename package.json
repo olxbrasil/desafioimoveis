@@ -26,5 +26,13 @@
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
     "interestjs": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react-hot-loader": "next"
   }
 }
