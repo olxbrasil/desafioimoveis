@@ -1,19 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import numeral from 'numeral'
+import interestJs from 'interestjs'
+
 import Chart from './Chart'
 
-const BuyInput = ({ rent, buy, years, interest }) => (
-  <div className="mt5 flex-row items-center">
-    <div>
-      <span className="f4 mt2">Custo Total</span>
+const BuyInput = ({ rent, buy, years, interest }) => {
+  const annualRentValue = 12 * rent
+  const { sum: rentTotal } = interestJs(annualRentValue, years, interest)
+  return (
+    <div className="mt5 flex-row items-center">
+      <div>
+        <span className="f4 mt2">Custo Total</span>
+      </div>
+      <div className="mt3">
+        <Chart
+          rent={rentTotal}
+          buy={buy}
+        />
+      </div>
     </div>
-    <div className="mt3">
-      <Chart />
-    </div>
-  </div>
-)
+  )
+}
 
 BuyInput.propTypes = {
   rent: PropTypes.number.isRequired,

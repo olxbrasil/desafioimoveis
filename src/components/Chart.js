@@ -1,18 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-mixed-operators */
+/* eslint-disable no-param-reassign */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Bar, Chart as ChartJS } from 'react-chartjs-2'
-
-const chartData = {
-  labels: ['Aluguel', 'Compra'],
-  datasets: [
-    {
-      borderWidth: 1,
-      data: [65, 59],
-    },
-  ],
-}
+import numeral from 'numeral'
 
 const chartOptions = {
   responsive: false,
@@ -22,30 +15,47 @@ const chartOptions = {
   hover: { mode: false },
   scales: {
     yAxes: [
-      { display: false },
-    ],
-    xAxes: [
       {
-        display: true,
-        gridLines: { display: false },
+        display: false,
+        ticks: {
+          beginAtZero: true,
+        },
       },
     ],
+    xAxes: [{
+      display: true,
+      gridLines: { display: false },
+    }],
   },
   labelOverBar: true,
 }
 
-const Chart = props => (
-  <div className="flex justify-center">
-    <Bar
-      data={chartData}
-      options={chartOptions}
-      width={450}
-    />
-  </div>
-)
+const Chart = ({ rent, buy }) => {
+  const chartData = {
+    labels: ['Aluguel', 'Compra'],
+    datasets: [
+      {
+        borderWidth: 1,
+        data: [rent, buy],
+      },
+    ],
+  }
+
+  return (
+    <div className="flex justify-center">
+      <Bar
+        data={chartData}
+        options={chartOptions}
+        width={450}
+        height={450}
+      />
+    </div>
+  )
+}
 
 Chart.propTypes = {
-
+  rent: PropTypes.number.isRequired,
+  buy: PropTypes.number.isRequired,
 }
 
 ChartJS.pluginService.register({
@@ -71,9 +81,9 @@ ChartJS.pluginService.register({
           bar._model.borderColor = 'rgba(255,99,132,1)'
         }
         if (labelOverBar) {
-          const x = bar._view.x - (bar._view.width / 4) + 10
-          const value = `R$ ${dataArray[index]}`
-          ctx.fillText(value, x, 100)
+          const x = bar._view.x - (bar._view.width / 4) - 12
+          const value = `R$ ${numeral(dataArray[index]).format('0,0')}`
+          ctx.fillText(value, x, 400)
         }
       })
     })
