@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js",
+    "start": "cross-env http-server ./api & NODE_ENV=development webpack-dev-server --config ./webpack.config.babel.js",
     "clean": "rm -rf ./build",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.babel.js"
   },
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "chart.js": "^2.6.0",
     "interestjs": "^0.1.0",
     "numeral": "^2.0.6",
@@ -64,6 +65,7 @@
     "fs-extra": "^3.0.1",
     "glob": "^7.1.2",
     "html-webpack-plugin": "^2.29.0",
+    "http-server": "^0.10.0",
     "path": "^0.12.7",
     "postcss-loader": "^2.0.6",
     "purify-css": "^1.2.5",

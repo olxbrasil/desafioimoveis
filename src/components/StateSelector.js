@@ -3,29 +3,41 @@ import { Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { states } from 'utils/constants'
 import { setState as setStateAction } from 'actions'
 
-const StateSelector = ({ setState }) => (
-  <div className="flex items-center">
-    <span className="f4">Escolha seu estado:</span>
-    <Dropdown
-      className="ml4"
-      placeholder="Estado"
-      search
-      selection
-      options={states}
-      onChange={(_, data) => setState(data.value)}
-    />
-  </div>
-)
+const StateSelector = ({ setState, states, loading }) => {
+  const statesList = Object.keys(states).map(state => ({
+    key: state,
+    value: state,
+    text: states[state].text,
+  }))
+
+  return (
+    <div className="flex items-center">
+      <span className="f4">Escolha seu estado:</span>
+      <Dropdown
+        className="ml4"
+        placeholder="Estado"
+        search
+        selection
+        disabled={loading}
+        options={statesList || []}
+        onChange={(_, data) => setState(data.value)}
+      />
+    </div>
+  )
+}
 
 const mapDispatchToProps = dispatch => ({
   setState: state => dispatch(setStateAction(state)),
 })
 
+const mapStateToProps = ({ states, loading }) => ({ states, loading })
+
 StateSelector.propTypes = {
   setState: PropTypes.func.isRequired,
+  states: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 }
 
-export default connect(null, mapDispatchToProps)(StateSelector)
+export default connect(mapStateToProps, mapDispatchToProps)(StateSelector)
