@@ -1,4 +1,9 @@
-import { createStore } from 'redux'
+import {
+  createStore,
+  compose,
+  applyMiddleware,
+} from 'redux'
+import thunkMiddleware from 'redux-thunk'
 import reducer from './reducer'
 
 const initialState = {
@@ -11,5 +16,7 @@ const initialState = {
 
 export default function () {
   // eslint-disable-next-line
-  return createStore(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  const composeEnhancers = (typeof window !== undefined && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
+
+  return createStore(reducer, initialState, composeEnhancers(applyMiddleware(thunkMiddleware)))
 }
