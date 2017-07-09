@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import RCSlider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
-const Slider = ({ min, max, defaultValue, step, setValue }) => {
+const Slider = ({ min, max, defaultValue, step, setValue, tipFormatter }) => {
   const SliderWithTooltip = RCSlider.createSliderWithTooltip(RCSlider)
   return (
     <SliderWithTooltip
@@ -12,7 +12,7 @@ const Slider = ({ min, max, defaultValue, step, setValue }) => {
         visible: true,
         defaultVisible: true,
       }}
-      tipFormatter={tipValue => `R$ ${tipValue}`}
+      tipFormatter={tipFormatter}
       min={min}
       max={max}
       defaultValue={defaultValue}
@@ -30,6 +30,7 @@ const Slider = ({ min, max, defaultValue, step, setValue }) => {
 
 Slider.propTypes = {
   setValue: PropTypes.func.isRequired,
+  tipFormatter: PropTypes.func,
   min: PropTypes.number,
   max: PropTypes.number,
   defaultValue: PropTypes.number,
@@ -41,6 +42,7 @@ Slider.defaultProps = {
   max: null,
   defaultValue: 0,
   step: 1,
+  tipFormatter: tipValue => `R$ ${tipValue}`,
 }
 
 export default Slider
