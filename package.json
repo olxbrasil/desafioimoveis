@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "chart.js": "^2.6.0",
     "interestjs": "^0.1.0",
     "numeral": "^2.0.6",

@@ -1,13 +1,33 @@
+import axios from 'axios'
+import formatStateList from 'utils/data'
 import * as t from './actionTypes'
-import defaults from '../../api/valores.json'
 
-function setStateAction(state) {
+export function setState(state) {
   return {
     type: t.SET_STATE,
     payload: { state },
   }
 }
 
+function setFetchError(error) {
+  return {
+    type: t.SET_FETCH_ERROR,
+    payload: { error },
+  }
+}
+
+function requestStates() {
+  return {
+    type: t.FETCH_STATES,
+  }
+}
+
+function statesReceived(data) {
+  return {
+    type: t.STATES_RECEIVED,
+    payload: { states: data },
+  }
+}
 export function setRentValue(value) {
   return {
     type: t.SET_RENT_VALUE,
@@ -36,10 +56,24 @@ export function setInterstFee(fee) {
   }
 }
 
-export function setState(state) {
+export function fetchStates() {
   return (dispatch) => {
-    dispatch(setStateAction(state))
-    dispatch(setBuyValue(defaults[state].compra))
-    dispatch(setRentValue(defaults[state].aluguel))
+    dispatch(requestStates())
+    axios.get('/api/valores.json')
+      .then(({ data }) => {
+        dispatch(statesReceived(formatStateList(data)))
+      })
+      .catch(({ response, message }) => {
+        if (response) {
+          dispatch(setFetchError({
+            status: response.status,
+            message,
+          }))
+        } else {
+          dispatch(setFetchError({
+            message,
+          }))
+        }
+      })
   }
 }

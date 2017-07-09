@@ -6,6 +6,8 @@ export default function (state, { type, payload }) {
       return {
         ...state,
         state: payload.state,
+        buy: state.states[payload.state].compra,
+        rent: state.states[payload.state].aluguel,
       }
     case t.SET_RENT_VALUE:
       return {
@@ -26,6 +28,22 @@ export default function (state, { type, payload }) {
       return {
         ...state,
         interest: payload.fee,
+      }
+    case t.SET_FETCH_ERROR:
+      return {
+        ...state,
+        error: payload.error,
+      }
+    case t.FETCH_STATES:
+      return {
+        ...state,
+        loading: true,
+      }
+    case t.STATES_RECEIVED:
+      return {
+        ...state,
+        states: payload.states,
+        loading: false,
       }
     default:
       return state

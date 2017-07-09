@@ -12,6 +12,8 @@ const initialState = {
   buy: 100000,
   years: 10,
   interest: 11.5,
+  states: {},
+  loading: false,
 }
 
 export default function () {
