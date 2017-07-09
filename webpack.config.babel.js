@@ -143,5 +143,11 @@ module.exports = {
     publicPath: PUBLIC_PATH,
     disableHostCheck: true,
     historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8081',
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
 }
