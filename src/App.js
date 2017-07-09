@@ -3,6 +3,7 @@ import Card from 'components/Card'
 import StateSelector from 'components/StateSelector'
 import RentInput from 'components/RentInput'
 import BuyInput from 'components/BuyInput'
+import TimeInput from 'components/TimeInput'
 
 const App = () => (
   <div className="flex justify-center sans-serif">
@@ -12,6 +13,7 @@ const App = () => (
         <StateSelector />
         <RentInput />
         <BuyInput />
+        <TimeInput />
       </div>
     </Card>
   </div>
