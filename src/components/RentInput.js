@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { setRentValue as setRentValueAction } from 'actions'
+import numeral from 'numeral'
 
 import Slider from './commons/Slider'
 
@@ -9,7 +10,7 @@ const RentInput = ({ value, setRentValue }) => (
   <div className="mt5 flex-row items-center">
     <div>
       <span className="f4 mt2">Valor do aluguel por mês:</span>
-      <span className="f4 ml3">{`R$ ${value}`}</span>
+      <span className="f4 ml3">{`R$ ${numeral(value).format('0,0')}`}</span>
     </div>
     <div className="mt3">
       <Slider
