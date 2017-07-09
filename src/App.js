@@ -5,6 +5,7 @@ import RentInput from 'components/RentInput'
 import BuyInput from 'components/BuyInput'
 import TimeInput from 'components/TimeInput'
 import InterestInput from 'components/InterestInput'
+import ComparisonContainer from 'components/ComparisonContainer'
 
 const App = () => (
   <div className="flex justify-center sans-serif">
@@ -16,6 +17,7 @@ const App = () => (
         <BuyInput />
         <TimeInput />
         <InterestInput />
+        <ComparisonContainer />
       </div>
     </Card>
   </div>

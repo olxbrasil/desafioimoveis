@@ -28,11 +28,13 @@
   },
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
+    "chart.js": "^2.6.0",
     "interestjs": "^0.1.0",
     "numeral": "^2.0.6",
     "rc-slider": "^8.2.0",
     "rc-tooltip": "^3.4.6",
     "react": "^15.6.1",
+    "react-chartjs-2": "^2.1.0",
     "react-dom": "^15.6.1",
     "react-hot-loader": "next",
     "react-redux": "^5.0.5",
