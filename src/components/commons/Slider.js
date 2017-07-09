@@ -4,7 +4,7 @@ import RCSlider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
 const Slider = ({ min, max, defaultValue, step, setValue }) => {
-  const SliderWithTooltip = RCSlider.createSliderWithTooltip(Slider)
+  const SliderWithTooltip = RCSlider.createSliderWithTooltip(RCSlider)
   return (
     <SliderWithTooltip
       tipProps={{
