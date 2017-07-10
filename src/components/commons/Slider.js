@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import RCSlider from 'rc-slider'
+import numeral from 'numeral'
 import 'rc-slider/assets/index.css'
 
 const Slider = ({ min, max, defaultValue, step, setValue, tipFormatter }) => {
@@ -19,9 +20,15 @@ const Slider = ({ min, max, defaultValue, step, setValue, tipFormatter }) => {
       step={step}
       trackStyle={{
         backgroundColor: '#bbc5ca',
+        height: '0.8rem',
+      }}
+      railStyle={{
+        height: '0.8rem',
       }}
       handleStyle={[{
         border: 'solid 2px #57c5f7',
+        height: '1.5rem',
+        width: '1.5rem',
       }]}
       onAfterChange={changedValue => setValue(changedValue)}
     />
@@ -42,7 +49,7 @@ Slider.defaultProps = {
   max: null,
   defaultValue: 0,
   step: 1,
-  tipFormatter: tipValue => `R$ ${tipValue}`,
+  tipFormatter: tipValue => `R$ ${numeral(tipValue).format('0,0')}`,
 }
 
 export default Slider
