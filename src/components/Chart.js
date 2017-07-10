@@ -46,7 +46,7 @@ const Chart = ({ rent, buy }) => {
       <Bar
         data={chartData}
         options={chartOptions}
-        width={450}
+        width={320}
         height={450}
       />
     </div>
@@ -81,9 +81,9 @@ ChartJS.pluginService.register({
           bar._model.borderColor = 'rgba(255,99,132,1)'
         }
         if (labelOverBar) {
-          const x = bar._view.x - (bar._view.width / 4) - 12
+          const x = bar._view.x - (bar._view.width / 4) - 25
           const value = `R$ ${numeral(dataArray[index]).format('0,0')}`
-          ctx.fillText(value, x, 400)
+          ctx.fillText(value, x, 420)
         }
       })
     })

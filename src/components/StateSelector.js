@@ -13,10 +13,10 @@ const StateSelector = ({ setState, states, loading }) => {
   }))
 
   return (
-    <div className="flex items-center">
+    <div className="flex flex-column flex-row-ns items-center">
       <span className="f4">Escolha seu estado:</span>
       <Dropdown
-        className="ml4"
+        className="ml0 mt3 ml4-ns mt0-ns"
         placeholder="Estado"
         search
         selection

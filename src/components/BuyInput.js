@@ -4,15 +4,16 @@ import { connect } from 'react-redux'
 import { setBuyValue as setBuyValueAction } from 'actions'
 import numeral from 'numeral'
 
+import SectionWrapper from './commons/SectionWrapper'
 import Slider from './commons/Slider'
 
 const BuyInput = ({ value, setBuyValue }) => (
-  <div className="mt5 flex-row items-center">
-    <div>
+  <SectionWrapper>
+    <div className="tc">
       <span className="f4 mt2">Valor de compra do imóvel:</span>
-      <span className="f4 ml3">{`R$ ${numeral(value).format('0,0')}`}</span>
+      <span className="f4 ml2-ns db di-ns">{`R$ ${numeral(value).format('0,0')}`}</span>
     </div>
-    <div className="mt3">
+    <div className="mt3 mh4 mh0-ns">
       <Slider
         min={10000}
         max={2000000}
@@ -21,7 +22,7 @@ const BuyInput = ({ value, setBuyValue }) => (
         setValue={setBuyValue}
       />
     </div>
-  </div>
+  </SectionWrapper>
 )
 
 BuyInput.propTypes = {
