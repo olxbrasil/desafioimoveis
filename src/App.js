@@ -21,8 +21,8 @@ class App extends Component {
       <div className="flex justify-center sans-serif">
         <Card>
           <h1 className="fw6 f1 mt0 tc">Comprar ou Alugar?</h1>
-          <div className="flex-ns">
-            <div className="mt5-ns mh5-ns">
+          <div className="flex-l justify-around">
+            <div className="mt5-ns mh3-ns">
               <StateSelector />
               <RentInput />
               <BuyInput />

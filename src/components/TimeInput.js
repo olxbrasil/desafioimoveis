@@ -9,7 +9,7 @@ import Slider from './commons/Slider'
 const TimeInput = ({ years, setYears }) => (
   <SectionWrapper>
     <div className="tc">
-      <span className="f4 mt2">Quanto tempo você ira morar?</span>
+      <span className="f4 mt2 fw6">Quanto tempo você ira morar?</span>
       <span className="f4 ml2-ns db di-ns">{`${years} ${years === 1 ? 'ano' : 'anos'}`}</span>
     </div>
     <div className="mt3 mh4 mh0-ns">

@@ -9,7 +9,7 @@ import Slider from './commons/Slider'
 const InterestInput = ({ fee, setInterstFee }) => (
   <SectionWrapper>
     <div className="tc">
-      <span className="f4 mt2">Taxa de juros anual:</span>
+      <span className="f4 mt2 fw6">Taxa de juros anual:</span>
       <span className="f4 ml2-ns db di-ns">{`% ${fee}`}</span>
     </div>
     <div className="mt3 mh4 mh0-ns">

@@ -10,8 +10,8 @@ import Slider from './commons/Slider'
 const BuyInput = ({ value, setBuyValue }) => (
   <SectionWrapper>
     <div className="tc">
-      <span className="f4 mt2">Valor de compra do imóvel:</span>
-      <span className="f4 ml2-ns db di-ns">{`R$ ${numeral(value).format('0,0')}`}</span>
+      <span className="f4 mt2 fw6">Valor de compra de compra:</span>
+      <span className="f4 ml1-ns db di-l">{`R$ ${numeral(value).format('0,0')}`}</span>
     </div>
     <div className="mt3 mh4 mh0-ns">
       <Slider

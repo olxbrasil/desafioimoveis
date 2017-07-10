@@ -10,9 +10,9 @@ const BuyInput = ({ rent, buy, years, interest }) => {
   const annualRentValue = 12 * rent
   const { sum: rentTotal } = interestJs(annualRentValue, years, interest)
   return (
-    <SectionWrapper>
+    <SectionWrapper noBorder>
       <div className="tc">
-        <span className="f4 mt2">Custo Total</span>
+        <span className="f4 mt2 fw6">Custo Total</span>
       </div>
       <div className="mt3 flex justify-between mh5">
         <span>Aluguel</span>
