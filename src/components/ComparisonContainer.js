@@ -14,7 +14,11 @@ const BuyInput = ({ rent, buy, years, interest }) => {
       <div className="tc">
         <span className="f4 mt2">Custo Total</span>
       </div>
-      <div className="mt3-ns mb3">
+      <div className="mt3 flex justify-between mh5">
+        <span>Aluguel</span>
+        <span>Compra</span>
+      </div>
+      <div className="mb3">
         <Chart
           rent={rentTotal}
           buy={buy}

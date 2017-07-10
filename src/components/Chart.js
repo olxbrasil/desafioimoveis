@@ -32,7 +32,7 @@ const chartOptions = {
 
 const Chart = ({ rent, buy }) => {
   const chartData = {
-    labels: ['Aluguel', 'Compra'],
+    labels: ['', ''],
     datasets: [
       {
         borderWidth: 1,
@@ -83,7 +83,7 @@ ChartJS.pluginService.register({
         if (labelOverBar) {
           const x = bar._view.x - (bar._view.width / 4) - 25
           const value = `R$ ${numeral(dataArray[index]).format('0,0')}`
-          ctx.fillText(value, x, 420)
+          ctx.fillText(value, x, 450)
         }
       })
     })
