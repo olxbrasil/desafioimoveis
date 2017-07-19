@@ -27,8 +27,10 @@
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
     "interestjs": "^0.1.0",
+    "rc-slider": "^8.2.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-select": "^1.0.0-rc.5"
   },
   "devDependencies": {
     "ajv": "^5.2.2",
