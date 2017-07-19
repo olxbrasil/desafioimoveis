@@ -16,20 +16,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         include: resolve(__dirname, 'src'),
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            'react',
-            ['env', {modules: false}],
-          ],
-          plugins: [
-            'react-hot-loader/babel',
-            'transform-class-properties',
-            'transform-object-rest-spread',
-          ],
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                'react',
+                ['env', {modules: false}],
+              ],
+              plugins: [
+                'react-hot-loader/babel',
+                'transform-class-properties',
+                'transform-object-rest-spread',
+              ],
+            },
+          },
+        ],
       },
     ],
   },
