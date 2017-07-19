@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": ["standard", "standard-jsx"],
   "rules": {
-    "comma-dangle": ["error", "always-multiline"]
+    "comma-dangle": ["error", "always-multiline"],
+    "jsx-quotes": ["error", "prefer-double"],
   }
 }
