@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import RCSlider from 'rc-slider/lib/Slider'
 
@@ -22,56 +22,41 @@ const handleStyle = [
   },
 ]
 
-export default class Slider extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    min: PropTypes.number.isRequired,
-    max: PropTypes.number.isRequired,
-    step: PropTypes.number,
-    defaultValue: PropTypes.number,
-    valueFormatter: PropTypes.func,
-    onChange: PropTypes.func.isRequired,
-  }
+Slider.propTypes = {
+  title: PropTypes.string.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  step: PropTypes.number,
+  value: PropTypes.number.isRequired,
+  valueFormatter: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+}
 
-  static defaultProps = {
-    defaultValue: 0,
-    valueFormatter: value => value,
-  }
+Slider.defaultProps = {
+  valueFormatter: value => value,
+}
 
-  getDefaultValue = () => Math.max(this.props.defaultValue, this.props.min)
-
-  state = {value: this.getDefaultValue()}
-
-  handleChange = value => this.setState({value}, this.props.onChange)
-
-  render () {
-    const {value} = this.state
-    const {title, min, max, step, valueFormatter} = this.props
-    return (
-      <div className="mb5">
-        <div className="dt w-100 v-mid">
-          <div className="dtc">
-            <Title>{title}</Title>
-          </div>
-          <div className="dtc tr">
-            <span className="fw6 f4 black-90">
-              {valueFormatter(value)}
-            </span>
-          </div>
+export default function Slider ({title, valueFormatter, ...restProps}) {
+  return (
+    <div className="mb5">
+      <div className="dt w-100 v-mid">
+        <div className="dtc">
+          <Title>{title}</Title>
         </div>
-        <div className="pl2">
-          <RCSlider
-            trackStyle={trackStyle}
-            railStyle={railStyle}
-            handleStyle={handleStyle}
-            min={min}
-            max={max}
-            step={step}
-            defaultValue={this.getDefaultValue()}
-            onChange={this.handleChange}
-          />
+        <div className="dtc tr">
+          <span className="fw6 f4 black-90">
+            {valueFormatter(restProps.value)}
+          </span>
         </div>
       </div>
-    )
-  }
+      <div className="pl2">
+        <RCSlider
+          trackStyle={trackStyle}
+          railStyle={railStyle}
+          handleStyle={handleStyle}
+          {...restProps}
+        />
+      </div>
+    </div>
+  )
 }

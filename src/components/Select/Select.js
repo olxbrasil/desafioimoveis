@@ -7,6 +7,8 @@ import Title from '../Title'
 import 'react-select/dist/react-select.css'
 import './style.css'
 
+const handleChange = fn => ({value}) => fn(value)
+
 Select.propTypes = {
   title: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
@@ -28,7 +30,7 @@ export default function Select ({title, value, options, onChange}) {
           clearable={false}
           searchable={false}
           options={options}
-          onChange={onChange}
+          onChange={handleChange(onChange)}
         />
       </div>
     </div>
