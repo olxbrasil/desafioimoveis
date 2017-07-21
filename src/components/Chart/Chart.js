@@ -43,27 +43,27 @@ export default function Chart (props) {
     ? `Comprar é ${percent}% mais barato`
     : `Alugar é ${percent}% mais barato`
   return (
-    <div style={style} className="f3 white">
-      <div
-        style={barWrapperStyle(rentPadding)}
-        className={barWrapperClasses}
-      >
-        <Bar color={rentColor}>
-          <BarText label="Alugar" value={props.rentDisplay} />
-        </Bar>
+    <div>
+      <div style={style} className="f3 white">
+        <div
+          style={barWrapperStyle(rentPadding)}
+          className={barWrapperClasses}
+        >
+          <Bar color={rentColor}>
+            <BarText label="Alugar" value={props.rentDisplay} />
+          </Bar>
+        </div>
+        <div className="dib v-btm w-10" />
+        <div
+          style={barWrapperStyle(buyPadding)}
+          className={barWrapperClasses}
+        >
+          <Bar color={buyColor}>
+            <BarText label="Comprar" value={props.buyDisplay} />
+          </Bar>
+        </div>
       </div>
-      <div className="dib v-btm w-10" />
-      <div
-        style={barWrapperStyle(buyPadding)}
-        className={barWrapperClasses}
-      >
-        <Bar color={buyColor}>
-          <BarText label="Comprar" value={props.buyDisplay} />
-        </Bar>
-      </div>
-      <div>
-        <SubTitle>{message}</SubTitle>
-      </div>
+      <SubTitle>{message}</SubTitle>
     </div>
   )
 }
