@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "NODE_ENV=production webpack --optimize-minimize"
+    "build": "NODE_ENV=production webpack --optimize-minimize --define process.env.NODE_ENV=\"'production'\""
   },
   "repository": {
     "type": "git",
