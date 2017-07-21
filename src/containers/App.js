@@ -24,6 +24,9 @@ App.propTypes = {
   buyPrice: PropTypes.number.isRequired,
   taxPercent: PropTypes.number.isRequired,
   yearsWillPay: PropTypes.number.isRequired,
+  totalRentPrice: PropTypes.number.isRequired,
+  totalBuyPrice: PropTypes.number.isRequired,
+  monthlyBuyPrice: PropTypes.number.isRequired,
   updateCity: PropTypes.func.isRequired,
   updateRentPrice: PropTypes.func.isRequired,
   updateBuyPrice: PropTypes.func.isRequired,
@@ -85,7 +88,9 @@ function App (props) {
           <Chart
             title="Custo total"
             rentPrice={props.rentPrice}
-            buyPrice={Math.round(props.buyPrice / 12)}
+            buyPrice={props.monthlyBuyPrice}
+            totalRentPrice={props.totalRentPrice}
+            totalBuyPrice={props.totalBuyPrice}
           />
         </div>
       </section>
