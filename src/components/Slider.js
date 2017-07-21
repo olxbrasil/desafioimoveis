@@ -2,8 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RCSlider from 'rc-slider/lib/Slider'
 
-import Title from './Title'
-
 import 'rc-slider/assets/index.css'
 
 const trackStyle = {
@@ -26,40 +24,26 @@ const handleStyle = [
 ]
 
 Slider.propTypes = {
-  title: PropTypes.string.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number,
   value: PropTypes.number.isRequired,
-  valueFormatter: PropTypes.func,
   onChange: PropTypes.func.isRequired,
 }
 
-Slider.defaultProps = {
-  valueFormatter: value => value,
-}
-
-export default function Slider ({title, valueFormatter, ...restProps}) {
+export default function Slider ({min, max, step, value, onChange}) {
   return (
-    <div className="mb5">
-      <div className="dt w-100 v-mid">
-        <div className="dtc">
-          <Title>{title}</Title>
-        </div>
-        <div className="dtc tr">
-          <span className="fw6 f4 black">
-            {valueFormatter(restProps.value)}
-          </span>
-        </div>
-      </div>
-      <div className="pl2">
-        <RCSlider
-          trackStyle={trackStyle}
-          railStyle={railStyle}
-          handleStyle={handleStyle}
-          {...restProps}
-        />
-      </div>
+    <div className="pl2">
+      <RCSlider
+        trackStyle={trackStyle}
+        railStyle={railStyle}
+        handleStyle={handleStyle}
+        min={min}
+        max={max}
+        step={step}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   )
 }

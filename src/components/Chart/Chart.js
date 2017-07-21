@@ -18,9 +18,8 @@ const calculatePadding = (rentPrice, buyPrice) => {
 }
 
 Chart.propTypes = {
-  title: PropTypes.string,
-  rentPrice: PropTypes.number.isRequired,
-  buyPrice: PropTypes.number.isRequired,
+  rentDisplay: PropTypes.string.isRequired,
+  buyDisplay: PropTypes.string.isRequired,
   totalRentPrice: PropTypes.number.isRequired,
   totalBuyPrice: PropTypes.number.isRequired,
 }
@@ -33,26 +32,23 @@ export default function Chart (props) {
   const rentColor = isRentHigher ? 'mid-gray' : 'green'
   const buyColor = !isRentHigher ? 'mid-gray' : 'green'
   return (
-    <div>
-      <h1 className="black-80">{props.title}</h1>
-      <div style={style} className="f3 white">
-        <div
-          style={{paddingTop: rentPadding}}
-          className={barWrapperClasses}
-        >
-          <Bar color={rentColor}>
-            <BarText label="Alugar" value={props.rentPrice} />
-          </Bar>
-        </div>
-        <div className="dib v-btm w-10" />
-        <div
-          style={{paddingTop: buyPadding}}
-          className={barWrapperClasses}
-        >
-          <Bar color={buyColor}>
-            <BarText label="Comprar" value={props.buyPrice} />
-          </Bar>
-        </div>
+    <div style={style} className="f3 white">
+      <div
+        style={{paddingTop: rentPadding}}
+        className={barWrapperClasses}
+      >
+        <Bar color={rentColor}>
+          <BarText label="Alugar" value={props.rentDisplay} />
+        </Bar>
+      </div>
+      <div className="dib v-btm w-10" />
+      <div
+        style={{paddingTop: buyPadding}}
+        className={barWrapperClasses}
+      >
+        <Bar color={buyColor}>
+          <BarText label="Comprar" value={props.rentDisplay} />
+        </Bar>
       </div>
     </div>
   )

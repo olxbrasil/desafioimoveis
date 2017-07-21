@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 
 BarText.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
 }
 
 export default function BarText ({label, value}) {
