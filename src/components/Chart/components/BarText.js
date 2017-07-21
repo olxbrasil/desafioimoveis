@@ -12,7 +12,7 @@ export default function BarText ({label, value}) {
       <span>{label}</span>
       <br />
       <span className="fw6">
-        R$ {value} ao mês
+        {value} ao mês
       </span>
     </div>
   )

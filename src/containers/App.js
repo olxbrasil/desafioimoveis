@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import accounting from 'accounting'
 
 import Chart from '../components/Chart'
 import Header from '../components/Header'
@@ -11,7 +12,7 @@ import * as actionCreators from '../redux/realEstate'
 
 const style = {flexGrow: 1}
 
-const moneyFormatter = value => `R$ ${value}`
+const moneyFormatter = value => accounting.formatMoney(value, 'R$ ', 0, '.')
 
 const yearFormatter = value => `${value} anos`
 
@@ -87,8 +88,8 @@ function App (props) {
         <div className="w-100 w-40-l mb6 mb0-l tc">
           <Chart
             title="Custo total"
-            rentPrice={props.rentPrice}
-            buyPrice={props.monthlyBuyPrice}
+            rentPrice={moneyFormatter(props.rentPrice)}
+            buyPrice={moneyFormatter(props.monthlyBuyPrice)}
             totalRentPrice={props.totalRentPrice}
             totalBuyPrice={props.totalBuyPrice}
           />
