@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
+import Chart from '../components/Chart'
 import Header from '../components/Header'
 import Select from '../components/Select'
 import Slider from '../components/Slider'
@@ -79,8 +80,13 @@ function App (props) {
             onChange={props.updateTaxPercent}
           />
         </div>
-        <div className="w-100 w-50-l tc">
-          <h2 className="black-70">Custo total</h2>
+        <div className="w-10-l" />
+        <div className="w-100 w-40-l mb6 mb0-l tc">
+          <Chart
+            title="Custo total"
+            rentPrice={props.rentPrice}
+            buyPrice={Math.round(props.buyPrice / 12)}
+          />
         </div>
       </section>
       <Footer />
