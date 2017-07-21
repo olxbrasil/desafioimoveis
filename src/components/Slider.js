@@ -11,7 +11,10 @@ const trackStyle = {
   backgroundColor: '#19a974',
 }
 
-const railStyle = {height: '8px'}
+const railStyle = {
+  height: '8px',
+  backgroundColor: 'rgba(0, 0, 0, .15)',
+}
 
 const handleStyle = [
   {
