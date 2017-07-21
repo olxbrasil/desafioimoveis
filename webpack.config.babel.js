@@ -1,11 +1,25 @@
 const {resolve} = require('path')
 const webpack = require('webpack')
 
-module.exports = {
-  entry: [
+const isProd = process.env.NODE_ENV === 'production'
+
+const hotEntries = !isProd
+  ? [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
+  ]
+  : []
+
+const hotPlugins = [
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NamedModulesPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
+]
+
+module.exports = {
+  entry: [
+    ...hotEntries,
     './src/index.js',
   ],
   output: {
@@ -41,12 +55,8 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-  ],
-  devtool: 'cheap-module-eval-source-map',
+  plugins: isProd ? [] : hotPlugins,
+  devtool: isProd ? false : 'cheap-module-eval-source-map',
   devServer: {
     host: 'localhost',
     port: 3000,

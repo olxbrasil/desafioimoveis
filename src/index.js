@@ -1,6 +1,5 @@
 import React from 'react'
 import {render} from 'react-dom'
-import logger from 'redux-logger'
 import {Provider} from 'react-redux'
 import {AppContainer} from 'react-hot-loader'
 import {createStore, applyMiddleware} from 'redux'
@@ -8,7 +7,13 @@ import {createStore, applyMiddleware} from 'redux'
 import App from './containers/App'
 import reducer from './redux/reducer'
 
-const store = createStore(reducer, applyMiddleware(logger))
+const middlewares = []
+if (process.env.NODE_ENV !== 'production') {
+  const {logger} = require('redux-logger')
+  middlewares.push(logger)
+}
+
+const store = createStore(reducer, applyMiddleware(...middlewares))
 
 const renderApp = Root =>
   render(
