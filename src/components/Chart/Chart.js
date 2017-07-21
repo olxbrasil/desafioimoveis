@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import SubTitle from '../SubTitle'
 import Bar from './components/Bar'
 import BarText from './components/BarText'
 
@@ -11,10 +12,14 @@ const barWrapperClasses = 'dib v-btm h-100'
 
 const barWrapperStyle = padding => ({width: '45%', paddingTop: padding})
 
-const calculatePadding = (rentPrice, buyPrice) => {
+const calculatePercent = (rentPrice, buyPrice) => {
   const max = Math.max(rentPrice, buyPrice)
   const min = Math.min(rentPrice, buyPrice)
   const percent = ((max - min) * 100) / max
+  return Math.round(percent)
+}
+
+const calculatePadding = percent => {
   const padding = CONTAINER_HEIGHT * (percent / 100)
   return Math.min(padding, MAX_CONTAINER_PADDING)
 }
@@ -28,11 +33,15 @@ Chart.propTypes = {
 
 export default function Chart (props) {
   const isRentHigher = props.totalRentPrice > props.totalBuyPrice
-  const padding = calculatePadding(props.totalRentPrice, props.totalBuyPrice)
+  const percent = calculatePercent(props.totalRentPrice, props.totalBuyPrice)
+  const padding = calculatePadding(percent)
   const rentPadding = isRentHigher ? padding : 0
   const buyPadding = !isRentHigher ? padding : 0
   const rentColor = isRentHigher ? 'mid-gray' : 'green'
   const buyColor = !isRentHigher ? 'mid-gray' : 'green'
+  const message = isRentHigher
+    ? `Comprar é ${percent}% mais barato`
+    : `Alugar é ${percent}% mais barato`
   return (
     <div style={style} className="f3 white">
       <div
@@ -51,6 +60,9 @@ export default function Chart (props) {
         <Bar color={buyColor}>
           <BarText label="Comprar" value={props.rentDisplay} />
         </Bar>
+      </div>
+      <div>
+        <SubTitle>{message}</SubTitle>
       </div>
     </div>
   )
