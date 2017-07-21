@@ -44,7 +44,7 @@ export default function Slider ({title, valueFormatter, ...restProps}) {
           <Title>{title}</Title>
         </div>
         <div className="dtc tr">
-          <span className="fw6 f4 black-90">
+          <span className="fw6 f4 black">
             {valueFormatter(restProps.value)}
           </span>
         </div>

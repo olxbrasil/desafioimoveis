@@ -7,6 +7,6 @@ Title.propTypes = {
 
 export default function Title ({children}) {
   return (
-    <h2 className="black-70">{children}</h2>
+    <h2 className="black-80">{children}</h2>
   )
 }

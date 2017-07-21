@@ -32,7 +32,7 @@ export default function Chart ({title, rentPrice, buyPrice}) {
   const buyColor = !isRentHigher ? 'red' : 'green'
   return (
     <div>
-      <h1 className="black-70">{title}</h1>
+      <h1 className="black-80">{title}</h1>
       <div style={style} className="f3 white">
         <div
           style={{paddingTop: rentPadding}}
