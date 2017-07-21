@@ -16,7 +16,7 @@ const moneyFormatter = value => accounting.formatMoney(value, 'R$ ', 0, '.')
 
 const yearFormatter = value => `${value} anos`
 
-const percentFormatter = value => `${value}%`
+const percentFormatter = value => `${value.toString().replace('.', ',')} %`
 
 App.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
