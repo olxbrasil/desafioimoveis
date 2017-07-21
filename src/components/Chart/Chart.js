@@ -7,7 +7,9 @@ import BarText from './components/BarText'
 const CONTAINER_HEIGHT = 550
 const MAX_CONTAINER_PADDING = 436
 const style = {height: `${CONTAINER_HEIGHT}px`}
-const barWrapperClasses = 'dib v-btm w-40 h-100'
+const barWrapperClasses = 'dib v-btm h-100'
+
+const barWrapperStyle = padding => ({width: '45%', paddingTop: padding})
 
 const calculatePadding = (rentPrice, buyPrice) => {
   const max = Math.max(rentPrice, buyPrice)
@@ -34,7 +36,7 @@ export default function Chart (props) {
   return (
     <div style={style} className="f3 white">
       <div
-        style={{paddingTop: rentPadding}}
+        style={barWrapperStyle(rentPadding)}
         className={barWrapperClasses}
       >
         <Bar color={rentColor}>
@@ -43,7 +45,7 @@ export default function Chart (props) {
       </div>
       <div className="dib v-btm w-10" />
       <div
-        style={{paddingTop: buyPadding}}
+        style={barWrapperStyle(buyPadding)}
         className={barWrapperClasses}
       >
         <Bar color={buyColor}>

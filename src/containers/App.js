@@ -45,7 +45,10 @@ function App (props) {
   return (
     <div className="flex flex-column items-center min-vh-100 bg-black-05 sans-serif">
       <Header />
-      <section style={style} className="flex flex-wrap justify-center w-90 w-80-l">
+      <section
+        style={style}
+        className="flex flex-wrap justify-center w-90 w-80-l"
+      >
         <div className="w-100 w-50-l">
           <Wrapper>
             <SubTitle>Selecione seu estado</SubTitle>
@@ -57,7 +60,7 @@ function App (props) {
           </Wrapper>
           <Wrapper>
             <SubTitleAndValue
-              title="Valor do aluguel por mês"
+              title="Aluguel (mês)"
               value={formattedRentPrice}
             />
             <Slider
@@ -70,7 +73,7 @@ function App (props) {
           </Wrapper>
           <Wrapper>
             <SubTitleAndValue
-              title="Valor do imóvel para comprar"
+              title="Preço do imóvel"
               value={moneyFormatter(props.buyPrice)}
             />
             <Slider
@@ -83,7 +86,7 @@ function App (props) {
           </Wrapper>
           <Wrapper>
             <SubTitleAndValue
-              title="Quanto tempo você irá morar"
+              title="Tempo que irá morar"
               value={yearFormatter(props.yearsWillPay)}
             />
             <Slider
@@ -95,7 +98,7 @@ function App (props) {
           </Wrapper>
           <Wrapper>
             <SubTitleAndValue
-              title="Taxa de juros anual"
+              title="Juros anual"
               value={percentFormatter(props.taxPercent)}
             />
             <Slider
@@ -108,8 +111,10 @@ function App (props) {
           </Wrapper>
         </div>
         <div className="w-10-l" />
-        <div className="w-100 w-40-l mb6 mb0-l tc">
-          <Title>Custo total</Title>
+        <div className="w-100 w-40-l mb5 mb0-l tc">
+          <div>
+            <Title>Custo total</Title>
+          </div>
           <Chart
             rentDisplay={formattedRentPrice}
             buyDisplay={moneyFormatter(props.monthlyBuyPrice)}
