@@ -30,7 +30,10 @@
     "rc-slider": "^8.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-select": "^1.0.0-rc.5"
+    "react-redux": "^5.0.5",
+    "react-select": "^1.0.0-rc.5",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "ajv": "^5.2.2",
