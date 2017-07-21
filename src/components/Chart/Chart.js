@@ -28,11 +28,11 @@ export default function Chart ({title, rentPrice, buyPrice}) {
   const padding = calculatePadding(rentPrice, buyPrice)
   const rentPadding = isRentHigher ? padding : 0
   const buyPadding = !isRentHigher ? padding : 0
-  const rentColor = isRentHigher ? 'red' : 'green'
-  const buyColor = !isRentHigher ? 'red' : 'green'
+  const rentColor = isRentHigher ? 'mid-gray' : 'green'
+  const buyColor = !isRentHigher ? 'mid-gray' : 'green'
   return (
     <div>
-      <h1 className="black-70">{title}</h1>
+      <h1 className="black-80">{title}</h1>
       <div style={style} className="f3 white">
         <div
           style={{paddingTop: rentPadding}}

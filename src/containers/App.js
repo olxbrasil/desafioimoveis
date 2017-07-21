@@ -34,7 +34,7 @@ App.propTypes = {
 function App (props) {
   const options = props.cities.map(city => ({value: city, label: city}))
   return (
-    <div className="flex flex-column items-center min-vh-100 sans-serif">
+    <div className="flex flex-column items-center min-vh-100 bg-black-05 sans-serif">
       <Header />
       <section style={style} className="flex flex-wrap justify-center w-90 w-80-l">
         <div className="w-100 w-50-l">
