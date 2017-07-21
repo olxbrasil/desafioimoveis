@@ -58,7 +58,7 @@ export default function Chart (props) {
         className={barWrapperClasses}
       >
         <Bar color={buyColor}>
-          <BarText label="Comprar" value={props.rentDisplay} />
+          <BarText label="Comprar" value={props.buyDisplay} />
         </Bar>
       </div>
       <div>
