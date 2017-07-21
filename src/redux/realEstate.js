@@ -71,11 +71,12 @@ export default function reducer (state = initialState, {type, payload}) {
       }
     }
     case UPDATE_YEARS_WILL_PAY: {
-      const {buyPrice, taxPercent} = state
+      const {rentPrice, buyPrice, taxPercent} = state
       const totalBuyPrice = calcTotalBuyPrice(buyPrice, payload, taxPercent)
       return {
         ...state,
         yearsWillPay: payload,
+        totalRentPrice: calcTotalRentPrice(rentPrice, payload),
         totalBuyPrice,
         monthlyBuyPrice: calcMonthlyBuyPrice(totalBuyPrice, payload),
       }
