@@ -36,13 +36,21 @@ initialState.monthlyBuyPrice = calcMonthlyBuyPrice(initialState.totalBuyPrice, 1
 
 export default function reducer (state = initialState, {type, payload}) {
   switch (type) {
-    case UPDATE_CITY:
+    case UPDATE_CITY: {
+      const {yearsWillPay, taxPercent} = state
+      const rentPrice = data[payload].aluguel
+      const buyPrice = data[payload].compra
+      const totalBuyPrice = calcTotalBuyPrice(buyPrice, yearsWillPay, taxPercent)
       return {
         ...state,
         city: payload,
-        rentPrice: data[payload].aluguel,
-        buyPrice: data[payload].compra,
+        rentPrice,
+        buyPrice,
+        totalRentPrice: calcTotalRentPrice(rentPrice, yearsWillPay),
+        totalBuyPrice,
+        monthlyBuyPrice: calcMonthlyBuyPrice(totalBuyPrice, yearsWillPay),
       }
+    }
     case UPDATE_RENT_PRICE:
       const {yearsWillPay} = state
       return {
