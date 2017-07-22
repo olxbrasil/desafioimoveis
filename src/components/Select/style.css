@@ -1,0 +1,50 @@
+.Select-control {
+  border-radius: 0;
+  border-color: #19a974;
+}
+
+.has-value.Select--single > .Select-control .Select-value .Select-value-label,
+.is-pseudo-focused.has-value.Select--single > .Select-control .Select-value .Select-value-label {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.is-open > .Select-control {
+  border-bottom-width: 0;
+  border-color: #19a974;
+}
+
+.Select-menu-outer {
+  border-radius: 0;
+  border-top-width: 0;
+  border-color: #19a974;
+}
+
+.Select-option {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #000;
+}
+
+.Select-option:last-child {
+  border-radius: 0;
+}
+
+.Select-option.is-focused,
+.Select-option.is-selected.is-focused {
+  color: #fff;
+  background-color: #19a974;
+}
+
+.Select-option.is-selected {
+  color: #000;
+  background-color: #e9e9e9;
+}
+
+.Select-arrow {
+  border-color: #19a974 transparent transparent;
+}
+
+.is-open > .Select-control .Select-arrow {
+  border-color: transparent transparent #19a974;
+}
