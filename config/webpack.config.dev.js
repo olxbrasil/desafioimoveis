@@ -51,7 +51,6 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -83,7 +82,10 @@ module.exports = {
               {
                 loader: require.resolve('css-loader'),
                 options: {
+                  sourceMap: true,
+                  modules: true,
                   importLoaders: 1,
+                  localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
                 },
               },
               {

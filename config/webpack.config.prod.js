@@ -88,7 +88,6 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -110,7 +109,6 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-
               compact: true,
             },
           },
@@ -122,11 +120,15 @@ module.exports = {
                   fallback: require.resolve('style-loader'),
                   use: [
                     {
-                      loader: require.resolve('css-loader'),
+                      loader: 'css-loader',
                       options: {
-                        importLoaders: 1,
+                        discardComments: {
+                          removeAll: true,
+                        },
                         minimize: true,
-                        sourceMap: shouldUseSourceMap,
+                        modules: true,
+                        importLoaders: 1,
+                        localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
                       },
                     },
                     {
