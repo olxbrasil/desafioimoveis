@@ -123,6 +123,46 @@ module.exports = {
                         },
                     },
                     {
+                        test: /\.scss$/,
+                        loader: ExtractTextPlugin.extract(
+                            Object.assign(
+                                {
+                                    fallback: require.resolve('style-loader'),
+                                    use: [
+                                        {
+                                            loader: require.resolve('css-loader'),
+                                            options: {
+                                                importLoaders: 1,
+                                                minimize: true,
+                                                sourceMap: shouldUseSourceMap,
+                                            },
+                                        },
+                                        {
+                                            loader: require.resolve('postcss-loader'),
+                                            options: {
+                                                ident: 'postcss',
+                                                plugins: () => [
+                                                    require('postcss-flexbugs-fixes'),
+                                                    autoprefixer({
+                                                        browsers: [
+                                                            '>1%',
+                                                            'last 4 versions',
+                                                            'Firefox ESR',
+                                                            'not ie < 9',
+                                                        ],
+                                                        flexbox: 'no-2009',
+                                                    }),
+                                                ],
+                                            },
+                                        },
+                                        require.resolve('sass-loader'),
+                                    ],
+                                },
+                                extractTextPluginOptions
+                            )
+                        ),
+                    },
+                    {
                         test: /\.css$/,
                         loader: ExtractTextPlugin.extract(
                             Object.assign(
