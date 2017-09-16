@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import './Title.scss';
 
 export const extraClasses = {
-  bigTitle: 'big-title'
+  white: 'white-title',
+  big: 'big-title',
+  extraBold: 'extra-bold-title',
+  shadow: 'shadow-title'
 };
 
 const Title = props => (
@@ -11,7 +14,7 @@ const Title = props => (
 );
 
 Title.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.any.isRequired,
   extraClasses: PropTypes.string,
 };
 

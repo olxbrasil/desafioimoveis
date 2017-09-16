@@ -1,8 +1,28 @@
 .title {
+  position: relative;
   display: block;
   font-size: 24px;
+  color: $textColor;
+
+  span {
+    font-weight: $font-weight-regular;
+    display: inline-block;
+    margin: 0 15px;
+  }
 
   &.big-title {
-    font-size: 36px;
+    font-size: 60px;
+  }
+
+  &.shadow-title {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  &.white-title {
+    color: white;
+  }
+
+  &.extra-bold-title {
+    font-weight: $font-weight-extra-bold;
   }
 }
