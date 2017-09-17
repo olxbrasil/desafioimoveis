@@ -1,0 +1,35 @@
+.single-graph-container {
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  width: 100%;
+  max-width: 190px;
+  transition: height 0.3s;
+
+  &.graph-to-rent {
+    background: $mainGreen;
+  }
+
+  &.graph-to-buy {
+    background: #1abc9c;
+  }
+
+  .graph-info {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .graph-info-label {
+    color: white;
+    font-weight: $font-weight-light;
+
+    @include fontSize(18px);
+  }
+
+  .graph-info-value {
+    color: white;
+    font-weight: $font-weight-semi-bold;
+    @include fontSize(20px);
+  }
+}

@@ -15,29 +15,19 @@ const SliderRange = props => (
       </p>
     </div>
     <div styleName="slider-ui-container">
-      <p styleName="slider-value-reference">
-        <span styleName="value-prefix">{props.prefix}</span>
-        {props.hasDecimal ? formatToMoney(props.min, 1, ',') : formatToMoney(props.min)}
-        <span styleName="value-sufix">{props.sufix}</span>
-      </p>
       <Slider
         onChange={(value) => props.onChange(props.stateReference, value)}
         min={props.min}
         max={props.max}
         step={props.step}
+        value={props.value}
         defaultValue={props.defaultValue}
-        marks={props.marks}
       />
-      <p styleName="slider-value-reference slider-value-reference-max">
-        <span styleName="value-prefix">{props.prefix}</span>
-        {props.hasDecimal ? formatToMoney(props.max, 1, ',') : formatToMoney(props.max)}
-        <span styleName="value-sufix">{props.sufix}</span>
-      </p>
     </div>
   </div>
 );
 
-SliderRange.defaultPropTypes = {
+SliderRange.defaultProps = {
   prefix: '',
   sufix: '',
   hasDecimal: false,

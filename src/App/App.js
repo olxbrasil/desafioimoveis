@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppHero from './../components/AppHero/AppHero';
 import UserForm from './../components/UserForm/UserForm';
 import Graphs from './../components/Graphs/Graphs';
+import statesValues from '../api/valores.json';
 import './App.scss';
 
 class App extends Component {
@@ -27,10 +28,16 @@ class App extends Component {
   }
 
   onSelectChange(selectedState) {
+    const selectedStateValues = statesValues[selectedState.value];
     this.setState((previousValue) => ({
       selectedState: {
         ...previousValue.selectedState,
         ...selectedState
+      },
+      rangeValues: {
+        ...previousValue.rangeValues,
+        rentPerMonth: selectedStateValues.aluguel,
+        propertyToBuy: selectedStateValues.compra,
       }
     }));
   }
@@ -57,10 +64,13 @@ class App extends Component {
               onSliderChange={this.onSliderChange}
             />
           </div>
-          <div styleName="app-body-half">
-            <Graphs />
+          <div styleName="app-body-half app-body-half-right">
+            <Graphs
+              rangeValues={this.state.rangeValues}
+            />
           </div>
         </div>
+        <footer styleName="main-footer"></footer>
       </div>
     );
   }
