@@ -14,11 +14,10 @@
   "bugs": {
     "url": "https://github.com/olxbrasil/desafioimoveis/issues"
   },
-  "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -96,6 +95,7 @@
     "html-webpack-plugin": "2.29.0",
     "interestjs": "^0.1.0",
     "jest": "20.0.4",
+    "loan-calc": "^0.2.1",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.6",

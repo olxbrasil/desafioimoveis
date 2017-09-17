@@ -25,4 +25,10 @@
   &.extra-bold-title {
     font-weight: $font-weight-extra-bold;
   }
+
+  @media screen and (max-width: $belowTablet) {
+    &.big-title {
+      font-size: 8vw;
+    }
+  }
 }

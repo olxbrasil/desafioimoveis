@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as interestjs from 'interestjs'; // eslint-disable-line
 import SliderRange from './../SliderRange/SliderRange';
 import brazilStates from '../../api/states.json';
 import Select from 'react-select';

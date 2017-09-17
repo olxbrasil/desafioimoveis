@@ -28,6 +28,11 @@
     transform: translateX(-50%);
     z-index: 1;
     text-align: center;
+
+    @media screen and (max-width: $belowTablet) {
+      top: 7%;
+      width: 22vw;
+    }
   }
 
   .hero-content {

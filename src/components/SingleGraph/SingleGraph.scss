@@ -1,35 +1,53 @@
 .single-graph-container {
   border-radius: 5px 5px 0 0;
   position: relative;
-  width: 100%;
+  width: 40%;
   max-width: 190px;
+  min-height: 50px;
   transition: height 0.3s;
 
   &.graph-to-rent {
-    background: $mainGreen;
+    background: linear-gradient(to bottom, #1abc9c 0%, $mainGreen 100%);
   }
 
   &.graph-to-buy {
-    background: #1abc9c;
+    background: linear-gradient(to bottom, #1abc9c 0%, $mainGreen 100%);
+  }
+
+  &.graph-losing {
+    background: linear-gradient(to bottom, #7f8c8d 0%, #95a5a6 100%);
   }
 
   .graph-info {
     position: absolute;
-    top: 10px;
     left: 50%;
+    top: 0;
     transform: translateX(-50%);
   }
 
   .graph-info-label {
-    color: white;
+    color: $textColor;
     font-weight: $font-weight-light;
+    margin-top: -30px;
+    margin-bottom: 14px;
 
     @include fontSize(18px);
   }
 
   .graph-info-value {
     color: white;
-    font-weight: $font-weight-semi-bold;
-    @include fontSize(20px);
+    font-weight: $font-weight-bold;
+    @include fontSize(24px);
+
+    @media screen and (max-width: $belowTablet) {
+      @include fontSize(17px);
+    }
+  }
+
+  .graph-info-value-prefix {
+    opacity: 0.5;
+    margin-right: 2px;
+    font-weight: $font-weight-light;
   }
 }
+

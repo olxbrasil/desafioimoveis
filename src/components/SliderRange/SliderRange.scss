@@ -31,6 +31,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media screen and (max-width: $belowTablet) {
+    margin: 30px 10px;
+  }
 }
 
 .slider-ui-container {
@@ -54,14 +58,21 @@
     color: $textColor;
     font-weight: $font-weight-light;
     @include fontSize(16px);
+
+    @media screen and (max-width: $belowTablet) {
+      @include fontSize(14px);
+    }
   }
 
   .slider-value {
     color: $textColor;
     font-weight: $font-weight-bold;
     margin-left: auto;
-  }
 
+    @media screen and (max-width: $belowTablet) {
+      @include fontSize(14px);
+    }
+  }
 }
 
 .value-prefix {

@@ -16,10 +16,10 @@ class App extends Component {
         label: null
       },
       rangeValues: {
-        rentPerMonth: 3000,
-        propertyToBuy: 100000,
-        timeInProperty: 10,
-        interestTaxPerYear: 11.5,
+        rentPerMonth: 5000,
+        propertyToBuy: 1000000,
+        timeInProperty: 30,
+        interestTaxPerYear: 10,
       }
     };
 
