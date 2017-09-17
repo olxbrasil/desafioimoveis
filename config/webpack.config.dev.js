@@ -111,7 +111,8 @@ module.exports = {
                 loader: 'sass-resources-loader',
                 options: {
                   resources: [
-                    path.resolve(paths.appSrc, 'assets/styles/settings/*.scss')
+                    path.resolve(paths.appSrc, 'assets/styles/settings/*.scss'),
+                    path.resolve(paths.appSrc, 'assets/styles/tools/*.scss')
                   ],
                 },
               },

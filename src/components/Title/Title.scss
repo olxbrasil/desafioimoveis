@@ -1,8 +1,8 @@
 .title {
   position: relative;
   display: block;
-  font-size: 24px;
   color: $textColor;
+  @include fontSize(24px);
 
   span {
     font-weight: $font-weight-regular;
@@ -11,7 +11,7 @@
   }
 
   &.big-title {
-    font-size: 60px;
+    @include fontSize(60px);
   }
 
   &.shadow-title {
