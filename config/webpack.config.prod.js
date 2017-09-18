@@ -120,7 +120,7 @@ module.exports = {
                   fallback: require.resolve('style-loader'),
                   use: [
                     {
-                      loader: 'css-loader',
+                      loader: require.resolve('css-loader'),
                       options: {
                         discardComments: {
                           removeAll: true,
