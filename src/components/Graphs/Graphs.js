@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as interestjs from 'interestjs/lib/interest'; // eslint-disable-line
+import * as loanjs from 'loanjs';
 import SingleGraph, { extraClasses } from './../SingleGraph/SingleGraph';
 import './Graphs.scss'
 
@@ -13,9 +13,7 @@ function getRentValue(rangeValues) {
 function getBuyValue(rangeValues) {
   const yearsInMonth = 12;
   const totalMonths = rangeValues.timeInProperty * yearsInMonth;
-  const monthlyValue = rangeValues.propertyToBuy / totalMonths;
-
-  return interestjs(monthlyValue, totalMonths, rangeValues.interestTaxPerYear).sum;
+  return loanjs.Loan(rangeValues.propertyToBuy, totalMonths, rangeValues.interestTaxPerYear, true).sum;
 }
 
 function getHeightsInPercentage(rentValue, buyValue) {
