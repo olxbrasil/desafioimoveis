@@ -1,3 +1,5 @@
+build
+
 # Logs
 logs
 *.log
@@ -35,3 +37,8 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# MacOS
+*.DS_Store
+
+.idea

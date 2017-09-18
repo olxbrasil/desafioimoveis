@@ -1,0 +1,26 @@
+.graph-section-container {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.graphs-container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  border-bottom: 1px solid #eee;
+  height: 100%;
+}
+
+.graphs-title {
+  font-size: 30px;
+  color: $textColor;
+  padding-top: 10px;
+  font-weight: $font-weight-regular;
+  padding-bottom: 8px;
+  margin-top: 0;
+}

@@ -1,0 +1,40 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        "react-app"
+      ],
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "webpackHotModuleReloading": true,
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            }
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        "react-app"
+      ],
+      "plugins": [
+        [
+          "react-css-modules",
+          {
+            "generateScopedName": "[local]",
+            "filetypes": {
+              ".scss": {
+                "syntax": "postcss-scss"
+              }
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

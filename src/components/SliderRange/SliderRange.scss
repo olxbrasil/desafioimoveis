@@ -1,0 +1,88 @@
+:global(.rc-slider) {
+  margin: 0;
+}
+
+:global(.rc-slider-handle) {
+  border: 2px solid $mainGreen;
+  margin-left: -13px;
+  margin-top: -11px;
+  width: 26px;
+  height: 26px;
+}
+
+:global(.rc-slider-track) {
+  background: lighten($mainGreen, 25%);
+}
+
+:global(.rc-slider-dot-active) {
+  border-color: lighten($mainGreen, 30%);
+}
+
+:global(.rc-slider-handle:active),
+:global(.rc-slider-handle:hover),
+:global(.rc-slider-handle:focus) {
+  border-color: lighten($mainGreen, 20%);
+  box-shadow: 0 0 5px $mainGreen;
+}
+
+.slider-container {
+  margin: 30px 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: $belowTablet) {
+    margin: 30px 10px;
+  }
+}
+
+.slider-ui-container {
+  display: flex;
+  align-items: center;
+}
+
+.slider-value-reference {
+  color: #ccc;
+  white-space: nowrap;
+  @include fontSize(12px);
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  color: $textColor;
+  font-weight: $font-weight-bold;
+
+  .slider-label {
+    color: $textColor;
+    font-weight: $font-weight-light;
+    @include fontSize(16px);
+
+    @media screen and (max-width: $belowTablet) {
+      @include fontSize(14px);
+    }
+  }
+
+  .slider-value {
+    color: $textColor;
+    font-weight: $font-weight-bold;
+    margin-left: auto;
+
+    @media screen and (max-width: $belowTablet) {
+      @include fontSize(14px);
+    }
+  }
+}
+
+.value-prefix {
+  margin-right: 3px;
+  display: inline-block;
+  font-weight: $font-weight-light;
+}
+
+.value-sufix {
+  margin-left: 3px;
+  display: inline-block;
+  font-weight: $font-weight-light;
+}
