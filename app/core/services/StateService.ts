@@ -12,7 +12,7 @@ class StateService {
 
     getList() {
         return axios.get(`${this.url}/list`).then(
-            (resp: IResponseStateList) => resp.data
+            (resp: IResponseStateList) => resp
         );
     }
 }
