@@ -4,6 +4,8 @@ const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware')
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
 const config = require('./webpack.config.dev');
 const paths = require('./paths');
+const fs = require('fs');
+const path = require('path');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
@@ -87,6 +89,11 @@ module.exports = function(proxy, allowedHost) {
       // it used the same host and port.
       // https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
+      app.get('/api/state/list', function (req, res) {
+        const stateList = JSON.parse(fs.readFileSync(path.join(__dirname, '../api/valores.json'), 'utf8'));
+        res.setHeader('Content-Type', 'application/json');
+        res.send(stateList);
+      });
     },
   };
 };

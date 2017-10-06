@@ -23,6 +23,7 @@
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "dependencies": {
     "autoprefixer": "7.1.2",
+    "axios": "^0.16.2",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "chalk": "1.1.3",
     "css-loader": "0.28.4",
@@ -39,6 +40,8 @@
     "react": "^16.0.0",
     "react-dev-utils": "^4.0.1",
     "react-dom": "^16.0.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
     "source-map-loader": "^0.2.1",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
