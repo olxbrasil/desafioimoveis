@@ -2,7 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import configureStore from './container/store';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App title="oi" />, document.getElementById('root'));
+const Store = configureStore();
+
+ReactDOM.render(
+	<Provider store={Store}>
+		<App />
+	</Provider>, document.getElementById('root'));
 registerServiceWorker();
