@@ -22,12 +22,14 @@
   },
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
   "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "react-scripts": "1.0.14",
     "redux-immutable-state-invariant": "^2.1.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "flow-bin": "^0.56.0",
     "loanjs": "1.0.2",
