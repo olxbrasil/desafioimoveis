@@ -27,6 +27,7 @@
     "redux-immutable-state-invariant": "^2.1.0"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "express": "^4.16.1",
     "flow-bin": "^0.56.0",
     "loanjs": "1.0.2",
