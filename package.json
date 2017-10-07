@@ -26,16 +26,18 @@
     "react-scripts": "1.0.14"
   },
   "dependencies": {
+    "express": "^4.16.1",
     "flow-bin": "^0.56.0",
     "loanjs": "1.0.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "scripts": {
-    "start": "react-scripts start npm run flow",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-	"flow": "flow"
+	"flow": "flow",
+	"backend": "node api/"
   }
 }
