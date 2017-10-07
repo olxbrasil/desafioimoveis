@@ -1,0 +1,14 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/fbjs
+<PROJECT_ROOT>/coverage/*
+<PROJECT_ROOT>/webpack
+<PROJECT_ROOT>/mocha.*
+<PROJECT_ROOT>/server
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]

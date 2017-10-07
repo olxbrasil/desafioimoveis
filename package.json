@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Alugar ou Comprar?",
   "main": "index.js",
-  "scripts": {
-    "test": "npm test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olxbrasil/desafioimoveis.git"
@@ -24,7 +21,21 @@
     "url": "https://github.com/olxbrasil/desafioimoveis/issues"
   },
   "homepage": "https://github.com/olxbrasil/desafioimoveis#readme",
+  "devDependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "react-scripts": "1.0.14"
+  },
   "dependencies": {
-    "loanjs": "1.0.2"
+    "flow-bin": "^0.56.0",
+    "loanjs": "1.0.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start npm run flow",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+	"flow": "flow"
   }
 }
