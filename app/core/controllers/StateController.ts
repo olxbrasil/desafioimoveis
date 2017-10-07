@@ -12,8 +12,16 @@ class StateController {
 
     getStateList() {
         return this.service.getList()
-            .then((resp: IResponseStateList) => resp.data)
-            .catch(error => { throw new Error(); });
+            .then((resp: IResponseStateList) => {
+                const stateList = {};
+                Object.keys(resp.data).forEach(state => {
+                    stateList[state] = {
+                        rental: resp.data[state].aluguel,
+                        purchase: resp.data[state].compra,
+                    };
+                });
+                return stateList;
+            }).catch(error => { throw new Error(); });
     }
 
 }

@@ -1,5 +1,7 @@
 import StateController from '../../../core/controllers/StateController';
 
+export const fetchStates = (states: Object) => ({ type: 'FETCH_STATES',  payload: states});
+
 export const getStateList = async(dispatch: (param: ({})) => void) => {
     try {
         const stateController = new StateController();
@@ -9,5 +11,3 @@ export const getStateList = async(dispatch: (param: ({})) => void) => {
         throw new Error(error);
     }
 };
-
-export const fetchStates = (states: Object) => ({ type: 'FETCH_STATES',  payload: states});

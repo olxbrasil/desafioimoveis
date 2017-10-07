@@ -7,7 +7,7 @@ test('StateReducer with not an action type', () => {
       payload: null,
     })
   ).toEqual({
-    states: {},
+    list: {},
   });
 })
 
@@ -22,7 +22,7 @@ test('StateReducer FETCH_STATES', () => {
       },
     })
   ).toEqual({
-    states: {
+    list: {
       mg: {
         aluguel: 2000,
       },

@@ -1,17 +1,16 @@
 import IAction from '../../../core/interfaces/IAction';
 
-const initialState = {
-  states: {},
-};
-
-export default (state: Object, action: IAction) => {
+export default (state: { list: Object }, action: IAction) => {
   switch (action.type) {
     case 'FETCH_STATES':
       return {
         ...state,
-        states: action.payload,
+        list: action.payload,
       };
-    default: 
-      return initialState;
+    default:
+      return { 
+        ...state,
+        list: (state) ? state.list : {},
+      };
   }
 };

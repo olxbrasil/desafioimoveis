@@ -1,0 +1,17 @@
+@import '../../assets/scss/variables';
+
+//local variables
+$select-padding: 10px;
+
+.state-select {
+  text-align: center;
+  padding: $select-padding;
+  border-radius: 3px;
+  background: none;
+  border-color: $border-color;
+  color: $input-color;
+  &:focus {
+    border-color: $active-border-color;
+    color: $main-color;
+  }
+}

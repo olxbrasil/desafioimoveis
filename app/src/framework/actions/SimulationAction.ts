@@ -1,0 +1,1 @@
+export const setState = (state: Object) => ({ type: 'STATE_CHANGE', payload: state });

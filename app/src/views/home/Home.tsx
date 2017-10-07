@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { getStateList } from '../../framework/actions/StateActions';
+import StateSelect from '../../components/StateSelect/StateSelect';
 import './home.scss';
 
 type Props = {
@@ -18,9 +19,10 @@ class Home extends React.Component {
 
     render() {
         return (
-        <div className="main-section">
-            Comprar ou Alugar?
-        </div>
+        <section className="main-section">
+            <h1 className="title">Comprar ou Alugar?</h1>
+            <StateSelect />
+        </section>
         );
     }
 }
