@@ -1,11 +1,6 @@
-// @flow
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-type Props = {
-	title: string,
-}
 
 class App extends Component {
 	props: Props;
