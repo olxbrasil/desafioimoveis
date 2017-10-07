@@ -156,7 +156,7 @@ module.exports = {
               // It enables caching results in ./node_modules/.cache/babel-loader/
               // directory for faster rebuilds.
 			  cacheDirectory: true,
-			  plugins: ["transform-flow-strip-types"],
+			  plugins: ["transform-flow-strip-types", "transform-async-to-generator"],
 			},
           },
           // "postcss" loader applies autoprefixer to our CSS.
