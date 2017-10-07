@@ -4,6 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import getStatesActions from './container/actions/HomeActions';
+import Range from './components/range'
 
 class App extends Component {
 	constructor(props) {
@@ -34,6 +35,7 @@ class App extends Component {
 					</select>
 				</form>
 				<h2>Estado atual: {this.state.actualState}</h2>
+				<Range />
 			</div>
 		);
 	}
