@@ -4,7 +4,7 @@ import IResponseStateList from '../interfaces/IResponseStateList';
 
 class StateController {
 
-    service:StateService;
+    service: StateService;
 
     constructor() {
         this.service = new StateService();
@@ -12,8 +12,8 @@ class StateController {
 
     getStateList() {
         return this.service.getList()
-            .then((data: IResponseStateList) => data)
-            .catch(error => { throw new Error() });
+            .then((resp: IResponseStateList) => resp.data)
+            .catch(error => { throw new Error(); });
     }
 
 }

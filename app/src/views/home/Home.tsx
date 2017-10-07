@@ -1,16 +1,32 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
+import { getStateList } from '../../framework/actions/StateActions';
 import './home.scss';
-import StateService from '../../../core/services/StateService';
 
-const Home = () => {
-    const stateService = new StateService();
-    stateService.getList().then(data => console.log(data));
-    return (
+type Props = {
+    getStateList: () => void,
+};
+
+class Home extends React.Component {
+
+    props: Props;
+
+    componentWillMount() {
+        this.props.getStateList();
+    }
+
+    render() {
+        return (
         <div className="main-section">
             Comprar ou Alugar?
         </div>
-    );
-};
+        );
+    }
+}
 
-export default Home;
+const mapDispatchToProps = (dispatch: () => void) => ({
+    getStateList: () =>  getStateList(dispatch),
+});
+
+export default connect(null, mapDispatchToProps)(Home);

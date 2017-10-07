@@ -15,7 +15,10 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "typeRoots": [
+      "./app/src/tsConfig"
+    ]
   },
   "exclude": [
     "node_modules",
@@ -24,6 +27,7 @@
     "acceptance-tests",
     "webpack",
     "jest",
+    "**/*.spec.ts",
     "app/src/setupTests.ts"
   ]
 }
