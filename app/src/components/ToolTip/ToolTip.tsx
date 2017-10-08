@@ -7,7 +7,7 @@ type Props = {
   label?: string,
   payload?: Array<{ value: number }>
   name: string,
-}
+};
 
 const ToolTip = (props: Props) => (
   <div className="tooltip">

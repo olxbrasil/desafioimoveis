@@ -2,7 +2,7 @@ import StateReducer from './StateReducer';
 
 test('StateReducer with not an action type', () => {
   expect(
-    StateReducer({}, {
+    StateReducer(undefined, {
       type: 'NOT_TYPE',
       payload: null,
     })
@@ -13,7 +13,7 @@ test('StateReducer with not an action type', () => {
 
 test('StateReducer FETCH_STATES', () => {
   expect(
-    StateReducer({}, {
+    StateReducer(undefined, {
       type: 'FETCH_STATES',
       payload: {
         mg: {

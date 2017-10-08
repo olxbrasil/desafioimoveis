@@ -28,6 +28,7 @@
     "webpack",
     "jest",
     "**/*.spec.ts",
-    "app/src/setupTests.ts"
+    "**/*.spec.tsx",
+    "app/src/tsConfig/setupTests.ts"
   ]
 }

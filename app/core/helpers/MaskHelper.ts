@@ -3,17 +3,20 @@ import 'numeral/locales';
 
 numeral.locale('pt-br');
 
-export const currency = (number:string) => {
-  let newNumber = String(number).replace('.', ',');
+export const currency = (currencyNumber: string) => {
+  let newNumber = String(currencyNumber).replace('.', ',');
   const maskedNumber = numeral(newNumber).format('$ 0,0[.]00');
-  return (maskedNumber.search(',') != -1) ? maskedNumber : `${maskedNumber},00`
-}
+  return (maskedNumber.search(',') !== -1) ? maskedNumber : `${maskedNumber},00`;
+};
 
-export const percentage = (number:string) => `${number}%`;
+export const percentage = (percentageNumber: string) => {
+  let newNumber = percentageNumber.replace('.', ',');
+  return `${newNumber}%`;
+};
 
-export const age = (number:number) => {
-  if (number < 2) {
-    return `${number} ano`;
+export const age = (ageNumber: number) => {
+  if (ageNumber < 2) {
+    return `${ageNumber} ano`;
   }
-  return `${number} anos`;
-}
+  return `${ageNumber} anos`;
+};

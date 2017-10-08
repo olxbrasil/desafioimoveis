@@ -48,7 +48,7 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('app/'),
   yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveApp('app/src/setupTests.ts'),
+  testsSetup: resolveApp('app/src/tsConfig/setupTests.ts'),
   appNodeModules: resolveApp('node_modules'),
   appTsConfig: resolveApp('tsconfig.json'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
