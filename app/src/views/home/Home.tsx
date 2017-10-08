@@ -56,6 +56,8 @@ class Home extends React.Component {
 
     render() {
         const { simulation } = this.props;
+        const rental = CalculatePurchaseByMonth(simulation.purchase, simulation.time, simulation.tax);
+        const purchase = CalculateRentByMonth(simulation.rental, simulation.time);
         return (
         <section className="main-section">
             <h1 className="title">Comprar ou Alugar?</h1>
@@ -64,10 +66,10 @@ class Home extends React.Component {
             <h1 className="sub-title">Custo Total</h1>
             <Bar
                 rental={
-                    CalculatePurchaseByMonth(simulation.purchase, simulation.time, simulation.tax).sum
+                    rental.sum
                 }
                 purchase={
-                    CalculateRentByMonth(simulation.rental, simulation.time)
+                    purchase.sum
                 }
             />
         </section>
