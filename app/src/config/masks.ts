@@ -4,4 +4,4 @@ export default {
   currency,
   age,
   percentage,
-}
+};

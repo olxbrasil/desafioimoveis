@@ -1,0 +1,13 @@
+.tooltip {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 10px;
+  &__title {
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+  &__text {
+    margin: 0;
+    font-size: 18px;
+  }
+}

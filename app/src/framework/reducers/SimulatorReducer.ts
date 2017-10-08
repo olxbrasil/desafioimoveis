@@ -3,10 +3,10 @@ import IAction from '../../../core/interfaces/IAction';
 const setInitialState = (state: Object) => 
   (state) ? state : {
     selectedState: 'RJ',
-    purchase: 200000,
-    rental: 1200,
-    time: 1,
-    tax: 0.5,
+    purchase: '200000',
+    rental: '1200',
+    time: '10',
+    tax: '11.5',
   };
 
 export default (state: Object, action: IAction) => {

@@ -6,6 +6,8 @@ import { setInputValue } from '../../framework/actions/SimulationAction';
 import StateSelect from '../../components/StateSelect/StateSelect';
 import IStore from '../../../core/interfaces/IStore';
 import Range from '../../components/Range/Range';
+import Bar from '../../components/Charts/Bar';
+import { CalculatePurchaseByMonth, CalculateRentByMonth } from '../../../core/helpers/SimulationHelper';
 import ranges from '../../config/ranges';
 import './home.scss';
 
@@ -15,6 +17,8 @@ type Props = {
     simulation: {
         rental: string,
         purchase: string,
+        time: string,
+        tax: string,
     }
 };
 
@@ -51,11 +55,21 @@ class Home extends React.Component {
     }
 
     render() {
+        const { simulation } = this.props;
         return (
         <section className="main-section">
             <h1 className="title">Comprar ou Alugar?</h1>
             <StateSelect />
             {this.renderRanges()}
+            <h1 className="sub-title">Custo Total</h1>
+            <Bar
+                rental={
+                    CalculatePurchaseByMonth(simulation.purchase, simulation.time, simulation.tax).sum
+                }
+                purchase={
+                    CalculateRentByMonth(simulation.rental, simulation.time)
+                }
+            />
         </section>
         );
     }
