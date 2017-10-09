@@ -3,8 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import LoanJS from 'loanjs';
 import getStatesActions from './container/actions/HomeActions';
-import RangeComponent from './components/range'
+import RangeComponent from './components/range';
+import BarChart from './components/barChart';
+
 
 class App extends Component {
 	constructor(props) {
@@ -16,6 +19,22 @@ class App extends Component {
 	componentWillMount() {
 		this.props.getStatesActions();
 	}
+
+	componentWillReceiveProps(nextProps) {
+		const { range } = nextProps;
+		const loanCompra = new LoanJS.Loan(
+			range.compraValue,
+			range.anosValue * 12,
+			range.taxaValue,
+			true,
+		);
+		const totalAlugel = (range.anosValue * 12) * range.alguelValue;
+		this.setState({
+			totalAlugel,
+			totalCompra: loanCompra.sum,
+		});
+	}
+
 	render() {
 		const { home, range } = this.props;
 		const { actualState } = this.state;
@@ -39,7 +58,7 @@ class App extends Component {
 					</select>
 				</form>
 				<div className="container">
-					<h2>{range.alguelValue}</h2>
+					<h2>Valor do aluguel por mês: R${range.alguelValue}</h2>
 					<RangeComponent
 						type="aluguel"
 						value={range.alguelValue}
@@ -47,7 +66,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className="container">
-					<h2>{range.compraValue}</h2>
+					<h2>Valor do imóvel para comprar: R${range.compraValue}</h2>
 					<RangeComponent
 						type="compra"
 						value={range.compraValue}
@@ -55,7 +74,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className="container">
-					<h2>{range.anosValue} anos</h2>
+					<h2>Eu vou morar por {range.anosValue} anos</h2>
 					<RangeComponent
 						type="anos"
 						value={range.anosValue}
@@ -64,7 +83,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className="container">
-					<h2>{range.taxaValue}</h2>
+					<h2>Taxa de juros anual {range.taxaValue}%</h2>
 					<RangeComponent
 						type="taxa"
 						value={range.taxaValue}
@@ -72,6 +91,7 @@ class App extends Component {
 						isDefault
 					/>
 				</div>
+				<BarChart data={[this.state.totalAlugel, this.state.totalCompra]} />
 			</div>
 		);
 	}
