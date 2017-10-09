@@ -1,0 +1,17 @@
+.chart-bar {
+  margin: 0 auto;
+  display: inline-block;
+  & .recharts-yAxis {
+    font-size: 14px;
+  }
+  .recharts-bar-rectangle path {
+    fill: rgba(0, 128, 0, .5);
+    stroke: rgba(0, 87, 0, 0.5);
+    stroke-width: 2px;
+  }
+  .recharts-bar-rectangle:first-of-type path {
+    fill: rgba(28, 109, 220, .5);
+    stroke: rgba(8, 80, 173, 0.5);;
+    stroke-width: 2px;
+  }
+}
