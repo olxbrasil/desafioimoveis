@@ -4,7 +4,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import getStatesActions from './container/actions/HomeActions';
-import Range from './components/range'
+import RangeComponent from './components/range'
 
 class App extends Component {
 	constructor(props) {
@@ -17,30 +17,69 @@ class App extends Component {
 		this.props.getStatesActions();
 	}
 	render() {
-		const { states } = this.props.home;
+		const { home, range } = this.props;
+		const { actualState } = this.state;
 		return (
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">{this.props.home.title}</h1>
+					<h1 className="App-title">{home.title}</h1>
 				</header>
 				<form>
 					<label>Selecione seu Estado</label>
-					<select	onChange={e => this.setState({actualState: e.target.value})}>
+					<select
+						onChange={e => this.setState({actualState: e.target.value})}
+						value={actualState}
+					>
 						 {
-							states.map(e =>
-								<option key={e.id} value={e.state}>{e.state}</option>
+							home.uf.map(e =>
+								<option key={Math.random()} value={e}>{e}</option>
 							)
 						 }
 					</select>
 				</form>
-				<h2>Estado atual: {this.state.actualState}</h2>
-				<Range />
+				<div className="container">
+					<h2>{range.alguelValue}</h2>
+					<RangeComponent
+						type="aluguel"
+						value={range.alguelValue}
+						state={this.state.actualState}
+					/>
+				</div>
+				<div className="container">
+					<h2>{range.compraValue}</h2>
+					<RangeComponent
+						type="compra"
+						value={range.compraValue}
+						state={this.state.actualState}
+					/>
+				</div>
+				<div className="container">
+					<h2>{range.anosValue} anos</h2>
+					<RangeComponent
+						type="anos"
+						value={range.anosValue}
+						state={this.state.actualState}
+						isDefault
+					/>
+				</div>
+				<div className="container">
+					<h2>{range.taxaValue}</h2>
+					<RangeComponent
+						type="taxa"
+						value={range.taxaValue}
+						state={this.state.actualState}
+						isDefault
+					/>
+				</div>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => ({ home: state.homeReducer });
- const mapDispatchToProps = dispatch => bindActionCreators({ getStatesActions }, dispatch);
+const mapStateToProps = state => ({
+	home: state.homeReducer,
+	range: state.rangeReducer,
+});
+const mapDispatchToProps = dispatch => bindActionCreators({ getStatesActions }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(App);
