@@ -13,7 +13,10 @@ type Props = {
   name: string,
   onChange: (event: Object) => void,
 };
-
+/**
+ * Renders an input range
+ * @param props 
+ */
 const Range = (props: Props) => (
   <div className="field-area">
     <label>{props.label} {maskConfig[props.labelMask](props.value)}</label>

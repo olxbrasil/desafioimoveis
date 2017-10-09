@@ -14,7 +14,9 @@ type Props = {
 class StateSelect extends React.Component {
 
   props: Props;
-
+  /**
+   * Handle change event and dispatch setState action
+   */
   onChange = (event: { target: { value: string } }) => {
     const { value } = event.target;
     const state = {
@@ -23,7 +25,9 @@ class StateSelect extends React.Component {
     };
     this.props.setState(state);
   }
-
+  /**
+   * Renders select options for each state
+   */
   renderOptions() {
     return Object.keys(this.props.states).map((state, index)  => (
       <option key={index} value={state}>{state}</option>

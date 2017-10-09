@@ -4,17 +4,20 @@ import IResponseStateList from '../interfaces/IResponseStateList';
 
 class StateService {
 
-    url: string;
+  url: string;
 
-    constructor() {
-        this.url = 'http://localhost:3000/api/state';
-    }
+  constructor() {
+    this.url = 'http://localhost:3000/api/state';
+  }
 
-    getList() {
-        return axios.get(`${this.url}/list`).then(
-            (resp: IResponseStateList) => resp
-        );
-    }
+  /**
+   * Retruns api response 
+   */
+  getList() {
+    return axios.get(`${this.url}/list`).then(
+      (resp: IResponseStateList) => resp
+    );
+  }
 }
 
 export default StateService;

@@ -8,7 +8,10 @@ type Props = {
   rental: number,
   purchase: number,
 };
-
+/**
+ * Renders a bar chart using Recharts 
+ * @param props 
+ */
 const ChartBar = (props: Props) => {
   const chartData = [
     {

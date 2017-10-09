@@ -8,7 +8,10 @@ type Props = {
   payload?: Array<{ value: number }>
   name: string,
 };
-
+/**
+ * Renders a custom tooltip
+ * @param props 
+ */
 const ToolTip = (props: Props) => (
   <div className="tooltip">
     <h3 className="tooltip__title">{props.label}</h3>
