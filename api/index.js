@@ -3,10 +3,6 @@ const json = require('./valores.json');
 const cors = require('cors');
 const app = express();
 
-const keys = Object.keys(json);
-
-const arr = [];
-
 const corsOptions = {
 	origin: '*'
   }

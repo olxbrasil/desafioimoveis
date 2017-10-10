@@ -15,11 +15,6 @@ export default StyleSheet.create({
     'width': [{ 'unit': 'px', 'value': 190 }],
     'paddingTop': [{ 'unit': 'px', 'value': 10 }],
     'paddingBottom': [{ 'unit': 'px', 'value': 10 }],
-    // background: #2a92d3;
-	background: -moz-linear-gradient(top, #2a92d3 0%, #00a5c6 100%);
-	background: -webkit-linear-gradient(top, #2a92d3 0%,#00a5c6 100%);
-	background: linear-gradient(to bottom, #2a92d3 0%,#00a5c6 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a92d3', endColorstr='#00a5c6',GradientType=0 );
     'background': '#3f51b5',
     'background': '-moz-linear-gradient(top, #3f51b5 0%, #2e44b2 100%)',
     'background': '-webkit-linear-gradient(top, #3f51b5 0%,#2e44b2 100%)',

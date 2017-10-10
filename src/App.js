@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import LoanJS from 'loanjs';
+import LoanJS from './loanjs';
 import getStatesActions from './container/actions/HomeActions';
 import RangeComponent from './components/range';
 import BarChart from './components/barChart';
