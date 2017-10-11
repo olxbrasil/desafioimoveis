@@ -24,9 +24,11 @@
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
+    "core-js": "^2.5.1",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "jest-enzyme": "^4.0.1",
+    "raf": "^3.4.0",
     "react-scripts": "1.0.14",
     "react-test-renderer": "^16.0.0",
     "redux-immutable-state-invariant": "^2.1.0",
@@ -36,6 +38,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "cors": "^2.8.4",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "express": "^4.16.1",
     "flow-bin": "^0.56.0",
     "glamor": "^2.20.40",
@@ -46,6 +50,7 @@
     "react-input-range": "^1.2.1",
     "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.6",
+    "react-test-renderer": "^16.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
