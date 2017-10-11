@@ -1,18 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { css } from 'glamor';
 
 import './barchart.css';
 
-const alguelHeight = (props) => css({ height: `${Math.sqrt(props.data[0]).toFixed(3)}px` });
-const compraHeight = (props) => css({ height: `${Math.sqrt(props.data[1])}px` });
+class BarChart extends Component {
+	constructor() {
+		super();
+		this.state = {
+			counterCompra: 0,
+			couterAlguel: 0,
+		}
+	}
 
-const toBRL = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number);
+	componentWillReceiveProps() {
+		this.calcHeight();
+	}
 
-const BarChart = (props) => (
-	<div className="barchart">
-		<div className={`barchart__bar ${alguelHeight(props)}`}>Aluguel {toBRL(props.data[0])}</div>
-		<div className={`barchart__bar ${compraHeight(props)}`}>Compra {toBRL(props.data[1])}</div>
-	</div>
-);
+	calcHeight = () => {
+		const { data } = this.props;
+		const min = Math.min(data[0], data[1]);
+		const max = Math.max(data[0], data[1]);
+		const x = min * 100;
+		const result = x / max;
+		if (data[0] < data[1]) {
+			this.setState({
+				counterCompra: 100,
+				couterAlguel: result,
+			})
+		} else {
+			this.setState({
+				counterCompra: result,
+				couterAlguel: 100,
+			})
+		}
+	}
+
+	alguelHeight = (props) => css({ height: `${this.state.couterAlguel}%` });
+	compraHeight = (props) => css({ height: `${this.state.counterCompra}%` });
+
+	toBRL = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number);
+
+	render() {
+		return (
+			<div className="barchart">
+				<h3 className="barchart__title">Custo Total</h3>
+				<div className={`barchart__bar ${this.alguelHeight(this.props)}`}>Aluguel {this.toBRL(this.props.data[0])}</div>
+				<div className={`barchart__bar ${this.compraHeight(this.props)}`}>Compra {this.toBRL(this.props.data[1])}</div>
+			</div>
+		);
+	}
+}
 
 export default BarChart;

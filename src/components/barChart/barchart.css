@@ -1,31 +1,25 @@
 .barchart {
-	position: relative;
 	max-width: 400px;
-	margin: 60px auto;
+	margin: 60px auto 0;
 	height: 200px;
-	max-height: 200px;
-	min-height: 200px;
-	/* overflow: hidden; */
 
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-end;
+	justify-content: space-around;
 }
 
-.barchart__title {
-	width: 100%;
-}
+.barchart__title { width: 100%; }
 
 .barchart__bar {
 	min-height: 35px;
-	/*position: absolute;*/
-	bottom: 0;
-	width: 50%;
+	width: 45%;
 	box-sizing: border-box;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	-webkit-transition: height 0.5s;
-    transition: height 0.5s;
+	transition: height 0.5s;
+	border-radius: 10px 10px 0 0;
 
 	background: #3f51b5;
 	background: -moz-linear-gradient(top, #3f51b5 0%, #2e44b2 100%);
@@ -34,9 +28,3 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f51b5', endColorstr='#2e44b2',GradientType=0 );
 	color: white;
 }
-
-.barchart__bar:last-of-type {
-	right: 0;
-	float: right;
-}
-
