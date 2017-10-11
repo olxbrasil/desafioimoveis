@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Range from './index';
 import { mount, shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
@@ -23,7 +23,11 @@ describe('<App/>', () => {
 		const store = mockStore({ ...props });
 		wrapper = mount(
 			<Provider store={store}>
-				<App />
+				<Range
+					type="aluguel"
+					value={12312}
+					state={432432}
+				/>
 			</Provider>);
 	});
 

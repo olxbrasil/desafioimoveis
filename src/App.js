@@ -34,6 +34,8 @@ class App extends Component {
 		});
 	}
 
+	toBRL = number => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number);
+
 	render() {
 		const { home, range } = this.props;
 		const { actualState } = this.state;
@@ -56,7 +58,7 @@ class App extends Component {
 					</select>
 				</form>
 				<div className="container">
-					<h2>Valor do aluguel por mês: R${range.alguelValue}</h2>
+					<h2>Valor do aluguel por mês: {this.toBRL(range.alguelValue)}</h2>
 					<RangeComponent
 						type="aluguel"
 						value={range.alguelValue}
@@ -64,7 +66,7 @@ class App extends Component {
 					/>
 				</div>
 				<div className="container">
-					<h2>Valor do imóvel para comprar: R${range.compraValue}</h2>
+					<h2>Valor do imóvel para comprar: {this.toBRL(range.compraValue)}</h2>
 					<RangeComponent
 						type="compra"
 						value={range.compraValue}

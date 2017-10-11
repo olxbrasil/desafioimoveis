@@ -44,8 +44,12 @@ class BarChart extends Component {
 		return (
 			<div className="barchart">
 				<h3 className="barchart__title">Custo Total</h3>
-				<div className={`barchart__bar ${this.alguelHeight(this.props)}`}>Aluguel {this.toBRL(this.props.data[0])}</div>
-				<div className={`barchart__bar ${this.compraHeight(this.props)}`}>Compra {this.toBRL(this.props.data[1])}</div>
+				<div className={`barchart__bar ${this.alguelHeight(this.props)}`}>
+					Aluguel {this.toBRL(this.props.data[0])}
+				</div>
+				<div className={`barchart__bar ${this.compraHeight(this.props)}`}>
+					Comprar {this.toBRL(this.props.data[1])}
+				</div>
 			</div>
 		);
 	}
