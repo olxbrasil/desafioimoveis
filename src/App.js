@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -41,10 +40,9 @@ class App extends Component {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
 					<h1 className="App-title">{home.title}</h1>
 				</header>
-				<form>
+				<form className="container app__form">
 					<label>Selecione seu Estado</label>
 					<select
 						onChange={e => this.setState({actualState: e.target.value})}

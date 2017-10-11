@@ -22,12 +22,12 @@ class BarChart extends Component {
 		const max = Math.max(data[0], data[1]);
 		const x = min * 100;
 		const result = x / max;
-		if (data[0] < data[1]) {
+		if (max === data[1]) {
 			this.setState({
 				counterCompra: 100,
 				couterAlguel: result,
 			})
-		} else {
+		} else if (max === data[0]) {
 			this.setState({
 				counterCompra: result,
 				couterAlguel: 100,
