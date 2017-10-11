@@ -3,7 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import LoanJS from './loanjs';
 import getStatesActions from './container/actions/HomeActions';
+import RangeComponent from './components/range';
+import BarChart from './components/barChart';
+
 
 class App extends Component {
 	constructor(props) {
@@ -15,30 +19,87 @@ class App extends Component {
 	componentWillMount() {
 		this.props.getStatesActions();
 	}
+
+	componentWillReceiveProps(nextProps) {
+		const { range } = nextProps;
+		const loanCompra = new LoanJS.Loan(
+			range.compraValue,
+			range.anosValue * 12,
+			range.taxaValue,
+			true,
+		);
+		const totalAlugel = (range.anosValue * 12) * range.alguelValue;
+		this.setState({
+			totalAlugel,
+			totalCompra: loanCompra.sum,
+		});
+	}
+
 	render() {
-		const { states } = this.props.home;
+		const { home, range } = this.props;
+		const { actualState } = this.state;
 		return (
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">{this.props.home.title}</h1>
+					<h1 className="App-title">{home.title}</h1>
 				</header>
 				<form>
 					<label>Selecione seu Estado</label>
-					<select	onChange={e => this.setState({actualState: e.target.value})}>
+					<select
+						onChange={e => this.setState({actualState: e.target.value})}
+						value={actualState}
+					>
 						 {
-							states.map(e =>
-								<option key={e.id} value={e.state}>{e.state}</option>
+							home.uf.map(e =>
+								<option key={Math.random()} value={e}>{e}</option>
 							)
 						 }
 					</select>
 				</form>
-				<h2>Estado atual: {this.state.actualState}</h2>
+				<div className="container">
+					<h2>Valor do aluguel por mês: R${range.alguelValue}</h2>
+					<RangeComponent
+						type="aluguel"
+						value={range.alguelValue}
+						state={this.state.actualState}
+					/>
+				</div>
+				<div className="container">
+					<h2>Valor do imóvel para comprar: R${range.compraValue}</h2>
+					<RangeComponent
+						type="compra"
+						value={range.compraValue}
+						state={this.state.actualState}
+					/>
+				</div>
+				<div className="container">
+					<h2>Eu vou morar por {range.anosValue} anos</h2>
+					<RangeComponent
+						type="anos"
+						value={range.anosValue}
+						state={this.state.actualState}
+						isDefault
+					/>
+				</div>
+				<div className="container">
+					<h2>Taxa de juros anual {range.taxaValue}%</h2>
+					<RangeComponent
+						type="taxa"
+						value={range.taxaValue}
+						state={this.state.actualState}
+						isDefault
+					/>
+				</div>
+				<BarChart data={[this.state.totalAlugel, this.state.totalCompra]} />
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = state => ({ home: state.homeReducer });
- const mapDispatchToProps = dispatch => bindActionCreators({ getStatesActions }, dispatch);
+const mapStateToProps = state => ({
+	home: state.homeReducer,
+	range: state.rangeReducer,
+});
+const mapDispatchToProps = dispatch => bindActionCreators({ getStatesActions }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(App);

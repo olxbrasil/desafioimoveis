@@ -1,0 +1,119 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "loanjs@1.0.2",
+        "scope": null,
+        "escapedName": "loanjs",
+        "name": "loanjs",
+        "rawSpec": "1.0.2",
+        "spec": "1.0.2",
+        "type": "version"
+      },
+      "/home/bruno/desafioimoveis"
+    ]
+  ],
+  "_from": "loanjs@1.0.2",
+  "_id": "loanjs@1.0.2",
+  "_inCache": true,
+  "_location": "/loanjs",
+  "_nodeVersion": "6.11.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/loanjs-1.0.2.tgz_1502040746102_0.7201287057250738"
+  },
+  "_npmUser": {
+    "name": "kfiku",
+    "email": "kfiku.com@gmail.com"
+  },
+  "_npmVersion": "5.3.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "loanjs@1.0.2",
+    "scope": null,
+    "escapedName": "loanjs",
+    "name": "loanjs",
+    "rawSpec": "1.0.2",
+    "spec": "1.0.2",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/loanjs/-/loanjs-1.0.2.tgz",
+  "_shasum": "eb157c160690870febddd3be323706bd272d18c6",
+  "_shrinkwrap": null,
+  "_spec": "loanjs@1.0.2",
+  "_where": "/home/bruno/desafioimoveis",
+  "author": {
+    "name": "Grzegorz Klimek",
+    "email": "kfiku.com@gmail.com",
+    "url": "kfiku.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kfiku/loanjs/issues"
+  },
+  "dependencies": {},
+  "description": "Calculate loan in js (browser/node.js) for equal installments, installments decreasing, the sum of interest, etc.",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "coveralls": "^2.13.1",
+    "jest": "^19.0.2",
+    "rollup": "^0.45.2",
+    "standard": "^9.0.2",
+    "uglifyjs": "^2.4.11"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-xDEnJW5qrdfbRzHCkiibtiZCkjYdlatZxAZQxVG9KSYyHhtFrpYV9sVOryOjwY/7DkFEa+SPS0uobGqCoRyECQ==",
+    "shasum": "eb157c160690870febddd3be323706bd272d18c6",
+    "tarball": "https://registry.npmjs.org/loanjs/-/loanjs-1.0.2.tgz"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "LoanJS.js"
+  ],
+  "gitHead": "90f14e461edf8b825a9f9fe56db0369cf448904b",
+  "homepage": "https://github.com/kfiku/LoanJS",
+  "keywords": [
+    "loanjs",
+    "nodejs",
+    "loan",
+    "calculator",
+    "loan-calculator",
+    "js",
+    "installments",
+    "intrerest"
+  ],
+  "license": "MIT",
+  "main": "LoanJS.js",
+  "maintainers": [
+    {
+      "name": "kfiku",
+      "email": "kfiku.com@gmail.com"
+    }
+  ],
+  "name": "loanjs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kfiku/loanjs.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build:loan && npm run build:loanToHtml && npm run min",
+    "build:loan": "rollup lib/loan.js --name loan --format iife --output dist/loan.js && babel -o dist/loan.js dist/loan.js",
+    "build:loanToHtml": "rollup lib/loanToHtmlTable.js --name loanToHtmlTable --format iife --output dist/loanToHtmlTable.js && babel -o dist/loanToHtmlTable.js dist/loanToHtmlTable.js",
+    "clean": "rm -rf dist coverage",
+    "lint": "standard lib/*.js",
+    "min": "npm run min:loan && npm run min:loanToHtml",
+    "min:loan": "uglifyjs dist/loan.js -c -m -o dist/loan.min.js",
+    "min:loanToHtml": "uglifyjs dist/loanToHtmlTable.js -c -m -o dist/loanToHtmlTable.min.js",
+    "test": "npm run lint && jest --coverage",
+    "test:watch": "jest --coverage --watchAll"
+  },
+  "version": "1.0.2"
+}
