@@ -1,0 +1,4 @@
+/build/**
+src/index.js
+src/container/store/**
+src/registerServiceWorker.js
