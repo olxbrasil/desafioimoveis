@@ -21,7 +21,3 @@ Testes devem ser executados com:
 Para visualizar a cobertura deve usar o comando 
 
     npm test -- --coverage
-
-O build é gerado com: 
-
-    npm run build
